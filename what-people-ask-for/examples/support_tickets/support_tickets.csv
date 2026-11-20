@@ -1,274 +1,274 @@
 ticket_id,created_at,customer,email,priority,text
-T00001,2026-07-29,Julia Fontaine,julia.fontaine59@outlook.com,high,+1 The CSV export cuts off long text fields
-T00002,2026-07-12,Ivan Berg,iberg113@fastmail.com,high,"I cannot log in since yesterday, password is correct and it still says invalid"
-T00003,2026-09-21,Diego Vargas,diego.vargas16@gmail.com,low,App dies when I open search on an old Android 9 device
-T00004,2026-09-19,Farid Jensen,faridjensen372@outlook.com,high,"resend button does nothing, clicked five times over an hour and I stop complaining"
-T00005,2026-07-23,Yara Ubeda,yaraubeda142@gmail.com,low,"After the update I cannot log in at all, it loops back to the login screen"
-T00006,2026-09-28,Amara Tanaka,atanaka88@fastmail.com,normal,"Can we get mentions do not notify me, I only find them when I open the app? it is the main gap for us"
-T00007,2026-07-24,Elena Vargas,elenavargas528@outlook.com,high,"Locked out after changing my phone, the authenticator app is gone"
-T00008,2026-08-27,Liam Silva,lsilva642@icloud.com,low,Are you hiring for support roles? I am interested
-T00009,2026-07-23,Grace Zimmer,grace.zimmer62@fastmail.com,low,reset emali not arriving
-T00010,2026-09-23,Hugo Rossi,hugorossi191@icloud.com,low,"Any chance of the export zip downloads as a 0 byte file, tried twice? this blocks our rollout"
-T00011,2026-09-04,Tomas Ito,tito586@gmail.com,high,"Any chance of aPI responses are suddenly slow, 4 seconds for a list call?"
-T00012,2026-07-14,Grace Eriksen,geriksen513@icloud.com,high,"double charge on my card, seriously"
-T00013,2026-08-23,Keiko Ito,keiko.ito65@fastmail.com,normal,How do I merge two workspaces after an acquisition?
-T00014,2026-08-20,Nina Vargas,nvargas26@hey.com,high,Dark mode for the desktpo app please for the love of god
-T00015,2026-07-28,Lena Silva,lsilva825@outlook.com,high,The desktop app shows data from two days ago until I force refresh
-T00016,2026-07-01,Jonas Silva,jsilva646@icloud.com,high,"login broken on safari, chrome works"
-T00017,2026-08-15,Aisha Quinn,aquinn953@fastmail.com,low,Any chance of where is the recycle bin? I deleted a board by accident? we benchmark every tool against this
-T00018,2026-09-25,Tomas Weber,tomas.weber69@fastmail.com,normal,Would love webhook payload changed shape without a version bump
-T00019,2026-09-11,Elena Rossi,elena.rossi64@gmail.com,high,reset email not arriving pls
-T00020,2026-09-11,Marco Alvarez,marco.alvarez66@hey.com,high,Export loses the custom fields we rely on
-T00021,2026-08-16,Ivan Jensen,ijensen49@icloud.com,normal,Changes I make on web appear on mobile only after restarting the app
-T00022,2026-09-22,Amara Alvarez,amara.alvarez28@icloud.com,normal,"Please add an API endpoint for exports, the manual download is not automatable"
-T00023,2026-07-27,Ben Silva,bensilva480@hey.com,low,I upgraded mid cycle and got charged the full amount instead of prorated. Every single day this comes up.
-T00024,2026-09-06,Lena Silva,lenasilva805@fastmail.com,low,Please send my ticket history for a VAT dispute
-T00025,2026-08-24,Chloe Weber,chloe.weber32@outlook.com,high,double charge on my card pls
-T00026,2026-08-04,Aisha Zimmer,aisha.zimmer26@hey.com,normal,login fails with 'invalid credentials' but I can log into the forum with the same password and I stop complaining
-T00027,2026-09-05,Nadia Diallo,ndiallo700@outlook.com,normal,"Me too, a calendar view of due dates please"
-T00028,2026-08-02,Nadia Petrov,nadia.petrov45@icloud.com,normal,"I want to move 2FA o a hardware key, how?"
-T00029,2026-07-20,Xavier Weber,xweber890@gmail.com,normal,OAuth token refresh fails with a cryptic error for the love of god
-T00030,2026-07-20,Amara Xu,amaraxu368@outlook.com,high,iPad app crashes when rotating to landscape
-T00031,2026-09-13,Chloe Tanaka,chloetanaka474@fastmail.com,high,"Would love aPI responses are suddenly slow, 4 seconds for a list call"
-T00032,2026-07-03,Elena Silva,esilva888@gmail.com,high,"cannott log in, seriously"
-T00033,2026-08-21,Ines Rossi,irossi641@outlook.com,low,"Same here, the 2FA prompt appears every login even on trusted devices"
-T00034,2026-07-05,Ivan Diallo,ivan.diallo1@outlook.com,normal,"API responses are suddenly slow, 4 seconds for a list call"
-T00035,2026-09-10,Ines Moreau,imoreau48@gmail.com,normal,"Honestly i want to move 2FA to a hardware key, how would fix most of my days"
-T00036,2026-09-14,Priya Ito,priyaito849@hey.com,high,"Two factor codes arrive too late, by then the code expired"
-T00037,2026-07-21,Priya Vargas,priya.vargas21@icloud.com,normal,"Can we get one board refuses to sync, others are fine, since yesterday? three of my colleagues asked the same"
-T00038,2026-07-21,Wendy Ito,wendy.ito3@gmail.com,low,"I get 2FA prompts at 3am that I did not trigger, is something wrong?"
-T00039,2026-08-16,Edith Zimmer,edith.zimmer12@gmail.com,low,double charge on my card
-T00040,2026-08-22,Grace Eriksen,grace.eriksen27@hey.com,high,"my account seems locked after the office IP changed, is there an allowlist please, itt is 2026"
-T00041,2026-08-22,Ben Zimmer,ben.zimmer52@gmail.com,low,"App freezes when the keyboard opens in the comment box, iPhone 15, please and thank you"
-T00042,2026-09-25,Ivan Chen,ivan.chen62@icloud.com,low,"Thanks to whoever fixed the sync issue, it is working again"
-T00043,2026-07-08,Keiko Kaur,keikokaur605@icloud.com,normal,Adding we are a team of six and half of us see stale board would help a lot
-T00044,2026-07-14,Marta Alvarez,martaalvarez261@hey.com,low,double charge on my card !!
-T00045,2026-09-27,Julia Alvarez,julia.alvarez32@fastmail.com,low,cannot log in
-T00046,2026-09-10,Elena Eriksen,eeriksen779@outlook.com,normal,"Please remove 2FA from my account, I lost my phone and my backup codes"
-T00047,2026-09-19,Bruno Novak,bruno.novak67@gmail.com,low,Honestly password reset link opens a blank page would fix omst of my days it came up in our retro again
-T00048,2026-09-11,Marco Ubeda,marcoubeda817@outlook.com,normal,Login works on desktop but not on mobile web
-T00049,2026-07-22,Amara Kaur,amara.kaur67@hey.com,normal,The emoji picker has no search
-T00050,2026-07-26,Diego Ito,diego.ito76@hey.com,high,Adding password reset link opens a blank page would help a lot
-T00051,2026-08-07,Ines Moreau,ines.moreau28@hey.com,low,cannot log in +1
-T00052,2026-08-28,Bruno Chen,bchen557@icloud.com,low,"Same here, the API returned a 500 for two hours last night, no status page note I hit this every week"
-T00053,2026-07-27,Priya Haddad,priyahaddad673@hey.com,high,"Resend button does nothing, clicked five times over an hour"
-T00054,2026-09-02,Hugo Petrov,hugo.petrov55@icloud.com,low,"I was charged twice this month, please refund one"
-T00055,2026-08-06,Diego Xu,diego.xu23@outlook.com,low,Any chance of i switched phones and the authenticator codes are wrong noww?
-T00056,2026-08-07,Chloe Okoro,chloe.okoro60@outlook.com,normal,double chargee on my card pls
-T00057,2026-09-08,Kofi Yilmaz,kofiyilmaz711@icloud.com,low,"Bulk editing due dates would save my team hours, please and thank you I hit this every week"
-T00058,2026-09-10,Xavier Jensen,xavierjensen522@gmail.com,low,Refund request: I cancelled on the 2nd but you charged me on the 5th
-T00059,2026-07-22,Elena Diallo,elena.diallo58@gmail.com,normal,"I have been a customer for four years and this month has been a mess. The mobile app crashes on my main board, the export I need for our audit is missing fields, and your password reset email lands in spam for half my colleagues. Each one alone I could work around. Together they make me question the renewal next month. I would love to stay, the product is good when it works, but I need these three things fixed or acknowledged."
-T00060,2026-08-09,Keiko Rossi,keiko.rossi2@hey.com,normal,"My account seems locked after the office IP changed, is there an allowlist?"
-T00061,2026-09-22,Keiko Okoro,keikookoro483@hey.com,normal,"I want to delete my account entirely, what happens to my data?"
-T00062,2026-08-15,Keiko Eriksen,keiko.eriksen17@hey.com,normal,Password reset link opens a blank page
-T00063,2026-09-16,Felix Weber,felix.weber32@gmail.com,normal,"Sync conflicts create duplicate cards, we now have three copies of one task"
-T00064,2026-09-20,Ines Novak,inovak261@gmail.com,normal,How do I merge two workspaces after an accquisition for the love of god it is the main gap for us
-T00065,2026-09-26,Tomas Xu,tomas.xu81@fastmail.com,normal,Can we get notification sound plays with no visible notification on desktop?
-T00066,2026-07-01,Viktor Quinn,viktorquinn968@fastmail.com,low,Would love please let us tag other teams in comments
-T00067,2026-07-06,Bruno Lindqvist,bruno.lindqvist58@gmail.com,high,"We cannot log in from the office network at all, but home wifi works"
-T00068,2026-08-13,Viktor Rossi,viktor.rossi18@fastmail.com,high,I unsubscribe from digest emails but they keep coming
-T00069,2026-08-13,Carla Fontaine,carla.fontaine98@icloud.com,low,Why did my plan price change without notice?
-T00070,2026-08-02,Xavier Quinn,xavierquinn432@fastmail.com,low,"the reset email goes to spam for our whole domain, sender reputation issue please, it is 2026"
-T00071,2026-07-06,Julia Lindqvist,julia.lindqvist47@hey.com,high,eset email not arriving !!
-T00072,2026-09-10,Marco Fontaine,marco.fontaine78@outlook.com,normal,"The app logs me out every 24 hours, extend the session please"
-T00073,2026-08-01,Chloe Diallo,cdiallo56@fastmail.com,normal,"Third time asking: after the update I cannot log in at all, it loops back to the login screen"
-T00074,2026-07-03,Bruno Moreau,bmoreau134@fastmail.com,normal,"invoice for my finance team please, VAT number is on the account"
-T00075,2026-08-12,Farid Tanaka,faridtanaka693@outlook.com,high,+1 Where do I find the audit log you mentioned in the changelog I hit this every week
-T00076,2026-07-19,Oscar Zimmer,oscar.zimmer64@hey.com,normal,double charge onn my card +1
-T00077,2026-07-31,Viktor Rossi,viktor.rossi58@hey.com,high,can I change the workspace timezone? Deadlines show one hour off is all I want
-T00078,2026-09-17,Viktor Alvarez,valvarez332@gmail.com,normal,"Cards are not syncing between phone and desktop, changes take an hour"
-T00079,2026-08-19,Ivan Okoro,ivanokoro269@gmail.com,high,"The API returned a 500 for two hours last night, no status page note"
-T00080,2026-08-22,Uma Okoro,uma.okoro34@icloud.com,high,"add templates for boards, we set up the same one for every client"
-T00081,2026-08-11,Farid Kaur,fkaur727@hey.com,low,i stopped getting any emails from you since the 14th and I stop complaining it came up in our retro again
-T00082,2026-09-26,Marco Garcia,marco.garcia25@outlook.com,low,"Timezone shows UTC for new cards, mine is JST"
-T00083,2026-07-12,Hugo Quinn,hugoquinn767@outlook.com,low,My colleague sees different data than me in the same board
-T00084,2026-07-24,Felix Rossi,frossi340@fastmail.com,high,"sync stuck since this morning, spinner never stops"
-T00085,2026-09-10,Lena Garcia,lenagarcia544@outlook.com,high,"Please batch notification emails, I get 40 a day"
-T00086,2026-07-28,Hana Okoro,hanaokoro736@hey.com,normal,Can I speak to someone on the phone? Email is slow for us
-T00087,2026-07-17,Quentin Haddad,qhaddad188@gmail.com,normal,"I need a receipt for a purchase from March, portal has no history"
-T00088,2026-09-24,Viktor Silva,viktorsilva57@hey.com,high,The 2FA prompt appears every login even on trusted devices
-T00089,2026-09-16,Liam Eriksen,leriksen157@gmail.com,high,"my card was declined but the charge shows pending, now twice is all I want I would use it every single day"
-T00090,2026-09-27,Xavier Eriksen,xavier.eriksen75@hey.com,high,reset email not arriving please!
-T00091,2026-09-06,Julia Jensen,jjensen800@outlook.com,high,Would love how do I set business hours for the shared inbox
-T00092,2026-07-23,Xavier Kaur,xavierkaur45@gmail.com,low,"agreed, login works on desktop but not on mobile web"
-T00093,2026-08-08,Amara Diallo,amara.diallo50@fastmail.com,high,cannot lo in thankss
-T00094,2026-07-08,Greta Okoro,greta.okoro56@outlook.com,high,"Me too, the reset page is blocked by our corporate proxy, certificate error"
-T00095,2026-08-17,Elena Weber,elenaweber212@fastmail.com,low,"The trial charged me a day early, please refund"
-T00096,2026-07-08,Hugo Garcia,hgarcia76@gmail.com,high,"A calendar view of due dates please, please and thank you"
-T00097,2026-08-20,Wendy Weber,wendyweber909@gmail.com,low,"Me too, i upgraded mid cycle and got charged the full amount instead of prorated"
-T00098,2026-09-25,Julia Kaur,jkaur407@gmail.com,low,"2FA setup QR code never scans, tried two apps"
-T00099,2026-09-05,Nadia Chen,nadia.chen10@hey.com,low,"Agreed, i unsubscribe from digest emails but they keep coming"
-T00100,2026-08-31,Wendy Silva,wsilva430@hey.com,low,"Me too, add templates for boards, we set up the same one for every client"
-T00101,2026-07-27,Keiko Jensen,keikojensen561@fastmail.com,high,"Can we get i want to move 2FA to a hardware key, how?"
-T00102,2026-07-19,Chloe Jensen,chloe.jensen51@fastmail.com,normal,The team plan charged me for 12 seats but we removed 4 last month
-T00103,2026-08-03,Chloe Garcia,chloegarcia870@gmail.com,normal,"We cannot log in from the office network at all, but home wifi works. Every single day this comes up."
-T00104,2026-08-17,Ben Garcia,ben.garcia66@fastmail.com,low,Login fails with 'invalid credentials' but I can log into the forum with the same password
-T00105,2026-08-13,Greta Okoro,greta.okoro59@icloud.com,low,We were charged in USD but our account is set to EUR
-T00106,2026-09-07,Aisha Rossi,aisha.rossi21@fastmail.com,high,How do I export my data? I am leaving the company and need my boards
-T00107,2026-09-25,Marta Moreau,martamoreau651@gmail.com,normal,The export button emails a zip that never arrives
-T00108,2026-08-01,Julia Ito,julia.ito50@fastmail.com,low,Webhook payload changed shape without a version bump
-T00109,2026-09-10,Diego Eriksen,diego.eriksen44@outlook.com,normal,"cannot logg in, seriously"
-T00110,2026-07-14,Deepak Fontaine,dfontaine613@icloud.com,high,double charge on my card thanks
-T00111,2026-09-16,Nina Zimmer,nzimmer184@icloud.com,normal,"the app crashes on opening any card with a checklist, Pixel 8, same as everyone else here"
-T00112,2026-07-15,Marco Xu,mxu314@icloud.com,normal,"Third time asking: my account seems locked after the office IP changed, is there an allowlist I hit this every week"
-T00113,2026-08-02,Tomas Tanaka,tomas.tanaka43@fastmail.com,normal,douuble charge on my card please
-T00114,2026-07-04,Xavier Fontaine,xfontaine134@icloud.com,normal,"Exported CSV is missing the comments column, is that expected?"
-T00115,2026-09-18,Kofi Tanaka,kofitanaka280@gmail.com,high,"Mentions do not notify me, I only find them when I open the app"
-T00116,2026-08-21,Uma Vargas,uvargas71@hey.com,normal,"Any chance of please batch notification emails, I get 40 a day? it came up in our retro again"
-T00117,2026-07-12,Hana Xu,hanaxu228@icloud.com,low,"reset email not arriving, seriously"
-T00118,2026-09-11,Quentin Moreau,quentin.moreau86@icloud.com,high,"Adding resend button does nothing, clicked five times over an hour would help a ot I would use it every single day"
-T00119,2026-07-11,Wendy Ito,wendy.ito97@gmail.com,normal,"2FA setup QR code never scas, tried two apps is all I want"
-T00120,2026-09-20,Amara Okoro,amaraokoro486@outlook.com,high,cannot log in ?
-T00121,2026-07-29,Greta Ito,greta.ito56@outlook.com,high,"I get notification emails for every tiny change, how do I turn them down?"
-T00122,2026-09-13,Elena Ito,elena.ito69@hey.com,high,double charge on my card ?
-T00123,2026-08-27,Hugo Haddad,hhaddad535@hey.com,high,reset email not arriving thanks
-T00124,2026-08-06,Viktor Silva,viktor.silva64@hey.com,low,cannot log in please
-T00125,2026-07-07,Carla Okoro,cokoro797@outlook.com,low,email notifications stopped completely two weeks ago
-T00126,2026-08-13,Nadia Chen,nadia.chen19@gmail.com,low,Can we get i cannot log in with Google SSO since our admin changed the domain?
-T00127,2026-07-19,Ben Silva,bsilva447@hey.com,normal,"Notifications go to my old email, I cannot change it in settings"
-T00128,2026-08-10,Oscar Vargas,oscar.vargas61@outlook.com,high,+1 App dies when I open search on an old Android 9 device
-T00129,2026-08-17,Ben Ito,benito10@gmail.com,high,"after the 4.2 update the app crashes in settings, sync section would make my week I would use it every single day"
-T00130,2026-09-06,Chloe Vargas,cvargas191@icloud.com,high,reset email not arrivingg ?
-T00131,2026-09-17,Nina Quinn,nquinn258@gmail.com,low,"Can we get reset flow says my mail is not found, but I am logged in on mobile?"
-T00132,2026-08-07,Quentin Kaur,quentinkaur96@hey.com,high,+1 iPad app crashes when rotating to landscape three of my colleagues asked the same
-T00133,2026-08-02,Kofi Yilmaz,kyilmaz30@fastmail.com,normal,reset email not arriving
-T00134,2026-07-14,Elena Petrov,elena.petrov47@gmail.com,high,Notification sound plays with no visible notification on desktop
-T00135,2026-09-04,Kofi Berg,kofiberg453@icloud.com,low,"API returns 429 constantly since Monday, we barely changed our usage"
-T00136,2026-09-29,Kofi Quinn,kofi.quinn3@outlook.com,high,Where do I find the audit log you mentioned in the changelog?
-T00137,2026-09-05,Keiko Yilmaz,kyilmaz93@icloud.com,normal,"Agreed, our integration hit rate limits with 3 requests per second, docs said 10 three of my colleagues asked the same"
-T00138,2026-08-30,Liam Lindqvist,liamlindqvist247@gmail.com,normal,Thhe CSV export cuts off long text fields
-T00139,2026-07-11,Quentin Xu,quentin.xu66@outlook.com,high,canot log in please!
-T00140,2026-09-21,Amara Zimmer,azimmer925@outlook.com,high,"Webhooks stopped firing on Friday, nothing in our logs"
-T00141,2026-07-11,Amara Lindqvist,amara.lindqvist42@fastmail.com,high,"Me too, export loses the custom fields we rely on"
-T00142,2026-09-26,Samir Ito,samirito662@fastmail.com,normal,double charge on my card please
-T00143,2026-09-21,Liam Chen,liamchen207@outlook.com,normal,Scroll position resets when I reopen a board
-T00144,2026-08-08,Chloe Eriksen,chloe.eriksen64@icloud.com,low,cannnot log in plesae!
-T00145,2026-07-14,Elena Chen,echen749@outlook.com,normal,"slack notifications from your integration are delayed by hours please, it is 2026 it is the main gap for us"
-T00146,2026-07-17,Marta Novak,mnovak240@outlook.com,high,Print stylesheet cuts off the right column
-T00147,2026-09-03,Priya Okoro,priya.okoro82@outlook.com,low,cannot logg in pls
-T00148,2026-07-14,Oscar Petrov,opetrov139@outlook.com,high,double charge on my card :)
-T00149,2026-09-28,Marta Xu,mxu230@outlook.com,high,"Honestly please add recurring cards, we recreate the samme weekly checklist would fix most of my days"
-T00150,2026-07-08,Diego Rossi,drossi871@outlook.com,high,cannot log in pls
-T00151,2026-07-10,Priya Fontaine,priyafontaine212@hey.com,high,reset email not arriving ?
-T00152,2026-08-09,Ivan Ito,iito392@fastmail.com,high,"Same here, i cancelled my subscription but was still charged, please refund"
-T00153,2026-08-31,Elena Garcia,egarcia402@outlook.com,high,"Adding the JSON export has dates in unix time, spreadsheets choke on them would help a lot this blocks our rollout"
-T00154,2026-08-12,Ben Diallo,bdiallo900@gmail.com,normal,reset email not arriving :)
-T00155,2026-08-04,Quentin Jensen,quentin.jensen92@icloud.com,normal,The app crashes when I open any board with more than 50 cards on Android
-T00156,2026-08-22,Elena Novak,elena.novak44@fastmail.com,normal,"App crashes on start after the last update, iPhone 13"
-T00157,2026-07-05,Ines Diallo,idiallo785@gmail.com,normal,"Third time asking: please batch notification emails, I get 40 a day this blocks our rollout"
-T00158,2026-07-28,Carla Zimmer,czimmer838@fastmail.com,high,"After the 4.2 update the app crashes in settings, sync section"
-T00159,2026-09-25,Wendy Berg,wendyberg780@hey.com,high,annot log in
-T00160,2026-08-14,Chloe Jensen,chloe.jensen32@gmail.com,low,"Agreed, how do I add a second admin to our workspace"
-T00161,2026-07-11,Ines Novak,inovak303@icloud.com,high,oAuth token refresh fails with a cryptic error is all I want
-T00162,2026-08-06,Ines Yilmaz,ines.yilmaz70@outlook.com,high,"The JSON export has dates in unix time, spreadsheets choke on them"
-T00163,2026-07-17,Marta Berg,mberg379@fastmail.com,low,"Me too, login page hangs on the spinner, tried three browsers"
-T00164,2026-09-17,Aisha Alvarez,aisha.alvarez59@outlook.com,low,"iPhone app freezes on the loading screen, reinstall did not help"
-T00165,2026-07-16,Nadia Garcia,nadiagarcia47@hey.com,high,Slack notifications from your integration are delayed by hours. Every single day this comes up. it is the main gap for us
-T00166,2026-09-03,Tomas Zimmer,tzimmer366@fastmail.com,high,"Any chance of please add an API endpoint for exports, the manual download is not automatabble?"
-T00167,2026-09-10,Farid Moreau,farid.moreau26@outlook.com,high,Can we get how do I add a second admin to our workspace?
-T00168,2026-09-05,Hana Chen,hana.chen3@fastmail.com,normal,cannot log in !!
-T00169,2026-08-05,Bruno Tanaka,bruno.tanaka24@icloud.com,high,The app crashes when attaching a photo on Android 14
-T00170,2026-08-08,Grace Novak,grace.novak85@outlook.com,high,"Password reset email never arrives, checked spam, resend twice"
-T00171,2026-09-06,Grace Quinn,gquinn74@outlook.com,low,Webhook payload changed shape without a version bump for the love of god we benchmark every tool against this
-T00172,2026-07-24,Yara Zimmer,yarazimmer717@hey.com,high,the 2FA prompt appears every login even on trusted devices and I stop complaining we benchmark every tool against this
-T00173,2026-09-14,Chloe Ubeda,chloeubeda633@hey.com,high,"The reset page is blocked by our corporate proxy, certificate error"
-T00174,2026-08-05,Deepak Moreau,deepak.moreau6@gmail.com,high,Comments posted from mobile do not show up on desktop
-T00175,2026-08-02,Farid Diallo,fdiallo162@fastmail.com,normal,"Me too, pagination is broken on /v2/cards, page 2 repeats page 1 we benchmark every tool against this"
-T00176,2026-08-12,Quentin Tanaka,quentin.tanaka40@hey.com,low,"I cancelled my subscription but was still charged, please refund"
-T00177,2026-07-18,Viktor Okoro,vokoro675@hey.com,high,"Would love sync cconflicts create duplicate cards, we now have three copies of one task"
-T00178,2026-09-08,Wendy Zimmer,wzimmer408@gmail.com,normal,+1 Comments posted from mobile do not show up on desktop I hit this eery week
-T00179,2026-07-24,Bruno Jensen,bjensen885@icloud.com,low,"Agreed, backup codes were used up druing my holiday, account is locked"
-T00180,2026-08-13,Priya Jensen,pjensen445@gmail.com,high,"Adding app freezes when the keyboard opens in the comment box, iPhone 15 would help a lot it came up in our retro again"
-T00181,2026-08-10,Lena Fontaine,lenafontaine427@fastmail.com,low,OAuth token refresh fails with a cryptic error
-T00182,2026-08-09,Marta Petrov,martapetrov164@hey.com,normal,"after the update I cannot log in at all, it loops back to the login screen is all I want my whole team wants this"
-T00183,2026-08-17,Liam Kaur,lkaur896@hey.com,normal,"Me too, how do I export only one board? The tool exports the whole workspace"
-T00184,2026-08-27,Farid Berg,fberg786@hey.com,normal,"reset link expires immediately, I click and it says invalid"
-T00185,2026-08-16,Amara Jensen,ajensen53@icloud.com,high,i switched phones and the authenticator codes are wrong now and I stop complaining
-T00186,2026-07-30,Quentin Eriksen,quentin.eriksen81@outlook.com,low,"reset email not arriivng, seriously"
-T00187,2026-08-21,Samir Silva,samir.silva37@fastmail.com,normal,"i cancelled my subscription but was still charged, please refund would make my week"
-T00188,2026-09-25,Priya Berg,priya.berg93@gmail.com,high,"Third ticket about this and I am losing patience. Our team of eleven cannot sync since Tuesday, we have tried reinstalling, logging out, the works. Support replied once asking for a screenshot of the spinner, which I sent, and then nothing for two days. Meanwhile our morning standup runs off this tool and people are reading stale data and re-adding work. Please escalate, I will pay for priority support if that is what it takes."
-T00189,2026-09-20,Carla Ubeda,carlaubeda542@fastmail.com,normal,A calendar view of due dates please
-T00190,2026-07-19,Oscar Eriksen,oscar.eriksen91@outlook.com,low,Notification sound plays with no visible notification on desktop for the love of god
-T00191,2026-07-08,Hugo Jensen,hugo.jensen36@outlook.com,low,"+1 The JSON export has dates in unix time, spreadsheets choke on them it came up in our retro again"
-T00192,2026-07-04,Lena Weber,lenaweber244@fastmail.com,normal,"Same here, add templates for boards, we set up the same one for every client this blocks our rollout"
-T00193,2026-09-22,Nina Eriksen,ninaeriksen75@icloud.com,high,App dies when I open search on an old Android 9 device. Every single day this comes up.
-T00194,2026-07-21,Tomas Haddad,tomas.haddad30@hey.com,low,How do I set business hours for the shared inbox?
-T00195,2026-09-11,Quentin Novak,quentin.novak4@hey.com,low,The status page said resolved but the issue continued for an hour
-T00196,2026-07-01,Yara Moreau,ymoreau415@icloud.com,low,"my card was declined but the charge shows pending, now twice and I stop complaining"
-T00197,2026-08-28,Diego Tanaka,dtanaka667@icloud.com,normal,caannot log in :)
-T00198,2026-09-14,Uma Rossi,uma.rossi17@gmail.com,high,Can we get we were charged in USD but our account is set to EUR?
-T00199,2026-08-01,Samir Alvarez,samir.alvarez45@icloud.com,high,My card was charged in a currency I never chose
-T00200,2026-08-01,Ben Zimmer,bzimmer970@icloud.com,normal,"The Android app eats battery, 20 percent a day with no use"
-T00201,2026-07-30,Viktor Ubeda,viktorubeda567@gmail.com,high,"Agreed, we cannot log in from the office network at all, but home wifi works"
-T00202,2026-08-06,Tomas Eriksen,tomas.eriksen3@fastmail.com,low,cannot lo in please
-T00203,2026-08-09,Zane Chen,zchen826@gmail.com,low,Do you have a status page? We cannot tell if it is you or us
-T00204,2026-09-06,Nina Silva,ninasilva586@hey.com,high,"how do I merge two workspaces after an acquisition, please and thank you"
-T00205,2026-07-01,Ben Fontaine,bfontaine803@gmail.com,low,"Would love the reset email goes to spam for our whole domain, sender reputation issue"
-T00206,2026-07-20,Xavier Ubeda,xavier.ubeda1@icloud.com,high,How do I move my workspace to another email domain? We rebranded
-T00207,2026-09-20,Jonas Silva,jonassilva955@gmail.com,low,I stopped getting any emails from you since the 14th
-T00208,2026-08-11,Priya Yilmaz,pyilmaz805@gmail.com,high,"Feature request: bulk delete, I have 900 cards to clean"
-T00209,2026-07-10,Hana Haddad,hhaddad86@icloud.com,low,"Please add an in app chat, email support takes two days"
-T00210,2026-07-09,Greta Fontaine,gfontaine463@icloud.com,low,iPad app crashes when rotating to landscape is all I want I hit this every week
-T00211,2026-09-16,Ines Zimmer,izimmer767@icloud.com,normal,"The trial charged me a day early, please refund, please and thank you three of my colleagues asked the same"
-T00212,2026-08-15,Samir Ubeda,subeda169@fastmail.com,high,Attachment preview for .webp files shows a broken icon
-T00213,2026-08-30,Ben Haddad,benhaddad57@fastmail.com,normal,"Agreed, the trial charged me a day early, please refund itt came up in our retro again"
-T00214,2026-08-18,Ben Zimmer,bzimmer81@gmail.com,low,"Can we get the API returned a 500 for two hours last night, no status page note? I would use it every single day"
-T00215,2026-08-25,Elena Jensen,elena.jensen45@fastmail.com,low,I typed my email wrong at signup and now the reset goes nowhere
-T00216,2026-08-25,Samir Jensen,sjensen524@gmail.com,normal,"The app crashes on opening any card with a checklist, Pixel 8"
-T00217,2026-08-03,Lena Fontaine,lenafontaine66@fastmail.com,normal,"honestly uor integration hit rate limits with 3 requests per second, docs said 10 would fix most of my days three of my colleagues asked the same"
-T00218,2026-07-11,Marco Diallo,marco.diallo20@outlook.com,high,SSO login breaks every Monday for our whole team
-T00219,2026-08-17,Oscar Diallo,odiallo997@hey.com,high,The app says my subscription expired but billing says active
-T00220,2026-07-04,Zane Tanaka,zane.tanaka29@outlook.com,low,Please let us tag other teams in comments
-T00221,2026-09-22,Quentin Weber,quentin.weber7@outlook.com,normal,Cards created on mobile never sync to desktop until I reboot
-T00222,2026-07-16,Julia Alvarez,jalvarez677@hey.com,normal,Please add PDF export for boards
-T00223,2026-08-05,Hana Xu,hanaxu627@hey.com,low,"Adding mentions do not notify me, I only find them when I open the app would help a lot"
-T00224,2026-08-27,Lena Petrov,lena.petrov4@fastmail.com,low,Mentions do not send me any notification
-T00225,2026-09-03,Keiko Silva,keiko.silva76@gmail.com,low,"The export zip downloads as a 0 byte file, tried twice"
-T00226,2026-07-12,Diego Kaur,diegokaur230@hey.com,low,cannot log in thanks
-T00227,2026-09-26,Amara Kaur,akaur737@hey.com,high,"API key rotation invalidates webhooks, docs are wrong"
-T00228,2026-07-24,Keiko Jensen,kjensen113@fastmail.com,low,The app closes when I rotate my phone mid edit
-T00229,2026-08-10,Hana Moreau,hanamoreau226@fastmail.com,normal,"Password reset email has a broken link, 404"
-T00230,2026-08-06,Bruno Berg,brunoberg91@hey.com,normal,double charge on my card please!
-T00231,2026-08-29,Farid Petrov,faridpetrov404@hey.com,normal,"please add recurring cards, we recreate the same weekly checklist is alll I want"
-T00232,2026-08-08,Deepak Zimmer,dzimmer790@icloud.com,low,"Me too, we were charged in USD but our account is set to EUR"
-T00233,2026-09-07,Quentin Rossi,quentinrossi106@icloud.com,normal,double charge on my card +1
-T00234,2026-09-10,Rosa Haddad,rosa.haddad86@outlook.com,low,Column width resets after reload
-T00235,2026-08-27,Ines Chen,ichen160@icloud.com,low,"Honestly the reset page is blocked by our corporate proxy, certificate error would fix most of my days we benchmark every tool against this"
-T00236,2026-09-15,Tomas Lindqvist,tomaslindqvist42@hey.com,normal,cannot log n ?
-T00237,2026-08-17,Zane Lindqvist,zane.lindqvist28@gmail.com,low,cannot log in :)
-T00238,2026-09-01,Farid Tanaka,farid.tanaka73@outlook.com,low,"Login page hangs on the spinner, tried three browsers"
-T00239,2026-08-15,Tomas Fontaine,tomasfontaine187@outlook.com,low,"cannot log in, seriously"
-T00240,2026-08-09,Viktor Xu,viktor.xu56@outlook.com,low,"i never received the reset email, checked spam and filters please, it is 2026"
-T00241,2026-07-21,Wendy Moreau,wendy.moreau93@fastmail.com,low,Can we get how do I set business hours for the shared inbox?
-T00242,2026-08-01,Marco Yilmaz,myilmaz392@hey.com,normal,"App freezes when the keyboard opens in the comment box, iPhone 15"
-T00243,2026-09-09,Carla Zimmer,carlazimmer769@hey.com,low,"login page hangs on thhe spinner, tried three browser please, it is 2026"
-T00244,2026-07-25,Chloe Rossi,chloe.rossi78@hey.com,high,"Agreed, the team plan charged me for 12 seats but we removed 4 last month it came up in our retro again"
-T00245,2026-08-16,Keiko Zimmer,keikozimmer521@hey.com,normal,We are a team of six and half of us see stale boards
-T00246,2026-08-14,Marco Tanaka,marcotanaka939@hey.com,low,reset eamil not arriving !!
-T00247,2026-08-01,Nadia Xu,nadia.xu12@gmail.com,high,How do I add a guest to one board only?
-T00248,2026-08-24,Hana Quinn,hquinn427@fastmail.com,normal,"uOr integration hit rate limits with 3 requests per second, docs said 10"
-T00249,2026-08-05,Elena Alvarez,elenaalvarez948@icloud.com,high,cannot log in please!
-T00250,2026-07-11,Wendy Garcia,wgarcia313@outlook.com,low,I switched phones and the authenticator codes are wrong now
-T00251,2026-07-02,Nina Eriksen,nina.eriksen15@hey.com,low,Please add recurring cards for our weekly audit checklist
-T00252,2026-08-11,Rosa Xu,rosa.xu42@icloud.com,high,"i need a receipt for a purchase from March, portal has no history is all I want it came up in our retro again"
-T00253,2026-07-25,Chloe Jensen,chloe.jensen53@fastmail.com,high,"one board refuses to sync, others are fine, since yesterday please, it is 2026"
-T00254,2026-07-03,Tomas Okoro,tomasokoro252@outlook.com,high,Charged for the annual plan but my account still shows monthly
-T00255,2026-08-06,Yara Yilmaz,yara.yilmaz47@icloud.com,normal,Adding the team plan charged me for 12 seats but we removed 4 last month would help a lot
-T00256,2026-08-09,Tomas Xu,tomasxu555@outlook.com,low,The desktop app icon shows a wrong badge count
-T00257,2026-08-28,Carla Haddad,carlahaddad259@outlook.com,low,"can I change the workspace timezone? Dealines show one hour off, same as everyone else here"
-T00258,2026-07-02,Ivan Jensen,ivanjensen548@fastmail.com,high,I cannot log in with Google SSO since our admin changed the domain
-T00259,2026-09-22,Julia Chen,julia.chen2@gmail.com,high,Where is the recycle bin? I deleted a board by accident
-T00260,2026-07-05,Marta Okoro,martaokoro190@outlook.com,normal,"Two boards refuse to sync, everything else syncs fine"
-T00261,2026-07-11,Liam Novak,liamnovak709@fastmail.com,low,"Reset flow says my email iss not found, but I am logged in on mobile"
-T00262,2026-08-18,Diego Moreau,diego.moreau51@fastmail.com,high,"Export zip is corrupt, won't open on Mac or Windows"
-T00263,2026-07-20,Uma Ubeda,uubeda134@gmail.com,high,"Adding i never received the reset email, checked spam and filters would help a lot my whole team wants this"
-T00264,2026-08-21,Samir Rossi,srossi259@outlook.com,high,canont log in please!
-T00265,2026-09-07,Deepak Quinn,deepak.quinn82@outlook.com,normal,Notification emails arrive six hours late
-T00266,2026-09-08,Farid Haddad,farid.haddad93@outlook.com,normal,"Adding i need a receipt for a purchase from March, portall has no history would help a lot my whole team wants this"
-T00267,2026-08-08,Elena Tanaka,etanaka264@outlook.com,normal,"Rate limit hit at 2 requests per second, docs promise 10"
-T00268,2026-08-28,Kofi Ubeda,kubeda754@icloud.com,high,How do I export only one board? The tool exports the whole workspace
-T00269,2026-08-21,Ines Berg,inesberg250@outlook.com,low,"login works on desktop but not on mobile web please, it is 2026"
-T00270,2026-09-15,Farid Diallo,fariddiallo445@icloud.com,high,Keyboard focus jumps out of the search box on Windows
-T00271,2026-08-30,Viktor Alvarez,viktor.alvarez2@gmail.com,normal,Android app crashes when opening attachments since 4.2
-T00272,2026-08-04,Priya Zimmer,priya.zimmer70@hey.com,high,Honestly where do I find the audit log you mentioned in the changelog would fix most of my days I hit this every week
-T00273,2026-09-05,Hugo Vargas,hvargas430@fastmail.com,high,Reset link works once then the page errors
+T00001,2026-07-29,Julia Fontaine,julia.fontaine59@example.org,high,+1 The CSV export cuts off long text fields
+T00002,2026-07-12,Ivan Berg,iberg113@example.net,high,"I cannot log in since yesterday, password is correct and it still says invalid"
+T00003,2026-09-21,Diego Vargas,diego.vargas16@example.com,low,App dies when I open search on an old Android 9 device
+T00004,2026-09-19,Farid Jensen,faridjensen372@example.org,high,"Resend button does nothing, clicked five times over an hour."
+T00005,2026-07-23,Yara Ubeda,yaraubeda142@example.com,low,"After the update I cannot log in at all, it loops back to the login screen"
+T00006,2026-09-28,Amara Tanaka,atanaka88@example.net,normal,"Mentions do not notify me, I only find them when I open the app. It is the main gap for us"
+T00007,2026-07-24,Elena Vargas,elenavargas528@example.org,high,"Locked out after changing my phone, the authenticator app is gone"
+T00008,2026-08-27,Liam Silva,lsilva642@icloud.example,low,Are you hiring for support roles? I am interested
+T00009,2026-07-23,Grace Zimmer,grace.zimmer62@example.net,low,reset emali not arriving
+T00010,2026-09-23,Hugo Rossi,hugorossi191@icloud.example,low,"The export zip downloads as a 0 byte file, tried twice. This blocks our rollout"
+T00011,2026-09-04,Tomas Ito,tito586@example.com,high,"API responses are suddenly slow, 4 seconds for a list call."
+T00012,2026-07-14,Grace Eriksen,geriksen513@icloud.example,high,"double charge on my card, seriously"
+T00013,2026-08-23,Keiko Ito,keiko.ito65@example.net,normal,How do I merge two workspaces after an acquisition?
+T00014,2026-08-20,Nina Vargas,nvargas26@hey.example,high,Dark mode for the desktpo app please for the love of god
+T00015,2026-07-28,Lena Silva,lsilva825@example.org,high,The desktop app shows data from two days ago until I force refresh
+T00016,2026-07-01,Jonas Silva,jsilva646@icloud.example,high,"login broken on safari, chrome works"
+T00017,2026-08-15,Aisha Quinn,aquinn953@example.net,low,Where is the recycle bin? I deleted a board by accident. We benchmark every tool against this
+T00018,2026-09-25,Tomas Weber,tomas.weber69@example.net,normal,Webhook payload changed shape without a version bump.
+T00019,2026-09-11,Elena Rossi,elena.rossi64@example.com,high,reset email not arriving pls
+T00020,2026-09-11,Marco Alvarez,marco.alvarez66@hey.example,high,Export loses the custom fields we rely on
+T00021,2026-08-16,Ivan Jensen,ijensen49@icloud.example,normal,Changes I make on web appear on mobile only after restarting the app
+T00022,2026-09-22,Amara Alvarez,amara.alvarez28@icloud.example,normal,"Please add an API endpoint for exports, the manual download is not automatable"
+T00023,2026-07-27,Ben Silva,bensilva480@hey.example,low,I upgraded mid cycle and got charged the full amount instead of prorated. Every single day this comes up.
+T00024,2026-09-06,Lena Silva,lenasilva805@example.net,low,Please send my ticket history for a VAT dispute
+T00025,2026-08-24,Chloe Weber,chloe.weber32@example.org,high,double charge on my card pls
+T00026,2026-08-04,Aisha Zimmer,aisha.zimmer26@hey.example,normal,Login fails with 'invalid credentials' but I can log into the forum with the same password.
+T00027,2026-09-05,Nadia Diallo,ndiallo700@example.org,normal,"Me too, a calendar view of due dates please"
+T00028,2026-08-02,Nadia Petrov,nadia.petrov45@icloud.example,normal,"I want to move 2FA o a hardware key, how?"
+T00029,2026-07-20,Xavier Weber,xweber890@example.com,normal,OAuth token refresh fails with a cryptic error for the love of god
+T00030,2026-07-20,Amara Xu,amaraxu368@example.org,high,iPad app crashes when rotating to landscape
+T00031,2026-09-13,Chloe Tanaka,chloetanaka474@example.net,high,"API responses are suddenly slow, 4 seconds for a list call."
+T00032,2026-07-03,Elena Silva,esilva888@example.com,high,"cannott log in, seriously"
+T00033,2026-08-21,Ines Rossi,irossi641@example.org,low,"Same here, the 2FA prompt appears every login even on trusted devices"
+T00034,2026-07-05,Ivan Diallo,ivan.diallo1@example.org,normal,"API responses are suddenly slow, 4 seconds for a list call"
+T00035,2026-09-10,Ines Moreau,imoreau48@example.com,normal,"I want to move 2FA to a hardware key, how?"
+T00036,2026-09-14,Priya Ito,priyaito849@hey.example,high,"Two factor codes arrive too late, by then the code expired"
+T00037,2026-07-21,Priya Vargas,priya.vargas21@icloud.example,normal,"One board refuses to sync, others are fine, since yesterday. Three of my colleagues asked the same"
+T00038,2026-07-21,Wendy Ito,wendy.ito3@example.com,low,"I get 2FA prompts at 3am that I did not trigger, is something wrong?"
+T00039,2026-08-16,Edith Zimmer,edith.zimmer12@example.com,low,double charge on my card
+T00040,2026-08-22,Grace Eriksen,grace.eriksen27@hey.example,high,"My account seems locked after the office IP changed, is there an allowlist?"
+T00041,2026-08-22,Ben Zimmer,ben.zimmer52@example.com,low,"App freezes when the keyboard opens in the comment box, iPhone 15, please and thank you"
+T00042,2026-09-25,Ivan Chen,ivan.chen62@icloud.example,low,"Thanks to whoever fixed the sync issue, it is working again"
+T00043,2026-07-08,Keiko Kaur,keikokaur605@icloud.example,normal,We are a team of six and half of us see stale board.
+T00044,2026-07-14,Marta Alvarez,martaalvarez261@hey.example,low,double charge on my card !!
+T00045,2026-09-27,Julia Alvarez,julia.alvarez32@example.net,low,cannot log in
+T00046,2026-09-10,Elena Eriksen,eeriksen779@example.org,normal,"Please remove 2FA from my account, I lost my phone and my backup codes"
+T00047,2026-09-19,Bruno Novak,bruno.novak67@example.com,low,Password reset link opens a blank page. It came up in our retro again
+T00048,2026-09-11,Marco Ubeda,marcoubeda817@example.org,normal,Login works on desktop but not on mobile web
+T00049,2026-07-22,Amara Kaur,amara.kaur67@hey.example,normal,The emoji picker has no search
+T00050,2026-07-26,Diego Ito,diego.ito76@hey.example,high,Password reset link opens a blank page.
+T00051,2026-08-07,Ines Moreau,ines.moreau28@hey.example,low,cannot log in +1
+T00052,2026-08-28,Bruno Chen,bchen557@icloud.example,low,"Same here, the API returned a 500 for two hours last night, no status page note I hit this every week"
+T00053,2026-07-27,Priya Haddad,priyahaddad673@hey.example,high,"Resend button does nothing, clicked five times over an hour"
+T00054,2026-09-02,Hugo Petrov,hugo.petrov55@icloud.example,low,"I was charged twice this month, please refund one"
+T00055,2026-08-06,Diego Xu,diego.xu23@example.org,low,I switched phones and the authenticator codes are wrong noww.
+T00056,2026-08-07,Chloe Okoro,chloe.okoro60@example.org,normal,double chargee on my card pls
+T00057,2026-09-08,Kofi Yilmaz,kofiyilmaz711@icloud.example,low,"Bulk editing due dates would save my team hours, please and thank you I hit this every week"
+T00058,2026-09-10,Xavier Jensen,xavierjensen522@example.com,low,Refund request: I cancelled on the 2nd but you charged me on the 5th
+T00059,2026-07-22,Elena Diallo,elena.diallo58@example.com,normal,"I have been a customer for four years and this month has been a mess. The mobile app crashes on my main board, the export I need for our audit is missing fields, and your password reset email lands in spam for half my colleagues. Each one alone I could work around. Together they make me question the renewal next month. I would love to stay, the product is good when it works, but I need these three things fixed or acknowledged."
+T00060,2026-08-09,Keiko Rossi,keiko.rossi2@hey.example,normal,"My account seems locked after the office IP changed, is there an allowlist?"
+T00061,2026-09-22,Keiko Okoro,keikookoro483@hey.example,normal,"I want to delete my account entirely, what happens to my data?"
+T00062,2026-08-15,Keiko Eriksen,keiko.eriksen17@hey.example,normal,Password reset link opens a blank page
+T00063,2026-09-16,Felix Weber,felix.weber32@example.com,normal,"Sync conflicts create duplicate cards, we now have three copies of one task"
+T00064,2026-09-20,Ines Novak,inovak261@example.com,normal,How do I merge two workspaces after an accquisition for the love of god it is the main gap for us
+T00065,2026-09-26,Tomas Xu,tomas.xu81@example.net,normal,Notification sound plays with no visible notification on desktop.
+T00066,2026-07-01,Viktor Quinn,viktorquinn968@example.net,low,Please let us tag other teams in comments.
+T00067,2026-07-06,Bruno Lindqvist,bruno.lindqvist58@example.com,high,"We cannot log in from the office network at all, but home wifi works"
+T00068,2026-08-13,Viktor Rossi,viktor.rossi18@example.net,high,I unsubscribe from digest emails but they keep coming
+T00069,2026-08-13,Carla Fontaine,carla.fontaine98@icloud.example,low,Why did my plan price change without notice?
+T00070,2026-08-02,Xavier Quinn,xavierquinn432@example.net,low,"The reset email goes to spam for our whole domain, sender reputation issue?"
+T00071,2026-07-06,Julia Lindqvist,julia.lindqvist47@hey.example,high,eset email not arriving !!
+T00072,2026-09-10,Marco Fontaine,marco.fontaine78@example.org,normal,"The app logs me out every 24 hours, extend the session please"
+T00073,2026-08-01,Chloe Diallo,cdiallo56@example.net,normal,"After the update I cannot log in at all, it loops back to the login screen."
+T00074,2026-07-03,Bruno Moreau,bmoreau134@example.net,normal,"invoice for my finance team please, VAT number is on the account"
+T00075,2026-08-12,Farid Tanaka,faridtanaka693@example.org,high,+1 Where do I find the audit log you mentioned in the changelog I hit this every week
+T00076,2026-07-19,Oscar Zimmer,oscar.zimmer64@hey.example,normal,double charge onn my card +1
+T00077,2026-07-31,Viktor Rossi,viktor.rossi58@hey.example,high,Can I change the workspace timezone? Deadlines show one hour off.
+T00078,2026-09-17,Viktor Alvarez,valvarez332@example.com,normal,"Cards are not syncing between phone and desktop, changes take an hour"
+T00079,2026-08-19,Ivan Okoro,ivanokoro269@example.com,high,"The API returned a 500 for two hours last night, no status page note"
+T00080,2026-08-22,Uma Okoro,uma.okoro34@icloud.example,high,"add templates for boards, we set up the same one for every client"
+T00081,2026-08-11,Farid Kaur,fkaur727@hey.example,low,I stopped getting any emails from you since the 14th. It came up in our retro again
+T00082,2026-09-26,Marco Garcia,marco.garcia25@example.org,low,"Timezone shows UTC for new cards, mine is JST"
+T00083,2026-07-12,Hugo Quinn,hugoquinn767@example.org,low,My colleague sees different data than me in the same board
+T00084,2026-07-24,Felix Rossi,frossi340@example.net,high,"sync stuck since this morning, spinner never stops"
+T00085,2026-09-10,Lena Garcia,lenagarcia544@example.org,high,"Please batch notification emails, I get 40 a day"
+T00086,2026-07-28,Hana Okoro,hanaokoro736@hey.example,normal,Can I speak to someone on the phone? Email is slow for us
+T00087,2026-07-17,Quentin Haddad,qhaddad188@example.com,normal,"I need a receipt for a purchase from March, portal has no history"
+T00088,2026-09-24,Viktor Silva,viktorsilva57@hey.example,high,The 2FA prompt appears every login even on trusted devices
+T00089,2026-09-16,Liam Eriksen,leriksen157@example.com,high,"My card was declined but the charge shows pending, now twice. I would use it every single day"
+T00090,2026-09-27,Xavier Eriksen,xavier.eriksen75@hey.example,high,reset email not arriving please!
+T00091,2026-09-06,Julia Jensen,jjensen800@example.org,high,How do I set business hours for the shared inbox?
+T00092,2026-07-23,Xavier Kaur,xavierkaur45@example.com,low,"agreed, login works on desktop but not on mobile web"
+T00093,2026-08-08,Amara Diallo,amara.diallo50@example.net,high,cannot lo in thankss
+T00094,2026-07-08,Greta Okoro,greta.okoro56@example.org,high,"Me too, the reset page is blocked by our corporate proxy, certificate error"
+T00095,2026-08-17,Elena Weber,elenaweber212@example.net,low,"The trial charged me a day early, please refund"
+T00096,2026-07-08,Hugo Garcia,hgarcia76@example.com,high,"A calendar view of due dates please, please and thank you"
+T00097,2026-08-20,Wendy Weber,wendyweber909@example.com,low,"Me too, i upgraded mid cycle and got charged the full amount instead of prorated"
+T00098,2026-09-25,Julia Kaur,jkaur407@example.com,low,"2FA setup QR code never scans, tried two apps"
+T00099,2026-09-05,Nadia Chen,nadia.chen10@hey.example,low,"Agreed, i unsubscribe from digest emails but they keep coming"
+T00100,2026-08-31,Wendy Silva,wsilva430@hey.example,low,"Me too, add templates for boards, we set up the same one for every client"
+T00101,2026-07-27,Keiko Jensen,keikojensen561@example.net,high,"I want to move 2FA to a hardware key, how?"
+T00102,2026-07-19,Chloe Jensen,chloe.jensen51@example.net,normal,The team plan charged me for 12 seats but we removed 4 last month
+T00103,2026-08-03,Chloe Garcia,chloegarcia870@example.com,normal,"We cannot log in from the office network at all, but home wifi works. Every single day this comes up."
+T00104,2026-08-17,Ben Garcia,ben.garcia66@example.net,low,Login fails with 'invalid credentials' but I can log into the forum with the same password
+T00105,2026-08-13,Greta Okoro,greta.okoro59@icloud.example,low,We were charged in USD but our account is set to EUR
+T00106,2026-09-07,Aisha Rossi,aisha.rossi21@example.net,high,How do I export my data? I am leaving the company and need my boards
+T00107,2026-09-25,Marta Moreau,martamoreau651@example.com,normal,The export button emails a zip that never arrives
+T00108,2026-08-01,Julia Ito,julia.ito50@example.net,low,Webhook payload changed shape without a version bump
+T00109,2026-09-10,Diego Eriksen,diego.eriksen44@example.org,normal,"cannot logg in, seriously"
+T00110,2026-07-14,Deepak Fontaine,dfontaine613@icloud.example,high,double charge on my card thanks
+T00111,2026-09-16,Nina Zimmer,nzimmer184@icloud.example,normal,"the app crashes on opening any card with a checklist, Pixel 8, same as everyone else here"
+T00112,2026-07-15,Marco Xu,mxu314@icloud.example,normal,"My account seems locked after the office IP changed, is there an allowlist? I hit this every week"
+T00113,2026-08-02,Tomas Tanaka,tomas.tanaka43@example.net,normal,douuble charge on my card please
+T00114,2026-07-04,Xavier Fontaine,xfontaine134@icloud.example,normal,"Exported CSV is missing the comments column, is that expected?"
+T00115,2026-09-18,Kofi Tanaka,kofitanaka280@example.com,high,"Mentions do not notify me, I only find them when I open the app"
+T00116,2026-08-21,Uma Vargas,uvargas71@hey.example,normal,"Please batch notification emails, I get 40 a day. It came up in our retro again"
+T00117,2026-07-12,Hana Xu,hanaxu228@icloud.example,low,"reset email not arriving, seriously"
+T00118,2026-09-11,Quentin Moreau,quentin.moreau86@icloud.example,high,"Resend button does nothing, clicked five times over an hour. I would use it every single day"
+T00119,2026-07-11,Wendy Ito,wendy.ito97@example.com,normal,"2FA setup QR code never scas, tried two apps."
+T00120,2026-09-20,Amara Okoro,amaraokoro486@example.org,high,cannot log in ?
+T00121,2026-07-29,Greta Ito,greta.ito56@example.org,high,"I get notification emails for every tiny change, how do I turn them down?"
+T00122,2026-09-13,Elena Ito,elena.ito69@hey.example,high,double charge on my card ?
+T00123,2026-08-27,Hugo Haddad,hhaddad535@hey.example,high,reset email not arriving thanks
+T00124,2026-08-06,Viktor Silva,viktor.silva64@hey.example,low,cannot log in please
+T00125,2026-07-07,Carla Okoro,cokoro797@example.org,low,email notifications stopped completely two weeks ago
+T00126,2026-08-13,Nadia Chen,nadia.chen19@example.com,low,I cannot log in with Google SSO since our admin changed the domain.
+T00127,2026-07-19,Ben Silva,bsilva447@hey.example,normal,"Notifications go to my old email, I cannot change it in settings"
+T00128,2026-08-10,Oscar Vargas,oscar.vargas61@example.org,high,+1 App dies when I open search on an old Android 9 device
+T00129,2026-08-17,Ben Ito,benito10@example.com,high,"After the 4.2 update the app crashes in settings, sync section. I would use it every single day"
+T00130,2026-09-06,Chloe Vargas,cvargas191@icloud.example,high,reset email not arrivingg ?
+T00131,2026-09-17,Nina Quinn,nquinn258@example.com,low,"Reset flow says my mail is not found, but I am logged in on mobile."
+T00132,2026-08-07,Quentin Kaur,quentinkaur96@hey.example,high,+1 iPad app crashes when rotating to landscape three of my colleagues asked the same
+T00133,2026-08-02,Kofi Yilmaz,kyilmaz30@example.net,normal,reset email not arriving
+T00134,2026-07-14,Elena Petrov,elena.petrov47@example.com,high,Notification sound plays with no visible notification on desktop
+T00135,2026-09-04,Kofi Berg,kofiberg453@icloud.example,low,"API returns 429 constantly since Monday, we barely changed our usage"
+T00136,2026-09-29,Kofi Quinn,kofi.quinn3@example.org,high,Where do I find the audit log you mentioned in the changelog?
+T00137,2026-09-05,Keiko Yilmaz,kyilmaz93@icloud.example,normal,"Agreed, our integration hit rate limits with 3 requests per second, docs said 10 three of my colleagues asked the same"
+T00138,2026-08-30,Liam Lindqvist,liamlindqvist247@example.com,normal,Thhe CSV export cuts off long text fields
+T00139,2026-07-11,Quentin Xu,quentin.xu66@example.org,high,canot log in please!
+T00140,2026-09-21,Amara Zimmer,azimmer925@example.org,high,"Webhooks stopped firing on Friday, nothing in our logs"
+T00141,2026-07-11,Amara Lindqvist,amara.lindqvist42@example.net,high,"Me too, export loses the custom fields we rely on"
+T00142,2026-09-26,Samir Ito,samirito662@example.net,normal,double charge on my card please
+T00143,2026-09-21,Liam Chen,liamchen207@example.org,normal,Scroll position resets when I reopen a board
+T00144,2026-08-08,Chloe Eriksen,chloe.eriksen64@icloud.example,low,cannnot log in plesae!
+T00145,2026-07-14,Elena Chen,echen749@example.org,normal,Slack notifications from your integration are delayed by hours. It is the main gap for us
+T00146,2026-07-17,Marta Novak,mnovak240@example.org,high,Print stylesheet cuts off the right column
+T00147,2026-09-03,Priya Okoro,priya.okoro82@example.org,low,cannot logg in pls
+T00148,2026-07-14,Oscar Petrov,opetrov139@example.org,high,double charge on my card :)
+T00149,2026-09-28,Marta Xu,mxu230@example.org,high,"Please add recurring cards, we recreate the samme weekly checklist."
+T00150,2026-07-08,Diego Rossi,drossi871@example.org,high,cannot log in pls
+T00151,2026-07-10,Priya Fontaine,priyafontaine212@hey.example,high,reset email not arriving ?
+T00152,2026-08-09,Ivan Ito,iito392@example.net,high,"Same here, i cancelled my subscription but was still charged, please refund"
+T00153,2026-08-31,Elena Garcia,egarcia402@example.org,high,"The JSON export has dates in unix time, spreadsheets choke on them. This blocks our rollout"
+T00154,2026-08-12,Ben Diallo,bdiallo900@example.com,normal,reset email not arriving :)
+T00155,2026-08-04,Quentin Jensen,quentin.jensen92@icloud.example,normal,The app crashes when I open any board with more than 50 cards on Android
+T00156,2026-08-22,Elena Novak,elena.novak44@example.net,normal,"App crashes on start after the last update, iPhone 13"
+T00157,2026-07-05,Ines Diallo,idiallo785@example.com,normal,"Third time asking: please batch notification emails, I get 40 a day this blocks our rollout"
+T00158,2026-07-28,Carla Zimmer,czimmer838@example.net,high,"After the 4.2 update the app crashes in settings, sync section"
+T00159,2026-09-25,Wendy Berg,wendyberg780@hey.example,high,annot log in
+T00160,2026-08-14,Chloe Jensen,chloe.jensen32@example.com,low,"Agreed, how do I add a second admin to our workspace"
+T00161,2026-07-11,Ines Novak,inovak303@icloud.example,high,OAuth token refresh fails with a cryptic error.
+T00162,2026-08-06,Ines Yilmaz,ines.yilmaz70@example.org,high,"The JSON export has dates in unix time, spreadsheets choke on them"
+T00163,2026-07-17,Marta Berg,mberg379@example.net,low,"Me too, login page hangs on the spinner, tried three browsers"
+T00164,2026-09-17,Aisha Alvarez,aisha.alvarez59@example.org,low,"iPhone app freezes on the loading screen, reinstall did not help"
+T00165,2026-07-16,Nadia Garcia,nadiagarcia47@hey.example,high,Slack notifications from your integration are delayed by hours. Every single day this comes up. it is the main gap for us
+T00166,2026-09-03,Tomas Zimmer,tzimmer366@example.net,high,"Please add an API endpoint for exports, the manual download is not automatabble."
+T00167,2026-09-10,Farid Moreau,farid.moreau26@example.org,high,How do I add a second admin to our workspace?
+T00168,2026-09-05,Hana Chen,hana.chen3@example.net,normal,cannot log in !!
+T00169,2026-08-05,Bruno Tanaka,bruno.tanaka24@icloud.example,high,The app crashes when attaching a photo on Android 14
+T00170,2026-08-08,Grace Novak,grace.novak85@example.org,high,"Password reset email never arrives, checked spam, resend twice"
+T00171,2026-09-06,Grace Quinn,gquinn74@example.org,low,Webhook payload changed shape without a version bump for the love of god we benchmark every tool against this
+T00172,2026-07-24,Yara Zimmer,yarazimmer717@hey.example,high,The 2FA prompt appears every login even on trusted devices. We benchmark every tool against this
+T00173,2026-09-14,Chloe Ubeda,chloeubeda633@hey.example,high,"The reset page is blocked by our corporate proxy, certificate error"
+T00174,2026-08-05,Deepak Moreau,deepak.moreau6@example.com,high,Comments posted from mobile do not show up on desktop
+T00175,2026-08-02,Farid Diallo,fdiallo162@example.net,normal,"Me too, pagination is broken on /v2/cards, page 2 repeats page 1 we benchmark every tool against this"
+T00176,2026-08-12,Quentin Tanaka,quentin.tanaka40@hey.example,low,"I cancelled my subscription but was still charged, please refund"
+T00177,2026-07-18,Viktor Okoro,vokoro675@hey.example,high,"Sync cconflicts create duplicate cards, we now have three copies of one task."
+T00178,2026-09-08,Wendy Zimmer,wzimmer408@example.com,normal,+1 Comments posted from mobile do not show up on desktop I hit this eery week
+T00179,2026-07-24,Bruno Jensen,bjensen885@icloud.example,low,"Agreed, backup codes were used up druing my holiday, account is locked"
+T00180,2026-08-13,Priya Jensen,pjensen445@example.com,high,"App freezes when the keyboard opens in the comment box, iPhone 15. It came up in our retro again"
+T00181,2026-08-10,Lena Fontaine,lenafontaine427@example.net,low,OAuth token refresh fails with a cryptic error
+T00182,2026-08-09,Marta Petrov,martapetrov164@hey.example,normal,"After the update I cannot log in at all, it loops back to the login screen. My whole team wants this"
+T00183,2026-08-17,Liam Kaur,lkaur896@hey.example,normal,"Me too, how do I export only one board? The tool exports the whole workspace"
+T00184,2026-08-27,Farid Berg,fberg786@hey.example,normal,"reset link expires immediately, I click and it says invalid"
+T00185,2026-08-16,Amara Jensen,ajensen53@icloud.example,high,I switched phones and the authenticator codes are wrong now.
+T00186,2026-07-30,Quentin Eriksen,quentin.eriksen81@example.org,low,"reset email not arriivng, seriously"
+T00187,2026-08-21,Samir Silva,samir.silva37@example.net,normal,"I cancelled my subscription but was still charged, please refund."
+T00188,2026-09-25,Priya Berg,priya.berg93@example.com,high,"Third ticket about this and I am losing patience. Our team of eleven cannot sync since Tuesday, we have tried reinstalling, logging out, the works. Support replied once asking for a screenshot of the spinner, which I sent, and then nothing for two days. Meanwhile our morning standup runs off this tool and people are reading stale data and re-adding work. Please escalate, I will pay for priority support if that is what it takes."
+T00189,2026-09-20,Carla Ubeda,carlaubeda542@example.net,normal,A calendar view of due dates please
+T00190,2026-07-19,Oscar Eriksen,oscar.eriksen91@example.org,low,Notification sound plays with no visible notification on desktop for the love of god
+T00191,2026-07-08,Hugo Jensen,hugo.jensen36@example.org,low,"+1 The JSON export has dates in unix time, spreadsheets choke on them it came up in our retro again"
+T00192,2026-07-04,Lena Weber,lenaweber244@example.net,normal,"Same here, add templates for boards, we set up the same one for every client this blocks our rollout"
+T00193,2026-09-22,Nina Eriksen,ninaeriksen75@icloud.example,high,App dies when I open search on an old Android 9 device. Every single day this comes up.
+T00194,2026-07-21,Tomas Haddad,tomas.haddad30@hey.example,low,How do I set business hours for the shared inbox?
+T00195,2026-09-11,Quentin Novak,quentin.novak4@hey.example,low,The status page said resolved but the issue continued for an hour
+T00196,2026-07-01,Yara Moreau,ymoreau415@icloud.example,low,"My card was declined but the charge shows pending, now twice."
+T00197,2026-08-28,Diego Tanaka,dtanaka667@icloud.example,normal,caannot log in :)
+T00198,2026-09-14,Uma Rossi,uma.rossi17@example.com,high,We were charged in USD but our account is set to EUR.
+T00199,2026-08-01,Samir Alvarez,samir.alvarez45@icloud.example,high,My card was charged in a currency I never chose
+T00200,2026-08-01,Ben Zimmer,bzimmer970@icloud.example,normal,"The Android app eats battery, 20 percent a day with no use"
+T00201,2026-07-30,Viktor Ubeda,viktorubeda567@example.com,high,"Agreed, we cannot log in from the office network at all, but home wifi works"
+T00202,2026-08-06,Tomas Eriksen,tomas.eriksen3@example.net,low,cannot lo in please
+T00203,2026-08-09,Zane Chen,zchen826@example.com,low,Do you have a status page? We cannot tell if it is you or us
+T00204,2026-09-06,Nina Silva,ninasilva586@hey.example,high,"how do I merge two workspaces after an acquisition, please and thank you"
+T00205,2026-07-01,Ben Fontaine,bfontaine803@example.com,low,"The reset email goes to spam for our whole domain, sender reputation issue?"
+T00206,2026-07-20,Xavier Ubeda,xavier.ubeda1@icloud.example,high,How do I move my workspace to another email domain? We rebranded
+T00207,2026-09-20,Jonas Silva,jonassilva955@example.com,low,I stopped getting any emails from you since the 14th
+T00208,2026-08-11,Priya Yilmaz,pyilmaz805@example.com,high,"Feature request: bulk delete, I have 900 cards to clean"
+T00209,2026-07-10,Hana Haddad,hhaddad86@icloud.example,low,"Please add an in app chat, email support takes two days"
+T00210,2026-07-09,Greta Fontaine,gfontaine463@icloud.example,low,IPad app crashes when rotating to landscape. I hit this every week
+T00211,2026-09-16,Ines Zimmer,izimmer767@icloud.example,normal,"The trial charged me a day early, please refund, please and thank you three of my colleagues asked the same"
+T00212,2026-08-15,Samir Ubeda,subeda169@example.net,high,Attachment preview for .webp files shows a broken icon
+T00213,2026-08-30,Ben Haddad,benhaddad57@example.net,normal,"Agreed, the trial charged me a day early, please refund itt came up in our retro again"
+T00214,2026-08-18,Ben Zimmer,bzimmer81@example.com,low,"The API returned a 500 for two hours last night, no status page note. I would use it every single day"
+T00215,2026-08-25,Elena Jensen,elena.jensen45@example.net,low,I typed my email wrong at signup and now the reset goes nowhere
+T00216,2026-08-25,Samir Jensen,sjensen524@example.com,normal,"The app crashes on opening any card with a checklist, Pixel 8"
+T00217,2026-08-03,Lena Fontaine,lenafontaine66@example.net,normal,"Honestly uor integration hit rate limits with 3 requests per second, docs said 10. Three of my colleagues asked the same"
+T00218,2026-07-11,Marco Diallo,marco.diallo20@example.org,high,SSO login breaks every Monday for our whole team
+T00219,2026-08-17,Oscar Diallo,odiallo997@hey.example,high,The app says my subscription expired but billing says active
+T00220,2026-07-04,Zane Tanaka,zane.tanaka29@example.org,low,Please let us tag other teams in comments
+T00221,2026-09-22,Quentin Weber,quentin.weber7@example.org,normal,Cards created on mobile never sync to desktop until I reboot
+T00222,2026-07-16,Julia Alvarez,jalvarez677@hey.example,normal,Please add PDF export for boards
+T00223,2026-08-05,Hana Xu,hanaxu627@hey.example,low,"Mentions do not notify me, I only find them when I open the app."
+T00224,2026-08-27,Lena Petrov,lena.petrov4@example.net,low,Mentions do not send me any notification
+T00225,2026-09-03,Keiko Silva,keiko.silva76@example.com,low,"The export zip downloads as a 0 byte file, tried twice"
+T00226,2026-07-12,Diego Kaur,diegokaur230@hey.example,low,cannot log in thanks
+T00227,2026-09-26,Amara Kaur,akaur737@hey.example,high,"API key rotation invalidates webhooks, docs are wrong"
+T00228,2026-07-24,Keiko Jensen,kjensen113@example.net,low,The app closes when I rotate my phone mid edit
+T00229,2026-08-10,Hana Moreau,hanamoreau226@example.net,normal,"Password reset email has a broken link, 404"
+T00230,2026-08-06,Bruno Berg,brunoberg91@hey.example,normal,double charge on my card please!
+T00231,2026-08-29,Farid Petrov,faridpetrov404@hey.example,normal,"Please add recurring cards, we recreate the same weekly checklist."
+T00232,2026-08-08,Deepak Zimmer,dzimmer790@icloud.example,low,"Me too, we were charged in USD but our account is set to EUR"
+T00233,2026-09-07,Quentin Rossi,quentinrossi106@icloud.example,normal,double charge on my card +1
+T00234,2026-09-10,Rosa Haddad,rosa.haddad86@example.org,low,Column width resets after reload
+T00235,2026-08-27,Ines Chen,ichen160@icloud.example,low,"The reset page is blocked by our corporate proxy, certificate error. We benchmark every tool against this"
+T00236,2026-09-15,Tomas Lindqvist,tomaslindqvist42@hey.example,normal,cannot log n ?
+T00237,2026-08-17,Zane Lindqvist,zane.lindqvist28@example.com,low,cannot log in :)
+T00238,2026-09-01,Farid Tanaka,farid.tanaka73@example.org,low,"Login page hangs on the spinner, tried three browsers"
+T00239,2026-08-15,Tomas Fontaine,tomasfontaine187@example.org,low,"cannot log in, seriously"
+T00240,2026-08-09,Viktor Xu,viktor.xu56@example.org,low,"I never received the reset email, checked spam and filters."
+T00241,2026-07-21,Wendy Moreau,wendy.moreau93@example.net,low,How do I set business hours for the shared inbox?
+T00242,2026-08-01,Marco Yilmaz,myilmaz392@hey.example,normal,"App freezes when the keyboard opens in the comment box, iPhone 15"
+T00243,2026-09-09,Carla Zimmer,carlazimmer769@hey.example,low,"Login page hangs on thhe spinner, tried three browser."
+T00244,2026-07-25,Chloe Rossi,chloe.rossi78@hey.example,high,"Agreed, the team plan charged me for 12 seats but we removed 4 last month it came up in our retro again"
+T00245,2026-08-16,Keiko Zimmer,keikozimmer521@hey.example,normal,We are a team of six and half of us see stale boards
+T00246,2026-08-14,Marco Tanaka,marcotanaka939@hey.example,low,reset eamil not arriving !!
+T00247,2026-08-01,Nadia Xu,nadia.xu12@example.com,high,How do I add a guest to one board only?
+T00248,2026-08-24,Hana Quinn,hquinn427@example.net,normal,"uOr integration hit rate limits with 3 requests per second, docs said 10"
+T00249,2026-08-05,Elena Alvarez,elenaalvarez948@icloud.example,high,cannot log in please!
+T00250,2026-07-11,Wendy Garcia,wgarcia313@example.org,low,I switched phones and the authenticator codes are wrong now
+T00251,2026-07-02,Nina Eriksen,nina.eriksen15@hey.example,low,Please add recurring cards for our weekly audit checklist
+T00252,2026-08-11,Rosa Xu,rosa.xu42@icloud.example,high,"I need a receipt for a purchase from March, portal has no history. It came up in our retro again"
+T00253,2026-07-25,Chloe Jensen,chloe.jensen53@example.net,high,"One board refuses to sync, others are fine, since yesterday."
+T00254,2026-07-03,Tomas Okoro,tomasokoro252@example.org,high,Charged for the annual plan but my account still shows monthly
+T00255,2026-08-06,Yara Yilmaz,yara.yilmaz47@icloud.example,normal,The team plan charged me for 12 seats but we removed 4 last month.
+T00256,2026-08-09,Tomas Xu,tomasxu555@example.org,low,The desktop app icon shows a wrong badge count
+T00257,2026-08-28,Carla Haddad,carlahaddad259@example.org,low,"can I change the workspace timezone? Dealines show one hour off, same as everyone else here"
+T00258,2026-07-02,Ivan Jensen,ivanjensen548@example.net,high,I cannot log in with Google SSO since our admin changed the domain
+T00259,2026-09-22,Julia Chen,julia.chen2@example.com,high,Where is the recycle bin? I deleted a board by accident
+T00260,2026-07-05,Marta Okoro,martaokoro190@example.org,normal,"Two boards refuse to sync, everything else syncs fine"
+T00261,2026-07-11,Liam Novak,liamnovak709@example.net,low,"Reset flow says my email iss not found, but I am logged in on mobile"
+T00262,2026-08-18,Diego Moreau,diego.moreau51@example.net,high,"Export zip is corrupt, won't open on Mac or Windows"
+T00263,2026-07-20,Uma Ubeda,uubeda134@example.com,high,"I never received the reset email, checked spam and filters. My whole team wants this"
+T00264,2026-08-21,Samir Rossi,srossi259@example.org,high,canont log in please!
+T00265,2026-09-07,Deepak Quinn,deepak.quinn82@example.org,normal,Notification emails arrive six hours late
+T00266,2026-09-08,Farid Haddad,farid.haddad93@example.org,normal,"I need a receipt for a purchase from March, portall has no history. My whole team wants this"
+T00267,2026-08-08,Elena Tanaka,etanaka264@example.org,normal,"Rate limit hit at 2 requests per second, docs promise 10"
+T00268,2026-08-28,Kofi Ubeda,kubeda754@icloud.example,high,How do I export only one board? The tool exports the whole workspace
+T00269,2026-08-21,Ines Berg,inesberg250@example.org,low,Login works on desktop but not on mobile web.
+T00270,2026-09-15,Farid Diallo,fariddiallo445@icloud.example,high,Keyboard focus jumps out of the search box on Windows
+T00271,2026-08-30,Viktor Alvarez,viktor.alvarez2@example.com,normal,Android app crashes when opening attachments since 4.2
+T00272,2026-08-04,Priya Zimmer,priya.zimmer70@hey.example,high,Where do I find the audit log you mentioned in the changelog? I hit this every week
+T00273,2026-09-05,Hugo Vargas,hvargas430@example.net,high,Reset link works once then the page errors
