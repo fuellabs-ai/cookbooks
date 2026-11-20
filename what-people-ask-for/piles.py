@@ -11,13 +11,15 @@ Usage:
 
 What it does:
 1. Reads a CSV, picks the text column, drops empty and exact-duplicate rows.
-2. Finds near-duplicates (very high similarity) and groups them as "said
-   again" clusters with a count, e.g. "34 people asked for this".
-3. Optionally reads piles.yaml: user-named piles with 2-5 example requests
+2. Optionally reads piles.yaml: user-named piles with 2-5 example requests
    each. Requests close enough to a pile go into it.
-4. Everything left is clustered into groups. Each group gets a keyword label
+3. Everything left is clustered into groups. Each group gets a keyword label
    from TF-IDF (e.g. "export, csv, excel"). Labels are keywords, not
    summaries. Groups smaller than --min-group go to "Doesn't fit any group".
+4. Every request lands in exactly one card: a named pile, a group, or
+   "Doesn't fit any group". Near-duplicate wording shows up as a "said again"
+   breakdown inside each card: how people put the same ask again, with a
+   count each.
 5. Writes report.html and groups.csv (request, group, score).
 
 Settings defaults come from calibrate.py runs on the labelled samples.
@@ -46,6 +48,7 @@ COLUMN_HINTS = [
 ]
 MAX_EMBED_WORDS = 200
 DOES_NOT_FIT = "Doesn't fit any group"
+NO_FIT_KEY = "doesn't fit"
 
 
 # ---------------------------------------------------------------------------
@@ -219,7 +222,10 @@ def segment(
     """Run the whole structural pipeline on unit-norm vectors.
 
     Returns a dict with:
-      said_again: list of dicts (members, count, example) sorted by count
+      said_again: list of dicts (members, count, example) sorted by count.
+        This is a breakdown view only: its members also belong to a pile,
+        a group or Doesn't fit any group, and the report shows the cluster
+        inside that card.
       pile_of: {index: pile name}
       cluster_of: {index: cluster id}
       leftover: indices that still need clustering
@@ -228,16 +234,15 @@ def segment(
     n = vectors.shape[0]
     sims = vectors @ vectors.T
 
-    # 1. near-duplicates: complete linkage, so every member of a cluster is
-    #    very similar to every other member
+    # 1. near-duplicate wording: complete linkage, so every member of a
+    #    cluster is very similar to every other member. These clusters are
+    #    only a breakdown; they do not claim rows.
     dedup_labels = _cluster(sims, dedup_sim, "complete")
     said_again = []
-    claimed: set[int] = set()
     for label in sorted(set(dedup_labels)):
         members = [int(i) for i in np.where(dedup_labels == label)[0]]
         if len(members) < 2:
             continue
-        claimed.update(members)
         centre = _centroid(vectors, members)
         example = max(members, key=lambda i: float(vectors[i] @ centre))
         said_again.append(
@@ -258,7 +263,7 @@ def segment(
             pile_blocks[name] = pile_vectors[cursor : cursor + len(examples)]
             cursor += len(examples)
     pile_of, pile_scores = assign_piles(vectors, pile_blocks, pile_sim)
-    claimed.update(pile_of)
+    claimed = set(pile_of)
 
     # 3. cluster whatever is left
     leftover = [i for i in range(n) if i not in claimed]
@@ -320,27 +325,66 @@ def keyword_label(texts: Sequence[str], width: int = 3) -> str:
 # ---------------------------------------------------------------------------
 
 
-def build_groups(texts: Sequence[str], vectors: np.ndarray, result: dict) -> list[dict]:
-    """Turn a segmentation into a sorted list of group dicts for output."""
-    groups: list[dict] = []
+def diverse_quotes(
+    vectors: np.ndarray, members: Sequence[int], k: int = 3
+) -> list[int]:
+    """The k most different requests in a card.
 
-    for cluster in result["said_again"]:
-        members = cluster["members"]
-        centre = _centroid(vectors, members)
-        scores = {i: float(vectors[i] @ centre) for i in members}
-        example_text = texts[cluster["example"]]
-        groups.append(
-            {
-                "kind": "said again",
-                "name": f"said again ({cluster['count']} people asked for this)",
-                "sort_name": (-cluster["count"], example_text[:60].casefold()),
-                "members": members,
-                "scores": scores,
-                "label": None,
-                "example": example_text,
-                "count": cluster["count"],
-            }
+    Starts from the member closest to the card centroid, then repeatedly adds
+    the member least similar to everything picked so far. Each quote is the
+    one furthest from the quotes already chosen, so the reader sees the same
+    ask in different words.
+    """
+    members = list(members)
+    if len(members) <= k:
+        return members
+    centre = _centroid(vectors, members)
+    picked = [max(members, key=lambda i: float(vectors[i] @ centre))]
+    while len(picked) < k:
+        best = min(
+            (i for i in members if i not in picked),
+            key=lambda i: max(float(vectors[i] @ vectors[p]) for p in picked),
         )
+        picked.append(best)
+    return picked
+
+
+def _said_again_breakdown(
+    texts: Sequence[str],
+    vectors: np.ndarray,
+    card_members: set[int],
+    said_again: Sequence[dict],
+    max_lines: int = 5,
+) -> list[dict]:
+    """Said-again clusters inside one card: how people put the same ask again."""
+    by_index: dict[int, dict] = {}
+    for cluster in said_again:
+        for index in cluster["members"]:
+            by_index[int(index)] = cluster
+    groups: dict[int, list[int]] = {}
+    for index in sorted(card_members):
+        cluster = by_index.get(index)
+        if cluster is None:
+            continue
+        groups.setdefault(id(cluster), []).append(index)
+    lines: list[dict] = []
+    for members in groups.values():
+        if len(members) < 2:
+            continue
+        centre = _centroid(vectors, members)
+        example = max(members, key=lambda i: float(vectors[i] @ centre))
+        lines.append({"count": len(members), "example": int(example)})
+    lines.sort(key=lambda line: -line["count"])
+    return lines[:max_lines]
+
+
+def build_groups(texts: Sequence[str], vectors: np.ndarray, result: dict) -> list[dict]:
+    """Turn a segmentation into a sorted list of group dicts for output.
+
+    Every request lands in exactly one card: a pile, a group, or Doesn't fit
+    any group. Said-again wording shows up as a breakdown inside each card.
+    """
+    groups: list[dict] = []
 
     pile_members: dict[str, list[int]] = {}
     for index, name in result["pile_of"].items():
@@ -357,6 +401,10 @@ def build_groups(texts: Sequence[str], vectors: np.ndarray, result: dict) -> lis
                 "scores": scores,
                 "label": None,
                 "example": texts[max(scores, key=scores.get)],
+                "breakdown": _said_again_breakdown(
+                    texts, vectors, set(members), result["said_again"]
+                ),
+                "quotes": diverse_quotes(vectors, members),
             }
         )
 
@@ -384,6 +432,10 @@ def build_groups(texts: Sequence[str], vectors: np.ndarray, result: dict) -> lis
                 "scores": scores,
                 "label": label_text,
                 "example": texts[max(scores, key=scores.get)],
+                "breakdown": _said_again_breakdown(
+                    texts, vectors, set(members), result["said_again"]
+                ),
+                "quotes": diverse_quotes(vectors, members),
             }
         )
 
@@ -399,22 +451,53 @@ def build_groups(texts: Sequence[str], vectors: np.ndarray, result: dict) -> lis
             best = max(members_small, key=lambda i: float(vectors[i] @ centre_small))
             subclusters.append((len(members_small), texts[best]))
         subclusters.sort(key=lambda item: -item[0])
+        members_all = list(result["doesn_fit"])
         groups.append(
             {
                 "kind": "doesn't fit",
                 "name": DOES_NOT_FIT,
                 "sort_name": "zzz0",
-                "members": list(result["doesn_fit"]),
-                "scores": {i: 0.0 for i in result["doesn_fit"]},
+                "members": members_all,
+                "scores": {i: 0.0 for i in members_all},
                 "label": None,
                 "example": None,
+                "breakdown": _said_again_breakdown(
+                    texts, vectors, set(members_all), result["said_again"]
+                ),
+                "quotes": diverse_quotes(vectors, members_all) if len(members_all) >= 2 else [],
                 "subclusters": subclusters,
             }
         )
 
-    piles_first = {"pile": 0, "group": 1, "said again": 2, "doesn't fit": 3}
-    groups.sort(key=lambda g: (piles_first[g["kind"]], g["sort_name"]))
+    cards_first = {"pile": 0, "group": 1, "doesn't fit": 2}
+    groups.sort(key=lambda g: (cards_first[g["kind"]], g["sort_name"]))
     return groups
+
+
+def summarize_counts(stats: dict, groups: Sequence[dict]) -> dict:
+    """Count the cards and check that every grouped row is counted exactly once.
+
+    Raises ValueError if the parts do not add up to the grouped rows.
+    """
+    parts = {
+        "pile": sum(len(g["members"]) for g in groups if g["kind"] == "pile"),
+        "group": sum(len(g["members"]) for g in groups if g["kind"] == "group"),
+        "doesn't fit": sum(
+            len(g["members"]) for g in groups if g["kind"] == "doesn't fit"
+        ),
+    }
+    total = parts["pile"] + parts["group"] + parts["doesn't fit"]
+    if total != stats["grouped"]:
+        n_piles, n_groups, n_doesnt = parts["pile"], parts["group"], parts["doesn't fit"]
+        raise ValueError(
+            "count check failed: "
+            f"{n_piles} in piles + {n_groups} in groups + "
+            f"{n_doesnt} that don't fit = {total}, "
+            f"but {stats['grouped']} rows were grouped"
+        )
+    parts["pile_cards"] = sum(1 for g in groups if g["kind"] == "pile")
+    parts["group_cards"] = sum(1 for g in groups if g["kind"] == "group")
+    return parts
 
 
 def write_groups_csv(path: Path, texts: Sequence[str], groups: Sequence[dict]) -> None:
@@ -439,15 +522,8 @@ def build_report_html(
     groups: Sequence[dict],
     has_piles: bool,
 ) -> str:
-    grouped = sum(
-        len(g["members"]) for g in groups if g["kind"] in {"pile", "group"}
-    )
-    said_again_total = sum(
-        len(g["members"]) for g in groups if g["kind"] == "said again"
-    )
-    leftover_total = sum(
-        len(g["members"]) for g in groups if g["kind"] == "doesn't fit"
-    )
+    parts_counts = summarize_counts(stats, groups)
+    grouped = stats["grouped"]
 
     parts: list[str] = []
     parts.append(
@@ -463,7 +539,6 @@ def build_report_html(
         "details{margin-top:6px;} summary{cursor:pointer;color:#0645ad;font-size:13px;}"
         "li{margin:3px 0;font-size:14px;} ul{padding-left:20px;margin:6px 0;}"
         "ul.compact li{font-size:13px;color:#3a3a48;}"
-        ".score{color:#888;font-size:12px;}"
         "footer{color:#777;font-size:12px;margin-top:28px;}"
         "</style></head><body>"
     )
@@ -471,22 +546,45 @@ def build_report_html(
     parts.append(
         f"<p class='stats'>{stats['rows_read']} rows read, "
         f"{stats['empty_dropped']} empty dropped, "
-        f"{stats['exact_duplicates_dropped']} exact duplicates dropped, "
-        f"{stats['grouped']} grouped.<br>"
-        f"{grouped} in {sum(1 for g in groups if g['kind'] == 'group')} groups"
-        + (
-            f" and {sum(1 for g in groups if g['kind'] == 'pile')} named piles"
-            if has_piles
-            else ""
-        )
-        + f", {said_again_total} in said-again clusters, "
-        f"{leftover_total} don't fit any group.</p>"
+        f"{stats['exact_duplicates_dropped']} exact duplicates dropped.</p>"
     )
+
+    # Top requests: the top 10 cards by count, copyable into a planning doc.
+    cards = [g for g in groups if g["kind"] in {"pile", "group"}]
+    cards.sort(key=lambda g: (-len(g["members"]), str(g["name"]).casefold()))
+    top = cards[:10]
+    parts.append("<h2>Top requests</h2>")
+    parts.append("<ul>")
+    for card in top:
+        count = len(card["members"])
+        share = round(count * 100 / grouped)
+        title = card["name"] if card["kind"] == "pile" else (
+            f"{card['name']} (keywords)"
+        )
+        parts.append(
+            f"<li>{_esc(title)}: {count} requests ({share}% of {grouped})</li>"
+        )
+    parts.append("</ul>")
+
+    # Summary line: every grouped row is in exactly one bucket.
+    summary = f"{grouped} requests: "
+    bucket_bits = []
+    if has_piles:
+        bucket_bits.append(
+            f"{parts_counts['pile']} in {parts_counts['pile_cards']} named piles"
+        )
+    bucket_bits.append(
+        f"{parts_counts['group']} in {parts_counts['group_cards']} groups"
+    )
+    bucket_bits.append(
+        f"{parts_counts[NO_FIT_KEY]} don't fit any group"
+    )
+    summary += ", ".join(bucket_bits) + "."
+    parts.append(f"<p class='stats'>{summary}</p>")
 
     for kind, heading in (
         ("pile", "Named piles"),
         ("group", "Groups"),
-        ("said again", "Said again"),
         ("doesn't fit", "Doesn't fit any group"),
     ):
         section = [g for g in groups if g["kind"] == kind]
@@ -499,46 +597,36 @@ def build_report_html(
                 "group, not summaries. Rename groups in piles.yaml and rerun if you "
                 "have better names.</p>"
             )
-        if kind == "said again":
-            big = [g for g in section if g["count"] >= 4]
-            small = [g for g in section if g["count"] < 4]
-            for group in big:
-                rest_members = group["members"][1:]
-                parts.append("<div class='group'>")
-                parts.append(
-                    f"<p class='count'>{group['count']} people asked for this "
-                    f"almost word for word:</p><p>{_esc(group['example'])}</p>"
-                )
-                if rest_members:
-                    items = "".join(
-                        f"<li>{_esc(texts[i])}</li>" for i in rest_members
-                    )
-                    word = "other request" if len(rest_members) == 1 else "other requests"
-                    parts.append(
-                        f"<details><summary>Show {len(rest_members)} {word}</summary>"
-                        f"<ul>{items}</ul></details>"
-                    )
-                parts.append("</div>")
-            if small:
-                lines = "".join(
-                    f"<li>{g['count']} people asked for this: {_esc(g['example'])}</li>"
-                    for g in small
-                )
-                parts.append(
-                    "<div class='group'><p class='count'>"
-                    f"{len(small)} smaller said-again clusters, "
-                    f"{sum(g['count'] for g in small)} requests:</p>"
-                    f"<ul class='compact'>{lines}</ul></div>"
-                )
-            continue
         for group in section:
-            top = group["members"][:3]
             members = group["members"]
+            count = len(members)
             parts.append("<div class='group'>")
+            if kind == "pile":
+                parts.append(f"<p class='count'>{_esc(group['name'])}: {count} requests</p>")
+            elif kind == "group":
+                parts.append(f"<p class='count'>{count} requests</p>")
+                parts.append(
+                    f"<p class='label'>Keywords: {_esc(group['label'])}</p>"
+                )
+            else:
+                parts.append(
+                    f"<p class='count'>{count} requests unlike the rest of the file. "
+                    "Unlike the rest does not mean new or important.</p>"
+                )
+            breakdown = group.get("breakdown") or []
+            if breakdown:
+                lines = "".join(
+                    f"<li>{line['count']} as &quot;{_esc(texts[line['example']])}&quot;</li>"
+                    for line in breakdown
+                )
+                parts.append(
+                    "<p class='stats'>How people put it again:</p>"
+                    f"<ul class='compact'>{lines}</ul>"
+                )
             if kind == "doesn't fit":
                 sub_lines = "".join(
-                    f"<li>{count} people asked for this: {_esc(example)}</li>"
-                    for count, example in group.get("subclusters", [])
+                    f"<li>{count_small} requests: {_esc(example)}</li>"
+                    for count_small, example in group.get("subclusters", [])
                 )
                 singles = [
                     texts[i]
@@ -549,40 +637,18 @@ def build_report_html(
                     )
                 ]
                 single_lines = "".join(f"<li>{_esc(t)}</li>" for t in singles)
-                head = (
-                    f"{len(members)} requests unlike the rest of the file. "
-                    "Unlike the rest does not mean new or important."
-                )
-                parts.append(
-                    f"<p class='count'>{head}</p>"
-                    f"<ul>{sub_lines}{single_lines}</ul>"
-                )
+                parts.append(f"<ul>{sub_lines}{single_lines}</ul>")
             else:
-                count = len(members)
-                label = (
-                    f" <span class='label'>(keywords: {_esc(group['label'])})</span>"
-                    if group["label"]
-                    else ""
-                )
                 parts.append(
-                    f"<p class='count'>{count} "
-                    f"{'person' if count == 1 else 'people'} asked for this"
-                    f"{label}</p>"
+                    "<p class='stats'>3 requests from this card, picked to differ "
+                    "from each other:</p><ul>"
                 )
-                parts.append("<ul>")
-                for index in top:
-                    parts.append(
-                        f"<li>{_esc(texts[index])} "
-                        f"<span class='score'>({group['scores'][index]:.2f})</span></li>"
-                    )
+                for index in group.get("quotes") or members[:3]:
+                    parts.append(f"<li>{_esc(texts[index])}</li>")
                 parts.append("</ul>")
-            rest = members[3:] if kind in {"pile", "group"} else []
-            if rest:
-                items = "".join(
-                    f"<li>{_esc(texts[i])} "
-                    f"<span class='score'>({group['scores'][i]:.2f})</span></li>"
-                    for i in rest
-                )
+            rest = [i for i in members if i not in set(group.get("quotes") or [])]
+            if kind != "doesn't fit" and rest:
+                items = "".join(f"<li>{_esc(texts[i])}</li>" for i in rest)
                 word = "other request" if len(rest) == 1 else "other requests"
                 parts.append(
                     f"<details><summary>Show {len(rest)} {word}</summary><ul>{items}</ul></details>"
@@ -591,8 +657,8 @@ def build_report_html(
 
     parts.append(
         "<footer>Made locally with HobbyLM-Embed 140M. Counts are how many "
-        "people asked, not how important it is. Groups are similar wording and "
-        "meaning, not importance or truth.</footer>"
+        "requests repeat, not how important they are. Groups are similar "
+        "wording and meaning, not importance or truth.</footer>"
     )
     parts.append("</body></html>")
     return "".join(parts)
@@ -635,6 +701,7 @@ def run(
         model=model,
     )
     groups = build_groups(texts, vectors, result)
+    parts_counts = summarize_counts(stats, groups)
 
     if report_path:
         report_path.write_text(
@@ -648,27 +715,25 @@ def run(
         print(
             f"{stats['rows_read']} rows read, "
             f"{stats['empty_dropped']} empty dropped, "
-            f"{stats['exact_duplicates_dropped']} exact duplicates dropped, "
-            f"{stats['grouped']} grouped"
+            f"{stats['exact_duplicates_dropped']} exact duplicates dropped"
         )
-        said_again_groups = [g for g in groups if g["kind"] == "said again"]
-        pile_groups = [g for g in groups if g["kind"] == "pile"]
-        cluster_groups = [g for g in groups if g["kind"] == "group"]
-        doesn_fit_groups = [g for g in groups if g["kind"] == "doesn't fit"]
-        if pile_groups:
-            for group in pile_groups:
-                print(f"  pile '{group['name']}': {len(group['members'])}")
-        for group in cluster_groups:
-            print(f"  group '{group['name']}': {len(group['members'])}")
-        for group in said_again_groups[:10]:
-            print(f"  said again: {group['count']} people: {group['example']}")
-        if len(said_again_groups) > 10:
-            print(
-                f"  ... and {len(said_again_groups) - 10} smaller said-again clusters "
-                f"({sum(g['count'] for g in said_again_groups[10:])} requests)"
+        summary = f"{stats['grouped']} requests: "
+        bits = []
+        if parts_counts["pile_cards"]:
+            bits.append(
+                f"{parts_counts['pile']} in {parts_counts['pile_cards']} named piles"
             )
-        for group in doesn_fit_groups:
-            print(f"  {group['name']}: {len(group['members'])}")
+        bits.append(f"{parts_counts['group']} in {parts_counts['group_cards']} groups")
+        bits.append(f"{parts_counts[NO_FIT_KEY]} don't fit any group")
+        print(summary + ", ".join(bits))
+        for group in groups:
+            if group["kind"] == "pile":
+                print(f"  pile '{group['name']}': {len(group['members'])} requests")
+            elif group["kind"] == "group":
+                print(f"  group '{group['name']}': {len(group['members'])} requests")
+        for group in groups:
+            if group["kind"] == NO_FIT_KEY:
+                print(f"  {group['name']}: {len(group['members'])} requests")
         if report_path:
             print(f"wrote {report_path}")
         if csv_out_path:
@@ -685,7 +750,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--piles", default=None, help="piles.yaml with named piles")
     parser.add_argument(
         "--dedup-sim", type=float, default=DEFAULT_DEDUP_SIM,
-        help=f"Similarity above which requests count as said again (default {DEFAULT_DEDUP_SIM})",
+        help=f"Similarity above which wording counts as said again in a card's breakdown (default {DEFAULT_DEDUP_SIM})",
     )
     parser.add_argument(
         "--cluster-sim", type=float, default=DEFAULT_CLUSTER_SIM,

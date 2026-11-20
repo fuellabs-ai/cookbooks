@@ -3,9 +3,9 @@
 
 Each example folder has a labelled_sample.csv with 50 hand-labelled rows
 (text, group, dup_id). group is the true topic of the row. dup_id is a shared
-id for rows that are wordings of one near-identical ask, and is scored
-separately: it is fine for those rows to land in a said-again cluster or in
-their topic group, so the group match ignores it.
+id for rows that are wordings of one near-identical ask. Those rows now sit
+inside their topic card, with their repeated wording showing up in the card's
+said-again breakdown, so the partition the report shows is the card itself.
 
 This script runs the piles.py pipeline on each sample at several settings and
 prints how well the predicted grouping matches the hand labels, measured with
@@ -55,14 +55,16 @@ def load_sample(path: Path) -> tuple[list[str], list[str], list[str]]:
 
 
 def predicted_partition(vectors: np.ndarray, dedup_sim: float, cluster_sim: float, min_group: int) -> list[str]:
-    """One partition label per request, what the report would show."""
+    """One partition label per request: the card the report would put it in.
+
+    Every request lands in exactly one card: a group, a small cluster that
+    goes to Doesn't fit any group, or alone. Said-again wording is a
+    breakdown inside a card, so it does not get its own partition label.
+    """
     result = segment(
         vectors, dedup_sim=dedup_sim, cluster_sim=cluster_sim, min_group=min_group
     )
     labels: list[str] = [""] * vectors.shape[0]
-    for number, cluster in enumerate(result["said_again"]):
-        for index in cluster["members"]:
-            labels[index] = f"again#{number}"
     for index, cluster_id in result["cluster_of"].items():
         labels[index] = f"group#{cluster_id}"
     for index, cluster_id in result["small_of"].items():

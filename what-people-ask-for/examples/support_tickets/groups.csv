@@ -1,268 +1,268 @@
 request,group,score
-"Password reset email never arrives, checked spam, resend twice","email, reset, goes",0.939
-I typed my email wrong at signup and now the reset goes nowhere,"email, reset, goes",0.937
-"reset email not arriivng, seriously","email, reset, goes",0.927
-"The reset email goes to spam for our whole domain, sender reputation issue?","email, reset, goes",0.921
-"Password reset email has a broken link, 404","email, reset, goes",0.905
-eset email not arriving !!,"email, reset, goes",0.883
-cannot log in thanks,"log, lo, thanks",0.951
-cannot log in +1,"log, lo, thanks",0.922
-cannot lo in thankss,"log, lo, thanks",0.911
-cannot lo in please,"log, lo, thanks",0.908
-cannot log n ?,"log, lo, thanks",0.889
-"I cannot log in since yesterday, password is correct and it still says invalid","log, lo, thanks",0.875
-"I get notification emails for every tiny change, how do I turn them down?","notification, change, email",0.918
-email notifications stopped completely two weeks ago,"notification, change, email",0.905
-"Notifications go to my old email, I cannot change it in settings","notification, change, email",0.904
-"Third time asking: please batch notification emails, I get 40 a day this blocks our rollout","notification, change, email",0.903
-Mentions do not send me any notification,"notification, change, email",0.899
+"reset email not arriving, seriously","reset, arriving, email",0.964
+reset email not arriving please!,"reset, arriving, email",0.960
+reset email not arriving :),"reset, arriving, email",0.960
+reset email not arriving thanks,"reset, arriving, email",0.958
+reset email not arriving,"reset, arriving, email",0.950
+reset email not arriving ?,"reset, arriving, email",0.950
+reset email not arrivingg ?,"reset, arriving, email",0.946
+reset email not arriving pls,"reset, arriving, email",0.940
+"I never received the reset email, checked spam and filters.","reset, arriving, email",0.933
+"reset email not arriivng, seriously","reset, arriving, email",0.925
+"I never received the reset email, checked spam and filters. My whole team wants this","reset, arriving, email",0.919
+I typed my email wrong at signup and now the reset goes nowhere,"reset, arriving, email",0.903
+I stopped getting any emails from you since the 14th,"reset, arriving, email",0.898
+"Password reset email never arrives, checked spam, resend twice","reset, arriving, email",0.896
+I stopped getting any emails from you since the 14th. It came up in our retro again,"reset, arriving, email",0.895
+eset email not arriving !!,"reset, arriving, email",0.893
+"The reset email goes to spam for our whole domain, sender reputation issue?","reset, arriving, email",0.887
+"Notifications go to my old email, I cannot change it in settings","reset, arriving, email",0.887
+"Reset flow says my email iss not found, but I am logged in on mobile","reset, arriving, email",0.872
+"Reset flow says my mail is not found, but I am logged in on mobile.","reset, arriving, email",0.866
+"Please batch notification emails, I get 40 a day. It came up in our retro again","reset, arriving, email",0.865
+"Agreed, i unsubscribe from digest emails but they keep coming","reset, arriving, email",0.861
+I unsubscribe from digest emails but they keep coming,"reset, arriving, email",0.860
+email notifications stopped completely two weeks ago,"reset, arriving, email",0.856
+"I get notification emails for every tiny change, how do I turn them down?","reset, arriving, email",0.844
+"Please batch notification emails, I get 40 a day","reset, arriving, email",0.844
+"Third time asking: please batch notification emails, I get 40 a day this blocks our rollout","reset, arriving, email",0.844
+reset eamil not arriving !!,"reset, arriving, email",0.837
+reset emali not arriving,"reset, arriving, email",0.829
+cannot log in,"log, seriously, login",0.968
+cannot log in please!,"log, seriously, login",0.966
+annot log in,"log, seriously, login",0.965
+cannot log in please,"log, seriously, login",0.964
+cannot log in ?,"log, seriously, login",0.963
+cannot log in :),"log, seriously, login",0.963
+caannot log in :),"log, seriously, login",0.959
+cannot log in !!,"log, seriously, login",0.956
+"cannot log in, seriously","log, seriously, login",0.955
+canont log in please!,"log, seriously, login",0.951
+cannot log in thanks,"log, seriously, login",0.941
+"cannot logg in, seriously","log, seriously, login",0.927
+cannot log in pls,"log, seriously, login",0.924
+cannot log in +1,"log, seriously, login",0.923
+canot log in please!,"log, seriously, login",0.907
+cannot logg in pls,"log, seriously, login",0.905
+"I cannot log in since yesterday, password is correct and it still says invalid","log, seriously, login",0.894
+"After the update I cannot log in at all, it loops back to the login screen","log, seriously, login",0.882
+"After the update I cannot log in at all, it loops back to the login screen. My whole team wants this","log, seriously, login",0.875
+"After the update I cannot log in at all, it loops back to the login screen.","log, seriously, login",0.874
+cannot log n ?,"log, seriously, login",0.868
+Login fails with 'invalid credentials' but I can log into the forum with the same password.,"log, seriously, login",0.863
+Login fails with 'invalid credentials' but I can log into the forum with the same password,"log, seriously, login",0.863
+cannnot log in plesae!,"log, seriously, login",0.832
+"cannott log in, seriously","log, seriously, login",0.813
+double charge on my card please,"double, charge, card",0.983
+double charge on my card pls,"double, charge, card",0.982
+double charge on my card please!,"double, charge, card",0.981
+double charge on my card,"double, charge, card",0.979
+double charge on my card thanks,"double, charge, card",0.978
+double charge on my card :),"double, charge, card",0.977
+double charge on my card ?,"double, charge, card",0.975
+double charge on my card !!,"double, charge, card",0.973
+double charge on my card +1,"double, charge, card",0.970
+double chargee on my card pls,"double, charge, card",0.967
+"double charge on my card, seriously","double, charge, card",0.964
+double charge onn my card +1,"double, charge, card",0.964
+douuble charge on my card please,"double, charge, card",0.923
+"My card was declined but the charge shows pending, now twice. I would use it every single day","double, charge, card",0.864
+"My card was declined but the charge shows pending, now twice.","double, charge, card",0.861
+"Me too, i upgraded mid cycle and got charged the full amount instead of prorated","double, charge, card",0.844
+I upgraded mid cycle and got charged the full amount instead of prorated. Every single day this comes up.,"double, charge, card",0.838
+"The export zip downloads as a 0 byte file, tried twice. This blocks our rollout","export, zip, time",0.930
+"The JSON export has dates in unix time, spreadsheets choke on them. This blocks our rollout","export, zip, time",0.918
+"The JSON export has dates in unix time, spreadsheets choke on them","export, zip, time",0.910
+"+1 The JSON export has dates in unix time, spreadsheets choke on them it came up in our retro again","export, zip, time",0.907
+"The export zip downloads as a 0 byte file, tried twice","export, zip, time",0.906
+"Please add an API endpoint for exports, the manual download is not automatable","export, zip, time",0.905
+The export button emails a zip that never arrives,"export, zip, time",0.901
+"Please add an API endpoint for exports, the manual download is not automatabble.","export, zip, time",0.900
+"Export zip is corrupt, won't open on Mac or Windows","export, zip, time",0.875
+Password reset link opens a blank page.,"reset, page, link",0.942
+Password reset link opens a blank page,"reset, page, link",0.937
+Password reset link opens a blank page. It came up in our retro again,"reset, page, link",0.934
+"Me too, the reset page is blocked by our corporate proxy, certificate error","reset, page, link",0.926
+"The reset page is blocked by our corporate proxy, certificate error","reset, page, link",0.918
+"The reset page is blocked by our corporate proxy, certificate error. We benchmark every tool against this","reset, page, link",0.914
+Reset link works once then the page errors,"reset, page, link",0.901
+"reset link expires immediately, I click and it says invalid","reset, page, link",0.897
+"Password reset email has a broken link, 404","reset, page, link",0.889
+"I cancelled my subscription but was still charged, please refund.","charged, refund, cancelled",0.948
+"I cancelled my subscription but was still charged, please refund","charged, refund, cancelled",0.947
+"Same here, i cancelled my subscription but was still charged, please refund","charged, refund, cancelled",0.944
+"I was charged twice this month, please refund one","charged, refund, cancelled",0.924
+"The trial charged me a day early, please refund","charged, refund, cancelled",0.924
+"Agreed, the trial charged me a day early, please refund itt came up in our retro again","charged, refund, cancelled",0.916
+"The trial charged me a day early, please refund, please and thank you three of my colleagues asked the same","charged, refund, cancelled",0.912
+Refund request: I cancelled on the 2nd but you charged me on the 5th,"charged, refund, cancelled",0.891
+"the app crashes on opening any card with a checklist, Pixel 8, same as everyone else here","crashes, app, opening",0.919
+"The app crashes on opening any card with a checklist, Pixel 8","crashes, app, opening",0.915
+"After the 4.2 update the app crashes in settings, sync section","crashes, app, opening",0.911
+"After the 4.2 update the app crashes in settings, sync section. I would use it every single day","crashes, app, opening",0.902
+The app crashes when I open any board with more than 50 cards on Android,"crashes, app, opening",0.899
+Android app crashes when opening attachments since 4.2,"crashes, app, opening",0.892
+The app crashes when attaching a photo on Android 14,"crashes, app, opening",0.885
+"Same here, the 2FA prompt appears every login even on trusted devices","2fa, trusted, appears",0.955
+The 2FA prompt appears every login even on trusted devices,"2fa, trusted, appears",0.954
+The 2FA prompt appears every login even on trusted devices. We benchmark every tool against this,"2fa, trusted, appears",0.946
+"2FA setup QR code never scans, tried two apps","2fa, trusted, appears",0.909
+"2FA setup QR code never scas, tried two apps.","2fa, trusted, appears",0.899
+"I get 2FA prompts at 3am that I did not trigger, is something wrong?","2fa, trusted, appears",0.894
+"The API returned a 500 for two hours last night, no status page note","api, note, 500",0.947
+"Same here, the API returned a 500 for two hours last night, no status page note I hit this every week","api, note, 500",0.947
+"The API returned a 500 for two hours last night, no status page note. I would use it every single day","api, note, 500",0.942
+"API responses are suddenly slow, 4 seconds for a list call.","api, note, 500",0.920
+"API responses are suddenly slow, 4 seconds for a list call","api, note, 500",0.920
+"API returns 429 constantly since Monday, we barely changed our usage","api, note, 500",0.917
+I switched phones and the authenticator codes are wrong now.,"authenticator, codes, wrong",0.970
+I switched phones and the authenticator codes are wrong now,"authenticator, codes, wrong",0.970
+I switched phones and the authenticator codes are wrong noww.,"authenticator, codes, wrong",0.967
+"Locked out after changing my phone, the authenticator app is gone","authenticator, codes, wrong",0.919
+"Agreed, backup codes were used up druing my holiday, account is locked","authenticator, codes, wrong",0.880
+"Please remove 2FA from my account, I lost my phone and my backup codes","authenticator, codes, wrong",0.879
+"Mentions do not notify me, I only find them when I open the app. It is the main gap for us","mentions, open, notify",0.974
+"Mentions do not notify me, I only find them when I open the app","mentions, open, notify",0.955
+"Mentions do not notify me, I only find them when I open the app.","mentions, open, notify",0.955
+Mentions do not send me any notification,"mentions, open, notify",0.924
+Slack notifications from your integration are delayed by hours. It is the main gap for us,"mentions, open, notify",0.900
+Slack notifications from your integration are delayed by hours. Every single day this comes up. it is the main gap for us,"mentions, open, notify",0.898
+"One board refuses to sync, others are fine, since yesterday.","sync, fine, yesterday",0.957
+"One board refuses to sync, others are fine, since yesterday. Three of my colleagues asked the same","sync, fine, yesterday",0.947
+"Two boards refuse to sync, everything else syncs fine","sync, fine, yesterday",0.932
+"Third ticket about this and I am losing patience. Our team of eleven cannot sync since Tuesday, we have tried reinstalling, logging out, the works. Support replied once asking for a screenshot of the spinner, which I sent, and then nothing for two days. Meanwhile our morning standup runs off this tool and people are reading stale data and re-adding work. Please escalate, I will pay for priority support if that is what it takes.","sync, fine, yesterday",0.896
+"sync stuck since this morning, spinner never stops","sync, fine, yesterday",0.891
+"Thanks to whoever fixed the sync issue, it is working again","sync, fine, yesterday",0.887
+"We cannot log in from the office network at all, but home wifi works","works, web, mobile",0.950
+Login works on desktop but not on mobile web.,"works, web, mobile",0.943
+"Agreed, we cannot log in from the office network at all, but home wifi works","works, web, mobile",0.943
+"agreed, login works on desktop but not on mobile web","works, web, mobile",0.943
+Login works on desktop but not on mobile web,"works, web, mobile",0.941
+"We cannot log in from the office network at all, but home wifi works. Every single day this comes up.","works, web, mobile",0.931
+"App freezes when the keyboard opens in the comment box, iPhone 15","app, iphone, freezes",0.964
+"App freezes when the keyboard opens in the comment box, iPhone 15. It came up in our retro again","app, iphone, freezes",0.957
+"App freezes when the keyboard opens in the comment box, iPhone 15, please and thank you","app, iphone, freezes",0.953
+"iPhone app freezes on the loading screen, reinstall did not help","app, iphone, freezes",0.898
+"App crashes on start after the last update, iPhone 13","app, iphone, freezes",0.887
+"Please add recurring cards, we recreate the same weekly checklist.","cards, weekly, recurring",0.961
+"Please add recurring cards, we recreate the samme weekly checklist.","cards, weekly, recurring",0.944
+Please add recurring cards for our weekly audit checklist,"cards, weekly, recurring",0.924
+"Sync conflicts create duplicate cards, we now have three copies of one task","cards, weekly, recurring",0.919
+"Sync cconflicts create duplicate cards, we now have three copies of one task.","cards, weekly, recurring",0.916
+I cannot log in with Google SSO since our admin changed the domain,"changed, sso, google",0.941
+I cannot log in with Google SSO since our admin changed the domain.,"changed, sso, google",0.938
+"My account seems locked after the office IP changed, is there an allowlist? I hit this every week","changed, sso, google",0.935
+"My account seems locked after the office IP changed, is there an allowlist?","changed, sso, google",0.925
+SSO login breaks every Monday for our whole team,"changed, sso, google",0.879
+"add templates for boards, we set up the same one for every client","add, templates, set",0.978
+"Me too, add templates for boards, we set up the same one for every client","add, templates, set",0.976
+"Same here, add templates for boards, we set up the same one for every client this blocks our rollout","add, templates, set",0.957
+How do I add a guest to one board only?,"add, templates, set",0.883
 iPad app crashes when rotating to landscape,"app, rotating, landscape",0.961
 IPad app crashes when rotating to landscape. I hit this every week,"app, rotating, landscape",0.956
 +1 iPad app crashes when rotating to landscape three of my colleagues asked the same,"app, rotating, landscape",0.944
 The app closes when I rotate my phone mid edit,"app, rotating, landscape",0.886
-"sync stuck since this morning, spinner never stops","sync, spinner, morning",0.919
-"Third ticket about this and I am losing patience. Our team of eleven cannot sync since Tuesday, we have tried reinstalling, logging out, the works. Support replied once asking for a screenshot of the spinner, which I sent, and then nothing for two days. Meanwhile our morning standup runs off this tool and people are reading stale data and re-adding work. Please escalate, I will pay for priority support if that is what it takes.","sync, spinner, morning",0.913
-"Thanks to whoever fixed the sync issue, it is working again","sync, spinner, morning",0.910
-"Two boards refuse to sync, everything else syncs fine","sync, spinner, morning",0.907
-Android app crashes when opening attachments since 4.2,"crashes, app, android",0.937
-The app crashes when attaching a photo on Android 14,"crashes, app, android",0.932
-The app crashes when I open any board with more than 50 cards on Android,"crashes, app, android",0.920
-canot log in please!,"log, canot, seriously",0.946
-cannnot log in plesae!,"log, canot, seriously",0.945
-"cannott log in, seriously","log, canot, seriously",0.932
+We were charged in USD but our account is set to EUR,"charged, usd, set",0.986
+We were charged in USD but our account is set to EUR.,"charged, usd, set",0.985
+"Me too, we were charged in USD but our account is set to EUR","charged, usd, set",0.983
+My card was charged in a currency I never chose,"charged, usd, set",0.898
+"Me too, how do I export only one board? The tool exports the whole workspace","export, workspace, tool",0.965
+How do I export only one board? The tool exports the whole workspace,"export, workspace, tool",0.964
+How do I export my data? I am leaving the company and need my boards,"export, workspace, tool",0.917
+Please add PDF export for boards,"export, workspace, tool",0.914
++1 The CSV export cuts off long text fields,"fields, export, rely",0.948
+Export loses the custom fields we rely on,"fields, export, rely",0.947
+"Me too, export loses the custom fields we rely on","fields, export, rely",0.942
+Thhe CSV export cuts off long text fields,"fields, export, rely",0.939
+"Login page hangs on the spinner, tried three browsers","login, tried, spinner",0.982
+"Me too, login page hangs on the spinner, tried three browsers","login, tried, spinner",0.979
+"Login page hangs on thhe spinner, tried three browser.","login, tried, spinner",0.974
+"login broken on safari, chrome works","login, tried, spinner",0.883
+"Honestly uor integration hit rate limits with 3 requests per second, docs said 10. Three of my colleagues asked the same","second, requests, rate",0.979
+"uOr integration hit rate limits with 3 requests per second, docs said 10","second, requests, rate",0.975
+"Agreed, our integration hit rate limits with 3 requests per second, docs said 10 three of my colleagues asked the same","second, requests, rate",0.972
+"Rate limit hit at 2 requests per second, docs promise 10","second, requests, rate",0.926
+"A calendar view of due dates please, please and thank you","view, calendar, dates",0.981
+"Me too, a calendar view of due dates please","view, calendar, dates",0.976
+A calendar view of due dates please,"view, calendar, dates",0.975
+"Bulk editing due dates would save my team hours, please and thank you I hit this every week","view, calendar, dates",0.897
+Webhook payload changed shape without a version bump.,"webhook, version, shape",0.978
+Webhook payload changed shape without a version bump,"webhook, version, shape",0.973
+Webhook payload changed shape without a version bump for the love of god we benchmark every tool against this,"webhook, version, shape",0.955
+"API key rotation invalidates webhooks, docs are wrong","webhook, version, shape",0.873
+"how do I merge two workspaces after an acquisition, please and thank you","workspaces, merge, acquisition",0.967
+How do I merge two workspaces after an acquisition?,"workspaces, merge, acquisition",0.962
+How do I merge two workspaces after an accquisition for the love of god it is the main gap for us,"workspaces, merge, acquisition",0.948
+How do I move my workspace to another email domain? We rebranded,"workspaces, merge, acquisition",0.874
+"Cards are not syncing between phone and desktop, changes take an hour","desktop, cards, syncing",0.948
+Cards created on mobile never sync to desktop until I reboot,"desktop, cards, syncing",0.943
+The desktop app shows data from two days ago until I force refresh,"desktop, cards, syncing",0.901
+Where do I find the audit log you mentioned in the changelog? I hit this every week,"mentioned, log, changelog",0.994
++1 Where do I find the audit log you mentioned in the changelog I hit this every week,"mentioned, log, changelog",0.990
+Where do I find the audit log you mentioned in the changelog?,"mentioned, log, changelog",0.980
 Comments posted from mobile do not show up on desktop,"mobile, posted, desktop",0.958
 +1 Comments posted from mobile do not show up on desktop I hit this eery week,"mobile, posted, desktop",0.948
 Changes I make on web appear on mobile only after restarting the app,"mobile, posted, desktop",0.907
-"Agreed, backup codes were used up druing my holiday, account is locked","phone, locked, codes",0.932
-"Please remove 2FA from my account, I lost my phone and my backup codes","phone, locked, codes",0.926
-"Locked out after changing my phone, the authenticator app is gone","phone, locked, codes",0.913
-"I was charged twice this month, please refund one","refund, charged, twice",0.948
-Refund request: I cancelled on the 2nd but you charged me on the 5th,"refund, charged, twice",0.930
-"Agreed, the trial charged me a day early, please refund itt came up in our retro again","refund, charged, twice",0.921
-"double charge on my card, seriously",said again (12 people asked for this),0.969
-double charge on my card pls,said again (12 people asked for this),0.988
-double charge on my card,said again (12 people asked for this),0.991
-double charge on my card !!,said again (12 people asked for this),0.984
-double chargee on my card pls,said again (12 people asked for this),0.973
-double charge onn my card +1,said again (12 people asked for this),0.971
-double charge on my card thanks,said again (12 people asked for this),0.983
-double charge on my card ?,said again (12 people asked for this),0.986
-double charge on my card please,said again (12 people asked for this),0.990
-double charge on my card :),said again (12 people asked for this),0.984
-double charge on my card please!,said again (12 people asked for this),0.986
-double charge on my card +1,said again (12 people asked for this),0.977
-reset email not arriving pls,said again (8 people asked for this),0.981
-reset email not arriving please!,said again (8 people asked for this),0.986
-"reset email not arriving, seriously",said again (8 people asked for this),0.980
-reset email not arriving thanks,said again (8 people asked for this),0.990
-reset email not arrivingg ?,said again (8 people asked for this),0.984
-reset email not arriving,said again (8 people asked for this),0.991
-reset email not arriving ?,said again (8 people asked for this),0.990
-reset email not arriving :),said again (8 people asked for this),0.988
-cannot log in,said again (6 people asked for this),0.986
-cannot log in ?,said again (6 people asked for this),0.982
-annot log in,said again (6 people asked for this),0.975
-cannot log in !!,said again (6 people asked for this),0.980
-caannot log in :),said again (6 people asked for this),0.979
-cannot log in :),said again (6 people asked for this),0.983
-"Me too, a calendar view of due dates please",said again (3 people asked for this),0.987
-"A calendar view of due dates please, please and thank you",said again (3 people asked for this),0.987
-A calendar view of due dates please,said again (3 people asked for this),0.991
-"add templates for boards, we set up the same one for every client",said again (3 people asked for this),0.989
-"Me too, add templates for boards, we set up the same one for every client",said again (3 people asked for this),0.988
-"Same here, add templates for boards, we set up the same one for every client this blocks our rollout",said again (3 people asked for this),0.971
-"After the update I cannot log in at all, it loops back to the login screen",said again (3 people asked for this),0.996
-"After the update I cannot log in at all, it loops back to the login screen.",said again (3 people asked for this),0.996
-"After the update I cannot log in at all, it loops back to the login screen. My whole team wants this",said again (3 people asked for this),0.985
-App dies when I open search on an old Android 9 device,said again (3 people asked for this),0.991
-+1 App dies when I open search on an old Android 9 device,said again (3 people asked for this),0.987
-App dies when I open search on an old Android 9 device. Every single day this comes up.,said again (3 people asked for this),0.981
-"App freezes when the keyboard opens in the comment box, iPhone 15, please and thank you",said again (3 people asked for this),0.982
-"App freezes when the keyboard opens in the comment box, iPhone 15. It came up in our retro again",said again (3 people asked for this),0.979
-"App freezes when the keyboard opens in the comment box, iPhone 15",said again (3 people asked for this),0.990
-cannot log in please,said again (3 people asked for this),0.986
-cannot log in please!,said again (3 people asked for this),0.993
-canont log in please!,said again (3 people asked for this),0.982
-"Agreed, our integration hit rate limits with 3 requests per second, docs said 10 three of my colleagues asked the same",said again (3 people asked for this),0.983
-"Honestly uor integration hit rate limits with 3 requests per second, docs said 10. Three of my colleagues asked the same",said again (3 people asked for this),0.989
-"uOr integration hit rate limits with 3 requests per second, docs said 10",said again (3 people asked for this),0.978
-"Same here, i cancelled my subscription but was still charged, please refund",said again (3 people asked for this),0.985
-"I cancelled my subscription but was still charged, please refund",said again (3 people asked for this),0.995
-"I cancelled my subscription but was still charged, please refund.",said again (3 people asked for this),0.995
-I switched phones and the authenticator codes are wrong noww.,said again (3 people asked for this),0.996
-I switched phones and the authenticator codes are wrong now.,said again (3 people asked for this),0.998
-I switched phones and the authenticator codes are wrong now,said again (3 people asked for this),0.998
-"Me too, login page hangs on the spinner, tried three browsers",said again (3 people asked for this),0.989
-"Login page hangs on the spinner, tried three browsers",said again (3 people asked for this),0.994
-"Login page hangs on thhe spinner, tried three browser.",said again (3 people asked for this),0.989
-Login works on desktop but not on mobile web,said again (3 people asked for this),0.994
-"agreed, login works on desktop but not on mobile web",said again (3 people asked for this),0.981
-Login works on desktop but not on mobile web.,said again (3 people asked for this),0.994
-"Mentions do not notify me, I only find them when I open the app. It is the main gap for us",said again (3 people asked for this),0.987
-"Mentions do not notify me, I only find them when I open the app",said again (3 people asked for this),0.996
-"Mentions do not notify me, I only find them when I open the app.",said again (3 people asked for this),0.996
-Notification sound plays with no visible notification on desktop.,said again (3 people asked for this),0.993
-Notification sound plays with no visible notification on desktop,said again (3 people asked for this),0.993
-Notification sound plays with no visible notification on desktop for the love of god,said again (3 people asked for this),0.979
-OAuth token refresh fails with a cryptic error for the love of god,said again (3 people asked for this),0.981
-OAuth token refresh fails with a cryptic error.,said again (3 people asked for this),0.994
-OAuth token refresh fails with a cryptic error,said again (3 people asked for this),0.993
-Password reset link opens a blank page. It came up in our retro again,said again (3 people asked for this),0.970
-Password reset link opens a blank page.,said again (3 people asked for this),0.992
-Password reset link opens a blank page,said again (3 people asked for this),0.990
-"Resend button does nothing, clicked five times over an hour.",said again (3 people asked for this),0.994
-"Resend button does nothing, clicked five times over an hour",said again (3 people asked for this),0.994
-"Resend button does nothing, clicked five times over an hour. I would use it every single day",said again (3 people asked for this),0.979
-"Same here, the 2FA prompt appears every login even on trusted devices",said again (3 people asked for this),0.992
-The 2FA prompt appears every login even on trusted devices,said again (3 people asked for this),0.994
-The 2FA prompt appears every login even on trusted devices. We benchmark every tool against this,said again (3 people asked for this),0.984
-"Same here, the API returned a 500 for two hours last night, no status page note I hit this every week",said again (3 people asked for this),0.983
-"The API returned a 500 for two hours last night, no status page note",said again (3 people asked for this),0.985
-"The API returned a 500 for two hours last night, no status page note. I would use it every single day",said again (3 people asked for this),0.985
-"The JSON export has dates in unix time, spreadsheets choke on them. This blocks our rollout",said again (3 people asked for this),0.980
-"The JSON export has dates in unix time, spreadsheets choke on them",said again (3 people asked for this),0.989
-"+1 The JSON export has dates in unix time, spreadsheets choke on them it came up in our retro again",said again (3 people asked for this),0.977
-"Me too, the reset page is blocked by our corporate proxy, certificate error",said again (3 people asked for this),0.994
-"The reset page is blocked by our corporate proxy, certificate error",said again (3 people asked for this),0.994
-"The reset page is blocked by our corporate proxy, certificate error. We benchmark every tool against this",said again (3 people asked for this),0.987
-The team plan charged me for 12 seats but we removed 4 last month,said again (3 people asked for this),0.994
-"Agreed, the team plan charged me for 12 seats but we removed 4 last month it came up in our retro again",said again (3 people asked for this),0.977
-The team plan charged me for 12 seats but we removed 4 last month.,said again (3 people asked for this),0.993
-"We cannot log in from the office network at all, but home wifi works",said again (3 people asked for this),0.995
-"We cannot log in from the office network at all, but home wifi works. Every single day this comes up.",said again (3 people asked for this),0.983
-"Agreed, we cannot log in from the office network at all, but home wifi works",said again (3 people asked for this),0.988
-We were charged in USD but our account is set to EUR,said again (3 people asked for this),0.998
-We were charged in USD but our account is set to EUR.,said again (3 people asked for this),0.997
-"Me too, we were charged in USD but our account is set to EUR",said again (3 people asked for this),0.993
-+1 Where do I find the audit log you mentioned in the changelog I hit this every week,said again (3 people asked for this),0.990
-Where do I find the audit log you mentioned in the changelog?,said again (3 people asked for this),0.980
-Where do I find the audit log you mentioned in the changelog? I hit this every week,said again (3 people asked for this),0.994
-+1 The CSV export cuts off long text fields,said again (2 people asked for this),0.992
-Thhe CSV export cuts off long text fields,said again (2 people asked for this),0.992
-"2FA setup QR code never scans, tried two apps",said again (2 people asked for this),0.987
-"2FA setup QR code never scas, tried two apps.",said again (2 people asked for this),0.987
-"After the 4.2 update the app crashes in settings, sync section. I would use it every single day",said again (2 people asked for this),0.986
-"After the 4.2 update the app crashes in settings, sync section",said again (2 people asked for this),0.986
-"Agreed, how do I add a second admin to our workspace",said again (2 people asked for this),0.993
-How do I add a second admin to our workspace?,said again (2 people asked for this),0.993
-"API responses are suddenly slow, 4 seconds for a list call.",said again (2 people asked for this),0.999
-"API responses are suddenly slow, 4 seconds for a list call",said again (2 people asked for this),0.999
-Can I change the workspace timezone? Deadlines show one hour off.,said again (2 people asked for this),0.988
-"can I change the workspace timezone? Dealines show one hour off, same as everyone else here",said again (2 people asked for this),0.988
-"cannot logg in, seriously",said again (2 people asked for this),0.990
-"cannot log in, seriously",said again (2 people asked for this),0.990
-cannot logg in pls,said again (2 people asked for this),0.992
-cannot log in pls,said again (2 people asked for this),0.992
-Export loses the custom fields we rely on,said again (2 people asked for this),0.993
-"Me too, export loses the custom fields we rely on",said again (2 people asked for this),0.993
-"Me too, how do I export only one board? The tool exports the whole workspace",said again (2 people asked for this),0.997
-How do I export only one board? The tool exports the whole workspace,said again (2 people asked for this),0.997
-How do I merge two workspaces after an acquisition?,said again (2 people asked for this),0.988
-"how do I merge two workspaces after an acquisition, please and thank you",said again (2 people asked for this),0.988
-I cannot log in with Google SSO since our admin changed the domain.,said again (2 people asked for this),0.999
-I cannot log in with Google SSO since our admin changed the domain,said again (2 people asked for this),0.999
-"I need a receipt for a purchase from March, portal has no history",said again (2 people asked for this),0.991
-"I need a receipt for a purchase from March, portal has no history. It came up in our retro again",said again (2 people asked for this),0.991
-"I never received the reset email, checked spam and filters.",said again (2 people asked for this),0.986
-"I never received the reset email, checked spam and filters. My whole team wants this",said again (2 people asked for this),0.986
-I stopped getting any emails from you since the 14th. It came up in our retro again,said again (2 people asked for this),0.986
-I stopped getting any emails from you since the 14th,said again (2 people asked for this),0.986
-I unsubscribe from digest emails but they keep coming,said again (2 people asked for this),0.995
-"Agreed, i unsubscribe from digest emails but they keep coming",said again (2 people asked for this),0.995
-I upgraded mid cycle and got charged the full amount instead of prorated. Every single day this comes up.,said again (2 people asked for this),0.987
-"Me too, i upgraded mid cycle and got charged the full amount instead of prorated",said again (2 people asked for this),0.987
-"I want to move 2FA o a hardware key, how?",said again (2 people asked for this),0.998
-"I want to move 2FA to a hardware key, how?",said again (2 people asked for this),0.998
-Login fails with 'invalid credentials' but I can log into the forum with the same password.,said again (2 people asked for this),0.999
-Login fails with 'invalid credentials' but I can log into the forum with the same password,said again (2 people asked for this),0.999
-"My account seems locked after the office IP changed, is there an allowlist?",said again (2 people asked for this),0.995
-"My account seems locked after the office IP changed, is there an allowlist? I hit this every week",said again (2 people asked for this),0.995
-"My card was declined but the charge shows pending, now twice. I would use it every single day",said again (2 people asked for this),0.989
-"My card was declined but the charge shows pending, now twice.",said again (2 people asked for this),0.989
-"One board refuses to sync, others are fine, since yesterday. Three of my colleagues asked the same",said again (2 people asked for this),0.992
-"One board refuses to sync, others are fine, since yesterday.",said again (2 people asked for this),0.992
-"Please add an API endpoint for exports, the manual download is not automatable",said again (2 people asked for this),0.997
-"Please add an API endpoint for exports, the manual download is not automatabble.",said again (2 people asked for this),0.997
-"Please add recurring cards, we recreate the samme weekly checklist.",said again (2 people asked for this),0.992
-"Please add recurring cards, we recreate the same weekly checklist.",said again (2 people asked for this),0.992
-"Please batch notification emails, I get 40 a day",said again (2 people asked for this),0.985
-"Please batch notification emails, I get 40 a day. It came up in our retro again",said again (2 people asked for this),0.985
-Please let us tag other teams in comments.,said again (2 people asked for this),0.998
-Please let us tag other teams in comments,said again (2 people asked for this),0.998
-"Reset flow says my mail is not found, but I am logged in on mobile.",said again (2 people asked for this),0.987
-"Reset flow says my email iss not found, but I am logged in on mobile",said again (2 people asked for this),0.987
-Slack notifications from your integration are delayed by hours. It is the main gap for us,said again (2 people asked for this),0.996
-Slack notifications from your integration are delayed by hours. Every single day this comes up. it is the main gap for us,said again (2 people asked for this),0.996
-"Sync conflicts create duplicate cards, we now have three copies of one task",said again (2 people asked for this),0.993
-"Sync cconflicts create duplicate cards, we now have three copies of one task.",said again (2 people asked for this),0.993
-"the app crashes on opening any card with a checklist, Pixel 8, same as everyone else here",said again (2 people asked for this),0.994
-"The app crashes on opening any card with a checklist, Pixel 8",said again (2 people asked for this),0.994
-"The export zip downloads as a 0 byte file, tried twice. This blocks our rollout",said again (2 people asked for this),0.991
-"The export zip downloads as a 0 byte file, tried twice",said again (2 people asked for this),0.991
-"The trial charged me a day early, please refund",said again (2 people asked for this),0.984
-"The trial charged me a day early, please refund, please and thank you three of my colleagues asked the same",said again (2 people asked for this),0.984
-We are a team of six and half of us see stale board.,said again (2 people asked for this),0.996
-We are a team of six and half of us see stale boards,said again (2 people asked for this),0.996
-Webhook payload changed shape without a version bump.,said again (2 people asked for this),0.998
-Webhook payload changed shape without a version bump,said again (2 people asked for this),0.998
-Where is the recycle bin? I deleted a board by accident. We benchmark every tool against this,said again (2 people asked for this),0.984
-Where is the recycle bin? I deleted a board by accident,said again (2 people asked for this),0.984
+Notification sound plays with no visible notification on desktop.,"notification, visible, sound",0.993
+Notification sound plays with no visible notification on desktop,"notification, visible, sound",0.993
+Notification sound plays with no visible notification on desktop for the love of god,"notification, visible, sound",0.979
+"I need a receipt for a purchase from March, portal has no history","receipt, purchase, need",0.985
+"I need a receipt for a purchase from March, portal has no history. It came up in our retro again","receipt, purchase, need",0.977
+"I need a receipt for a purchase from March, portall has no history. My whole team wants this","receipt, purchase, need",0.961
+App dies when I open search on an old Android 9 device,"search, open, old",0.991
++1 App dies when I open search on an old Android 9 device,"search, open, old",0.987
+App dies when I open search on an old Android 9 device. Every single day this comes up.,"search, open, old",0.981
+The team plan charged me for 12 seats but we removed 4 last month,"team, seats, removed",0.994
+The team plan charged me for 12 seats but we removed 4 last month.,"team, seats, removed",0.993
+"Agreed, the team plan charged me for 12 seats but we removed 4 last month it came up in our retro again","team, seats, removed",0.977
+"Resend button does nothing, clicked five times over an hour.","times, resend, hour",0.994
+"Resend button does nothing, clicked five times over an hour","times, resend, hour",0.994
+"Resend button does nothing, clicked five times over an hour. I would use it every single day","times, resend, hour",0.979
+OAuth token refresh fails with a cryptic error.,"token, refresh, oauth",0.994
+OAuth token refresh fails with a cryptic error,"token, refresh, oauth",0.993
+OAuth token refresh fails with a cryptic error for the love of god,"token, refresh, oauth",0.981
+"can I change the workspace timezone? Dealines show one hour off, same as everyone else here","workspace, timezone, hour",0.967
+Can I change the workspace timezone? Deadlines show one hour off.,"workspace, timezone, hour",0.957
+How do I set business hours for the shared inbox?,"workspace, timezone, hour",0.893
 Are you hiring for support roles? I am interested,Doesn't fit any group,0.000
-reset emali not arriving,Doesn't fit any group,0.000
 Dark mode for the desktpo app please for the love of god,Doesn't fit any group,0.000
-The desktop app shows data from two days ago until I force refresh,Doesn't fit any group,0.000
-"login broken on safari, chrome works",Doesn't fit any group,0.000
+Where is the recycle bin? I deleted a board by accident. We benchmark every tool against this,Doesn't fit any group,0.000
 Please send my ticket history for a VAT dispute,Doesn't fit any group,0.000
+"I want to move 2FA o a hardware key, how?",Doesn't fit any group,0.000
+"I want to move 2FA to a hardware key, how?",Doesn't fit any group,0.000
 "Two factor codes arrive too late, by then the code expired",Doesn't fit any group,0.000
-"I get 2FA prompts at 3am that I did not trigger, is something wrong?",Doesn't fit any group,0.000
+We are a team of six and half of us see stale board.,Doesn't fit any group,0.000
 The emoji picker has no search,Doesn't fit any group,0.000
-"Bulk editing due dates would save my team hours, please and thank you I hit this every week",Doesn't fit any group,0.000
 "I have been a customer for four years and this month has been a mess. The mobile app crashes on my main board, the export I need for our audit is missing fields, and your password reset email lands in spam for half my colleagues. Each one alone I could work around. Together they make me question the renewal next month. I would love to stay, the product is good when it works, but I need these three things fixed or acknowledged.",Doesn't fit any group,0.000
 "I want to delete my account entirely, what happens to my data?",Doesn't fit any group,0.000
-How do I merge two workspaces after an accquisition for the love of god it is the main gap for us,Doesn't fit any group,0.000
+Please let us tag other teams in comments.,Doesn't fit any group,0.000
 Why did my plan price change without notice?,Doesn't fit any group,0.000
 "The app logs me out every 24 hours, extend the session please",Doesn't fit any group,0.000
 "invoice for my finance team please, VAT number is on the account",Doesn't fit any group,0.000
-"Cards are not syncing between phone and desktop, changes take an hour",Doesn't fit any group,0.000
 "Timezone shows UTC for new cards, mine is JST",Doesn't fit any group,0.000
 My colleague sees different data than me in the same board,Doesn't fit any group,0.000
 Can I speak to someone on the phone? Email is slow for us,Doesn't fit any group,0.000
-How do I set business hours for the shared inbox?,Doesn't fit any group,0.000
-How do I export my data? I am leaving the company and need my boards,Doesn't fit any group,0.000
-The export button emails a zip that never arrives,Doesn't fit any group,0.000
-douuble charge on my card please,Doesn't fit any group,0.000
+cannot lo in thankss,Doesn't fit any group,0.000
 "Exported CSV is missing the comments column, is that expected?",Doesn't fit any group,0.000
-"API returns 429 constantly since Monday, we barely changed our usage",Doesn't fit any group,0.000
 "Webhooks stopped firing on Friday, nothing in our logs",Doesn't fit any group,0.000
 Scroll position resets when I reopen a board,Doesn't fit any group,0.000
 Print stylesheet cuts off the right column,Doesn't fit any group,0.000
-"App crashes on start after the last update, iPhone 13",Doesn't fit any group,0.000
-"iPhone app freezes on the loading screen, reinstall did not help",Doesn't fit any group,0.000
-Webhook payload changed shape without a version bump for the love of god we benchmark every tool against this,Doesn't fit any group,0.000
+"Agreed, how do I add a second admin to our workspace",Doesn't fit any group,0.000
+How do I add a second admin to our workspace?,Doesn't fit any group,0.000
 "Me too, pagination is broken on /v2/cards, page 2 repeats page 1 we benchmark every tool against this",Doesn't fit any group,0.000
-"reset link expires immediately, I click and it says invalid",Doesn't fit any group,0.000
 The status page said resolved but the issue continued for an hour,Doesn't fit any group,0.000
-My card was charged in a currency I never chose,Doesn't fit any group,0.000
 "The Android app eats battery, 20 percent a day with no use",Doesn't fit any group,0.000
+cannot lo in please,Doesn't fit any group,0.000
 Do you have a status page? We cannot tell if it is you or us,Doesn't fit any group,0.000
-How do I move my workspace to another email domain? We rebranded,Doesn't fit any group,0.000
 "Feature request: bulk delete, I have 900 cards to clean",Doesn't fit any group,0.000
 "Please add an in app chat, email support takes two days",Doesn't fit any group,0.000
 Attachment preview for .webp files shows a broken icon,Doesn't fit any group,0.000
-SSO login breaks every Monday for our whole team,Doesn't fit any group,0.000
 The app says my subscription expired but billing says active,Doesn't fit any group,0.000
-Cards created on mobile never sync to desktop until I reboot,Doesn't fit any group,0.000
-Please add PDF export for boards,Doesn't fit any group,0.000
-"API key rotation invalidates webhooks, docs are wrong",Doesn't fit any group,0.000
+Please let us tag other teams in comments,Doesn't fit any group,0.000
 Column width resets after reload,Doesn't fit any group,0.000
-reset eamil not arriving !!,Doesn't fit any group,0.000
-How do I add a guest to one board only?,Doesn't fit any group,0.000
-Please add recurring cards for our weekly audit checklist,Doesn't fit any group,0.000
+We are a team of six and half of us see stale boards,Doesn't fit any group,0.000
 Charged for the annual plan but my account still shows monthly,Doesn't fit any group,0.000
 The desktop app icon shows a wrong badge count,Doesn't fit any group,0.000
-"Export zip is corrupt, won't open on Mac or Windows",Doesn't fit any group,0.000
+Where is the recycle bin? I deleted a board by accident,Doesn't fit any group,0.000
 Notification emails arrive six hours late,Doesn't fit any group,0.000
-"I need a receipt for a purchase from March, portall has no history. My whole team wants this",Doesn't fit any group,0.000
-"Rate limit hit at 2 requests per second, docs promise 10",Doesn't fit any group,0.000
 Keyboard focus jumps out of the search box on Windows,Doesn't fit any group,0.000
-Reset link works once then the page errors,Doesn't fit any group,0.000
