@@ -1,0 +1,21 @@
+question,label
+"Can I get a refund if my flowers arrive wilted?",answerable
+"How long does a refund take to reach my card?",answerable
+"What happens if nobody is home when the bouquet is delivered?",answerable
+"Can I change the delivery address after I have ordered?",answerable
+"Do you deliver on Sundays?",answerable
+"What do you need to refund a sympathy order that was delivered late?",answerable
+"Can I cancel my subscription before the next delivery?",answerable
+"Do I get the delivery fee back if a next-day order arrives late?",answerable
+"Can I swap the vase before the arrangement is made?",answerable
+"How long can a standing remembrance plan run for?",answerable
+"Do you sell preserved roses that last a year?",unanswerable
+"Can I get a refund on a bouquet I picked up myself and did not like the colour of?",unanswerable
+"Do you deliver to hospitals outside your delivery zone?",unanswerable
+"Do you offer a first-order discount for new accounts?",unanswerable
+"Do you offer gift cards that never expire?",unanswerable
+"Can I return a vase I bought in your shop?",unanswerable
+"Do you have a price match against other florists?",unanswerable
+"Can I get a refund if I miss the delivery window myself?",unanswerable
+"Do you deliver flowers in August?",unanswerable
+"Can I pay with a cheque at the door?",unanswerable

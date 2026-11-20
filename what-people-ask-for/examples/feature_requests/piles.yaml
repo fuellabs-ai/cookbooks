@@ -1,0 +1,11 @@
+# Optional: name piles yourself, with 2-5 example requests each.
+# Requests close enough to a pile's examples go into it and keep your name.
+appearance:
+  - dark mode for the app
+  - a dark theme for late nights
+getting data out:
+  - export my tasks to a spreadsheet
+  - csv export of a board
+on the go:
+  - a proper phone app
+  - work offline on a plane

@@ -1,0 +1,45 @@
+# Fictional example: a shared admissions@ inbox at "Harbourview School", a
+# fictional primary and secondary school. Every name, address and message in
+# this folder is made up. complaint has never_hide: true because a complaint
+# must always reach a person, whatever the sorter thinks.
+
+fees:
+  examples:
+    - "Could you send the current fee schedule for Year 5 entry, including the lunch and transport charges?"
+    - "Is there a sibling discount if we enrol our second child at Harbourview next September?"
+    - "We have not received an invoice for this term's fees. Could you resend it to this address?"
+    - "Does the school offer a monthly instalment plan instead of paying the term in one payment?"
+    - "What does the application fee cover, and is it refunded if our daughter is not offered a place?"
+
+documents:
+  examples:
+    - "Which documents do you need from an overseas school record for a Year 3 application?"
+    - "My son's birth certificate is in Polish. Do you need a certified translation for the file?"
+    - "I have uploaded the immunisation form but the portal says a document is missing. Which one?"
+    - "Do you accept digital copies of the last two school reports, or must they be stamped originals?"
+    - "Could you confirm what proof of address is acceptable, we have recently moved and only have a utility bill."
+
+visit request:
+  examples:
+    - "We would like to book a place on the open morning in March, two adults and one child."
+    - "Is it possible to arrange a private tour on a weekday? We are relocating from Leeds that week."
+    - "Can our son sit in on a Year 6 class during our visit? He is nervous about changing schools."
+    - "We missed the open day in November. When is the next date we can come and look around?"
+    - "Please could you confirm our tour slot on Friday and tell us where to park?"
+
+transfer:
+  examples:
+    - "We are moving into the catchment in April and would like to transfer our daughter from Riverside Primary into Year 4 mid-year."
+    - "How does a mid-year transfer work for a child already in Year 2 at another school in the borough?"
+    - "Our family is relocating from abroad in January. What is the process to transfer our son into Year 8?"
+    - "I would like to enquire about transferring my twins from St Aldhelm's. They are currently in Year 5."
+    - "We are moving house within the city and want our son to change schools at half term. What forms do we need?"
+
+complaint:
+  never_hide: true
+  examples:
+    - "I am writing to complain about how the lunch queue is managed. My daughter waited 40 minutes yesterday and missed half her break."
+    - "This is the third time the school bus has arrived 25 minutes late this month. I need someone to look into it."
+    - "I am unhappy with the way a bullying incident in the playground was handled. I want to speak to someone senior about it today."
+    - "We were charged twice for the winter trip and nobody has answered three emails about the refund. This is not acceptable."
+    - "A teacher shouted at my son in front of the whole class and I do not think that is an appropriate way to speak to an eight year old."

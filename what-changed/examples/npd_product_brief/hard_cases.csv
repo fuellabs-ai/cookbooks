@@ -1,0 +1,9 @@
+old,new,expected
+"High in fiber.","Good source of fiber.",changed
+"Contains peanuts.","May contain peanuts.",changed
+"Contains no artificial sweeteners.","Contains artificial sweeteners.",changed
+"Palm oil free.","May contain palm oil.",changed
+"Certified organic by the supplier.","Made with organic ingredients.",changed
+"Provides up to 8 g of protein per serving.","Provides 8 g of protein per serving.",changed
+"Made in a facility that processes tree nuts.","",removed
+"Refrigerate after opening.","",removed

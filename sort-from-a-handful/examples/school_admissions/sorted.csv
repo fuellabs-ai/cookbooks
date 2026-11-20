@@ -1,0 +1,31 @@
+text,label,score,margin,needs_human,expected
+"Hello, could you send me the fee schedule for Year 7 entry for next September, including transport and lunch charges?",fees,0.847,0.072,False,fees
+We did not get an invoice for the spring term. Could you resend it? We want to pay before the deadline.,fees,0.834,0.082,False,fees
+"Does Harbourview offer a sibling discount, and is the application fee refunded if no place is offered?",fees,0.858,0.132,False,fees
+We are posted overseas for two years and want to know if fees can be paid quarterly from abroad.,fees,0.808,0.059,False,fees
+Which documents does the school need from an overseas application? My daughter's reports are in Arabic.,documents,0.856,0.107,False,documents
+The portal rejected my son's immunisation record and says a file is missing. Which one is it?,documents,0.845,0.112,False,documents
+"Are scanned and stamped school reports acceptable, or must we post the originals from Spain?",documents,0.841,0.096,False,documents
+My son's birth certificate is in Hungarian. Do you require a certified translation before we can apply?,documents,0.848,0.129,False,documents
+Could we book two adults on the open morning tour in March? Our daughter is turning four in January.,visit request,0.868,0.119,False,visit request
+"We are relocating from Singapore that week, is there any chance of a private tour on a Wednesday afternoon?",visit request,0.864,0.128,False,visit request
+Please confirm our tour slot on Friday and let us know where visitors can park.,visit request,0.870,0.144,False,visit request
+We missed the November open day. When is the next chance to look around the school with a Year 5 child?,visit request,0.858,0.050,False,visit request
+We are moving into the catchment in April and want to transfer our daughter from Riverside Primary into Year 4 mid-year.,transfer,0.903,0.132,False,transfer
+Our family relocates from Dublin in January. What is the transfer process for a child going into Year 8?,transfer,0.895,0.125,False,transfer
+I would like to move my twins from St Aldhelm's to Harbourview. They are both in Year 5. What forms do we need?,transfer,0.861,0.098,False,transfer
+My son has been at his current school only six weeks but we are moving house across the city. Can he change schools at half term?,transfer,0.839,0.060,False,transfer
+I am writing to complain that the after school club billed us for sessions in October that never ran and nobody has replied to two emails.,complaint,0.821,0.036,True,complaint
+This is the third time this month the school bus has been over 20 minutes late. I need someone to look into it properly.,complaint,0.870,0.103,True,complaint
+A teacher told my daughter she was hopeless at maths in front of the class. I want to speak to someone senior about how staff speak to children.,complaint,0.834,0.140,True,complaint
+We were charged twice for the winter concert tickets. The box office says it is the admissions office's problem. Please sort out the refund.,complaint,0.809,0.033,True,complaint
+"What are the fees for the boarding house, and can they be paid in two instalments per term?",fees,0.824,0.106,False,fees
+"Do you need proof of previous school attendance for a Year 2 application, or are the report cards enough?",documents,0.832,0.080,False,documents
+Can our son join a Year 6 lesson during our visit in February? He is very anxious about changing schools.,visit request,0.854,0.035,False,visit request
+How does a mid-year transfer work for a child currently in Year 3 at a school outside the borough?,transfer,0.883,0.124,False,transfer
+I am not happy that our complaint about the lost uniform was closed without anyone calling us. Please reopen it.,complaint,0.812,0.065,True,complaint
+"Is there a music tuition charge on top of the standard fees, and how is it billed?",fees,0.764,0.082,False,fees
+Which medical documents do you need for a child with asthma before the first day of term?,documents,0.776,0.075,False,documents
+Two of us would like to visit on the Tuesday open evening. Do we need to register in advance?,visit request,0.854,0.109,False,visit request
+We are moving from Manchester in May and want our son to transfer into Year 6. How do places work mid-year?,transfer,0.898,0.114,False,transfer
+The reported behaviour of one pupil towards my son on the yard has not been addressed for a month. I am raising this formally as a complaint.,complaint,0.835,0.097,True,complaint

@@ -1,0 +1,23 @@
+[Sample data: fictional pricing page for Nimbus Metrics, a made-up analytics tool]
+
+# Nimbus Metrics pricing
+
+## Starter plan
+$29 per month. Track up to 10,000 events per month.
+Includes 3 dashboards and email support.
+30-day free trial. No credit card required.
+
+## Growth plan
+$79 per month. Track up to 100,000 events per month.
+Includes unlimited dashboards and priority email support.
+Adds retention reports and cohort analysis.
+
+## Enterprise plan
+Custom pricing. Contact sales for a quote.
+Includes SSO, audit logs and a dedicated manager.
+Data retention up to 3 years.
+
+# Why teams choose Nimbus
+Nimbus processes events in real time.
+Setup takes less than 15 minutes.
+All plans include unlimited seats.

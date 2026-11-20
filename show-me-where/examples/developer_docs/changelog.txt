@@ -1,0 +1,14 @@
+CHANGELOG
+
+2026-11-14  API v2026-11
+Added support for per-key rate limits. Existing keys keep plan limits.
+
+2026-09-02  API v2026-09
+Error bodies now include a request_id field on every failed request.
+
+2026-06-20  API v2026-06
+Webhook retries moved from 3 attempts to 5 attempts over 24 hours.
+
+2026-03-08  API v2026-03
+Sandbox keys now start with sk_test_. Old sk-sandbox- keys keep working
+until the end of 2026.

@@ -1,0 +1,16 @@
+[Sample data: fictional supplier spec sheet for the Ridgeline 750 bottle by Karst Goods]
+
+Product: Ridgeline 750, insulated steel bottle
+Capacity: 750 ml
+Body material: 18/8 stainless steel with a powder-coated finish
+Lid material: polypropylene, BPA free
+Dimensions: 26.5 cm tall, 7.2 cm diameter
+Empty weight: 340 g
+Insulation: keeps drinks cold for 24 hours and hot for 12 hours
+Colors available: slate, moss, sand
+Minimum order quantity: 500 units
+Lead time: 45 days from confirmed purchase order
+Packaging: individual boxes, 24 units per carton
+Certifications: FDA food contact compliant
+Care: hand wash only, do not use in a microwave
+Warranty: 2 years against manufacturing defects

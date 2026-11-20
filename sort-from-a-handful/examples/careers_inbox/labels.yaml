@@ -1,0 +1,45 @@
+# Fictional example: a shared careers@ inbox at "Northline Robotics", a
+# fictional 80-person robotics company. Every name, address and message in
+# this folder is made up. referral has never_hide: true because a referral
+# from an engineer must always reach a person, never get lost in the pile.
+
+referral:
+  never_hide: true
+  examples:
+    - "Hi, this is Dana from the mapping team. My old labmate Rhea Okafor is exactly what the SLAM role needs, we worked together for three years. Her CV is attached, please take a look."
+    - "Forwarding a CV from my former colleague at Mechatron. He is the best embedded engineer I have worked with and he asked me to pass his details on for the firmware opening."
+    - "One of our platform engineers, Priya, wants to refer her former manager. He is open to the senior perception role. I have cc'd him on this thread."
+    - "A friend who left for Cargoline last year says their autonomy lead is looking to move back to the UK. Can I put her in touch with you about the planning role?"
+    - "Internal referral: Jonas in actuation suggested we interview his university friend for the controls internship. Details below."
+
+direct application:
+  examples:
+    - "Hello, I am applying for the senior perception engineer role posted on your site. My CV and a short note on why Northline are attached. I have six years of LiDAR experience."
+    - "I saw your opening for a firmware engineer. I have worked on motor controllers for agricultural robots for four years and would love to apply. CV attached."
+    - "Dear hiring team, please consider my application for the QA role. I have tested automation stacks at two logistics companies and I am relocating to your city in March."
+    - "I am a final year MSc student in robotics and I am applying for the summer internship listed on your careers page. My transcript and CV are attached."
+    - "Good morning, I would like to apply for the controls engineer position. I currently work on drone autopilots and your StackFast posting caught my eye. CV attached."
+
+agency CV:
+  examples:
+    - "We have an excellent candidate on our bench, 9 years in warehouse robotics, immediately available. Would you like to see the profile for your current openings? Rates negotiable."
+    - "Hi there, I represent three senior robotics engineers currently seeking new contracts. All are pre-screened by us. May I send over profiles? Standard agency terms apply."
+    - "Following up on my last email: I have two candidates shortlisted for your perception role, both already interviewed by us. We can arrange trials within a week. Agency fee one month salary."
+    - "Our candidate pool includes SLAM and motion planning specialists with automotive backgrounds. Please reply with your current vacancies and I will send matching CVs today."
+    - "We are a technical recruitment partner for robotics firms across Europe. Could you confirm if you work with agencies? We have strong firmware and autonomy candidates on our books."
+
+interview scheduling:
+  examples:
+    - "Thanks for the interview invitation for Thursday. I need to move it, my flight lands that morning. Would Friday at 10 be possible?"
+    - "Confirming my on-site interview tomorrow at 2pm. Should I ask for reception when I arrive, and is there parking at the office?"
+    - "I have completed the take-home exercise. What is the next step, and who will I be meeting in the second round?"
+    - "The video call link for the panel interview did not work for me. Could you send it again, or a phone number as backup?"
+    - "Quick question before my interview next week: will there be a whiteboard session, and how long is the whole loop?"
+
+spam:
+  examples:
+    - "Grow your engineering team 10x with TalentSurge! Our AI sourcing platform finds the best robotics engineers. Book a demo today and get one month free."
+    - "Exclusive invite: Robotics Hiring Summit, Dubai, with 200 pre-vetted candidates on site. Early bird passes end Friday. Reply NOW to reserve your booth."
+    - "Hello Dear Sir/Madam, we offer guaranteed CV blast to 50,000 employers worldwide. Special discount this week only. Payment via wire transfer."
+    - "Congratulations! Your company has been selected for the Top 100 Robotics Employers award. Claim your trophy and PR package by paying the listing fee."
+    - "We build candidate funnels on autopilot. Integrate our chatbot in 5 minutes. Unsubscribe by replying STOP."

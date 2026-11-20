@@ -1,0 +1,21 @@
+question,label
+"Where is customer data stored?",answerable
+"Do you encrypt data at rest?",answerable
+"What is your uptime commitment?",answerable
+"How quickly will you tell us about a breach?",answerable
+"Do you support SAML single sign-on?",answerable
+"How long are backups kept?",answerable
+"Do your staff sign confidentiality agreements?",answerable
+"Can we run our own penetration test?",answerable
+"What happens to our data if we cancel?",answerable
+"Do you have a SOC 2 report?",answerable
+"Are you ISO 27001 certified?",unanswerable
+"Do you have FedRAMP authorization?",unanswerable
+"Which of your offices are in South America?",unanswerable
+"Do you support hardware security modules for key storage?",unanswerable
+"Can we get a SOC 3 report for our procurement file?",unanswerable
+"Do you offer customer-managed encryption keys on the standard plan?",unanswerable
+"How many security incidents did you have last year?",unanswerable
+"Are your data centres powered by renewable energy?",unanswerable
+"What is your cyber insurance policy number?",unanswerable
+"Can we connect our VPN to your admin console?",unanswerable

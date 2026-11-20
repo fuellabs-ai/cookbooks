@@ -1,0 +1,11 @@
+{
+  "upper": 0.705,
+  "lower": 0.625,
+  "wrong_answers": 0,
+  "wrong_refusals": 0,
+  "check_this": 6,
+  "answerable": 10,
+  "unanswerable": 10,
+  "model": "harims95/hobbylm-embed-140m",
+  "questions_file": "questions.csv"
+}

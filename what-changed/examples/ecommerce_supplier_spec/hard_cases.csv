@@ -1,0 +1,9 @@
+old,new,expected
+"Contains BPA.","BPA free.",changed
+"May contain traces of peanuts.","Contains traces of peanuts.",changed
+"Cap is guaranteed leakproof.","Cap is usually leakproof.",changed
+"Not dishwasher safe.","Dishwasher safe.",changed
+"Warranty: up to 2 years.","Warranty: at least 2 years.",changed
+"Hand wash only.","Hand wash recommended.",changed
+"Sample units available on request.","",removed
+"Spares kit available for order.","",removed

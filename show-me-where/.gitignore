@@ -1,0 +1,5 @@
+__pycache__/
+.venv/
+.hobbylm_cache/
+output/
+*.pyc

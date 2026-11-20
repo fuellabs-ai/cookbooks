@@ -1,0 +1,21 @@
+question,label
+"How do I authenticate API requests?",answerable
+"What happens when I hit the rate limit?",answerable
+"How many requests can I make per minute on the free plan?",answerable
+"How do I install the Python SDK?",answerable
+"What does error 429 mean?",answerable
+"How do I rotate an API key?",answerable
+"How do I redeliver a failed webhook event?",answerable
+"What is the default request timeout?",answerable
+"Which Python versions does the SDK support?",answerable
+"How do I verify a webhook signature?",answerable
+"Do you have a Go SDK?",unanswerable
+"Can I get a higher rate limit without upgrading my plan?",unanswerable
+"Do you support GraphQL?",unanswerable
+"What is the maximum file upload size?",unanswerable
+"Do webhooks work with self-signed certificates?",unanswerable
+"Can I get a dedicated IP address for outbound requests?",unanswerable
+"Is there an official WordPress plugin?",unanswerable
+"Can I call the API from browser JavaScript without a backend?",unanswerable
+"Do you offer a discount for annual billing?",unanswerable
+"Can I batch more than 100 items in one request?",unanswerable

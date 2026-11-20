@@ -1,0 +1,21 @@
+question,label
+"How much annual leave do I get?",answerable
+"Can I carry unused leave into next year?",answerable
+"What equipment do I get for working from home?",answerable
+"How long can I work from another country?",answerable
+"What is the daily meal cap when I travel for work?",answerable
+"What is my notice period after three years?",answerable
+"How soon do I need to submit an expense?",answerable
+"How much leave does a secondary carer get?",answerable
+"How do I book a week of annual leave?",answerable
+"What is the mileage rate?",answerable
+"Do I get a paid sabbatical after five years?",unanswerable
+"Can I bring my dog to the office?",unanswerable
+"Is there a pension match above four percent?",unanswerable
+"Can I expense a gym membership?",unanswerable
+"Do contractors get stock options?",unanswerable
+"Is there a bonus for finishing a certification?",unanswerable
+"Can I buy extra annual leave?",unanswerable
+"Do I get my birthday off as a floating holiday?",unanswerable
+"Does the company pay relocation costs for an internal move?",unanswerable
+"Can I use my work laptop for a personal side project?",unanswerable

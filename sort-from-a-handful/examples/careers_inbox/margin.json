@@ -1,0 +1,12 @@
+{
+  "margin": 0.02,
+  "met_one_in_ten": true,
+  "labelled": 20,
+  "wrongly_sorted": 2,
+  "sent_to_human": 10,
+  "items": 30,
+  "items_file": "inbox.csv",
+  "model": "harims95/hobbylm-embed-140m",
+  "method": "centroid",
+  "rule": "smallest margin with wrongly-sorted at or under one in ten labelled items, at least ten labelled items"
+}

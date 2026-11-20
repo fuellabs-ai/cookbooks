@@ -1,0 +1,21 @@
+question,label,verdict,top_section,score
+How much annual leave do I get?,answerable,Found,leave.md > Leave > Annual leave,0.786
+Can I carry unused leave into next year?,answerable,Found,leave.md > Leave > Carrying leave over,0.818
+What equipment do I get for working from home?,answerable,Check this,remote-work.md > Remote work > Home equipment,0.626
+How long can I work from another country?,answerable,Found,remote-work.md > Remote work > Working from another country,0.835
+What is the daily meal cap when I travel for work?,answerable,Found,expenses.md > Expenses > Travel and meals,0.728
+What is my notice period after three years?,answerable,Found,notice-period.md > Notice period > Notice after probation,0.720
+How soon do I need to submit an expense?,answerable,Found,expenses.md > Expenses > Receipts,0.804
+How much leave does a secondary carer get?,answerable,Found,leave.md > Leave > Parental leave,0.778
+How do I book a week of annual leave?,answerable,Found,leave.md > Leave > Annual leave,0.761
+What is the mileage rate?,answerable,Found,expenses.md > Expenses > Travel and meals,0.721
+Do I get a paid sabbatical after five years?,unanswerable,Check this,leave.md > Leave > Parental leave,0.650
+Can I bring my dog to the office?,unanswerable,Check this,office-and-facilities.docx > Office and facilities > Printers and post,0.633
+Is there a pension match above four percent?,unanswerable,Not in these documents,remote-work.md > Remote work > Working from home,0.572
+Can I expense a gym membership?,unanswerable,Check this,remote-work.md > Remote work > Co-working,0.626
+Do contractors get stock options?,unanswerable,Not in these documents,remote-work.md > Remote work > Co-working,0.581
+Is there a bonus for finishing a certification?,unanswerable,Not in these documents,notice-period.md > Notice period > Probation,0.545
+Can I buy extra annual leave?,unanswerable,Check this,leave.md > Leave > Annual leave,0.703
+Do I get my birthday off as a floating holiday?,unanswerable,Not in these documents,leave.md > Leave > Carrying leave over,0.596
+Does the company pay relocation costs for an internal move?,unanswerable,Not in these documents,expenses.md > Expenses > Travel and meals,0.599
+Can I use my work laptop for a personal side project?,unanswerable,Check this,remote-work.md > Remote work > Co-working,0.639

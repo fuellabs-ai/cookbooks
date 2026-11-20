@@ -1,0 +1,93 @@
+# Example workflow: label new issues with sort_handful.py, on CPU, with no
+# secrets beyond the default GITHUB_TOKEN.
+#
+# To try it in this cookbook repository as-is, it points at the example
+# labels file. To use it in your own repository:
+#   1. copy sort_handful.py to your repository root,
+#   2. put labels.yaml (and margin.json, optional) at your repository root,
+#   3. set SORTER_DIR to "." and LABELS_FILE to "labels.yaml".
+#
+# It only labels. It never closes an issue, never comments, never assigns.
+# If the sorter is unsure (or the top label has never_hide: true), it adds
+# "needs-triage" next to the label. The model is cached between runs with
+# actions/cache, so the second run skips the download. The sort step prints
+# its real run time in the log.
+
+name: Label new issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cache the model between runs
+        uses: actions/cache@v4
+        with:
+          path: hobbylm-model-cache
+          key: hobbylm-embed-140m
+
+      - name: Install the sorter
+        run: pip install sentence-transformers
+
+      - name: Sort the issue and add a label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          SORTER_DIR: sort-from-a-handful
+          LABELS_FILE: sort-from-a-handful/examples/github_issues/labels.yaml
+          SENTENCE_TRANSFORMERS_HOME: hobbylm-model-cache
+        run: |
+          START=$SECONDS
+          python - <<'PY'
+          import csv, os, subprocess, sys, tempfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          sorter = root / os.environ["SORTER_DIR"]
+          labels = root / os.environ["LABELS_FILE"]
+
+          with tempfile.TemporaryDirectory() as tmp:
+              item = Path(tmp) / "issue.csv"
+              with item.open("w", newline="", encoding="utf-8") as handle:
+                  writer = csv.DictWriter(handle, fieldnames=["text"])
+                  writer.writeheader()
+                  writer.writerow({"text": os.environ["ISSUE_TITLE"] + " " + os.environ["ISSUE_BODY"]})
+              subprocess.run(
+                  [sys.executable, "sort_handful.py", str(item),
+                   "--labels", str(labels), "--out-dir", tmp],
+                  cwd=sorter, check=True,
+              )
+              with (Path(tmp) / "sorted.csv").open(newline="", encoding="utf-8") as handle:
+                  row = next(csv.DictReader(handle))
+
+          label = row["label"]
+          repo = os.environ["GITHUB_REPOSITORY"]
+          number = os.environ["ISSUE_NUMBER"]
+          command = [
+              "gh", "api", "-X", "POST",
+              f"repos/{repo}/issues/{number}/labels",
+              "-f", f"labels[]={label}",
+          ]
+          if row["needs_human"] == "True":
+              command += ["-f", "labels[]=needs-triage"]
+          print("adding:", " ".join(command))
+          subprocess.run(command, check=True)
+          PY
+          echo "sorting and labelling took $((SECONDS - START)) s"

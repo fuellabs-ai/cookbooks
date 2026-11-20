@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Sort from a handful: report</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Helvetica,sans-serif;margin:2rem;max-width:60rem;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;}
+th,td{border:1px solid #ccc;padding:.35rem .6rem;text-align:left;vertical-align:top;}
+th{background:#f2f2f2;} td.num{text-align:right;}
+h2{margin-top:2rem;}
+</style></head><body>
+<h1>Sort from a handful: report</h1>
+<p>30 items. Margin 0.000. Nearest-centroid. Model harims95/hobbylm-embed-140m.</p>
+<p>6 items went to a person instead of guessing. 0 items were labelled differently from their expected label.</p>
+<h2>Per label</h2>
+<table>
+<tr><th>label</th><th>sorted</th><th>sent to a person</th><th>wrongly sorted</th></tr>
+<tr><td>complaint</td><td>0</td><td>6</td><td>0</td></tr>
+<tr><td>documents</td><td>6</td><td>0</td><td>0</td></tr>
+<tr><td>fees</td><td>6</td><td>0</td><td>0</td></tr>
+<tr><td>transfer</td><td>6</td><td>0</td><td>0</td></tr>
+<tr><td>visit request</td><td>6</td><td>0</td><td>0</td></tr>
+</table>
+<h2>Needs a human</h2>
+<table>
+<tr><th>top label</th><th>score</th><th>second label</th><th>second score</th><th>margin</th><th>text</th></tr>
+<tr><td>complaint</td><td>0.821</td><td>fees</td><td>0.785</td><td>0.036</td><td>I am writing to complain that the after school club billed us for sessions in October that never ran and nobody has repl...</td></tr>
+<tr><td>complaint</td><td>0.870</td><td>visit request</td><td>0.767</td><td>0.103</td><td>This is the third time this month the school bus has been over 20 minutes late. I need someone to look into it properly.</td></tr>
+<tr><td>complaint</td><td>0.834</td><td>visit request</td><td>0.695</td><td>0.140</td><td>A teacher told my daughter she was hopeless at maths in front of the class. I want to speak to someone senior about how ...</td></tr>
+<tr><td>complaint</td><td>0.809</td><td>fees</td><td>0.775</td><td>0.033</td><td>We were charged twice for the winter concert tickets. The box office says it is the admissions office&#x27;s problem. Please ...</td></tr>
+<tr><td>complaint</td><td>0.812</td><td>visit request</td><td>0.747</td><td>0.065</td><td>I am not happy that our complaint about the lost uniform was closed without anyone calling us. Please reopen it.</td></tr>
+<tr><td>complaint</td><td>0.835</td><td>fees</td><td>0.738</td><td>0.097</td><td>The reported behaviour of one pupil towards my son on the yard has not been addressed for a month. I am raising this for...</td></tr>
+</table>
+<h2>Wrongly sorted</h2>
+<table>
+<tr><th>expected</th><th>got</th><th>score</th><th>margin</th><th>text</th></tr>
+</table>
+</body></html>

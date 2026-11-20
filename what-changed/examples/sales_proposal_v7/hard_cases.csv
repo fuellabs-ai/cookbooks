@@ -1,0 +1,9 @@
+old,new,expected
+"Guaranteed accuracy improvement over the current process.","Accuracy improvement is likely over the current process.",changed
+"Travel costs are not included in the fee.","Travel costs are included in the fee.",changed
+"Up to 2 revision cycles per deliverable.","At least 2 revision cycles per deliverable.",changed
+"Free onboarding workshop included.","Free onboarding workshop for longer engagements.",changed
+"We no longer provide weekly status reports.","We provide weekly status reports.",changed
+"The pilot covers 2 product categories.","",removed
+"References from 3 retail clients available on request.","",removed
+"A dedicated Slack channel is included.","",removed

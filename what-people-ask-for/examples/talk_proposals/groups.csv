@@ -1,0 +1,300 @@
+request,group,score
+"Our Postgres upgrade without downtime. Major version upgrade on a 2TB database with 40 services watching: logical replication, rehearsal, and the rollback we did not need.","postgres, streaming, data",0.923
+"Streaming analytics on a budget. Realtime dashboards for a five person team: windowed aggregates in Postgres, one queue, and no fleet of streaming servers.","postgres, streaming, data",0.916
+"Streaming pipelines without a data team: Postgres to dashboards. One engineer, Postgres logical replication, and a dashboard the CEO checks daily. The design and the three outages it caused.","postgres, streaming, data",0.915
+"Zero downtime database migrations in Postgres. Expand, backfill, contract, with locking rules and a rehearsal checklist. The migration that took down the site, and why it cannot happen again.","postgres, streaming, data",0.909
+When to say no to the data lake. We almost built a data lake for a reporting workload Postgres handled fine. The sizing exercise that saved us six figures.,"postgres, streaming, data",0.901
+"Row level security in a multi tenant Postgres app. RLS everywhere: policies, testing, and the tenant leak we caught in review. A practical setup for small SaaS teams.","postgres, streaming, data",0.891
+"Accessibility on a small team: what we actually shipped. Not an audit, a habit: semantic HTML reviews, keyboard testing in CI, and the fixes users noticed.","actually, read, traces",0.927
+"Data contracts that people actually keep. Schema changes used to break dashboards silently. Versioned contracts with CI checks, and the enforcement conversation with the growth team.","actually, read, traces",0.902
+"Observability for the rest of us: traces your on-call can read. Traces that the on-call engineer can actually read at 3am: span naming, exemplars, and the dashboards we deleted.","actually, read, traces",0.901
+"Evals before demos: how we test our assistant before shipping. Every assistant demo fails in a meeting you care about. Our eval suite: golden questions, refusal checks, and the regression that saved a launch.","actually, read, traces",0.900
+"Passkeys in practice: the migration nobody regrets. We moved 200 thousand users to passkeys with fallbacks. Enrollment numbers, support tickets, and what we would ship first if we started today.","actually, read, traces",0.895
+"Why your design system dies at 200 components, and how to keep it alive. We passed 200 components and every release started breaking three others. This is the governance, versioning, and deprecation routine that got us back to shipping.","design, 200, components",0.916
+"This talk started as a blog post, then became a workshop, then got cut, so here is the 20 minute version with an apology and too many slides. It is about the two years we spent on our internal component library and the four things I would do differently, including one mistake that cost us a release cycle. I promise no live demos that can fail, and at least one ugly diagram I drew on a train.","design, 200, components",0.916
+"I have submitted versions of this talk to three conferences and each reviewer said something different, so this is the version with everything included and a conclusion you can disagree with. It covers running embeddings in production for a search feature with two million documents: the storage bills, the reindexing weekends, the model swap that quietly broke relevance, and the metrics we should have watched from day one. I will show real dashboards, real invoices, and the boring checklist that finally made it stable.","design, 200, components",0.900
+"We deleted our staging environment and lived. Staging drifted for years, so we deleted it and moved to preview environments per pull request. Costs, secrets, and the surprise benefits.","design, 200, components",0.897
+"Shipping a design system without a design team. No designers on staff, one frontend dev, 40 internal apps. How we built and enforced a component library anyway, with lint rules and a changelog.","design, 200, components",0.891
+"Fine tuning small language models on a laptop: what actually works. We fine tuned a small model on a laptop for a classification task and it matched a hosted larger model on our domain. Setup, data, and the failures.","small, fine, model",0.949
+"Fine tuning a small model beats a big one for our classification task. Latency and cost won: a fine tuned small model outperformed the hosted big one on our domain. Data prep, thresholds, and monitoring.","small, fine, model",0.945
+Evaluating small models for internal search before buying a bigger one. We benchmarked three small embedding models on our own search queries before spending on a hosted option. Method and numbers.,"small, fine, model",0.913
+"Local first machine learning in the browser with WebGPU. Running embedding and classification models in the browser with WebGPU: latency wins, privacy wins, and the debugging story nobody tells you.","small, fine, model",0.891
+Container queries and one year of real layouts. A year of container queries on a component library: the refactors they enabled and the fallbacks we kept.,"queries, container, year",0.939
+"CSS container queries in production: two years of lessons. Two years of container queries across a design system and a marketing site: the wins, the polyfill pain, and where media queries still win.","queries, container, year",0.938
+"web performance for teams who cannot rewrite everything. Core Web Vitals on a codebase nobody can rewrite: budgets, third party scripts, and the caching fixes that moved the needle.","queries, container, year",0.910
+Backups you have actually restored: a drill for your data. A practical talk with lessons from real work.,"real, work, lessons",0.951
+restore drills: backups you have actually tested. A practical talk with lessons from real work.,"real, work, lessons",0.948
+"Updated abstract: Incidetn reviwes that change behaviour. Moving from blame to changes, with examples from real postmortems.","real, work, lessons",0.896
+"Running your own CI runners on spare hardware. Self hosted runners on three old machines: queue times down, secrets risk up. The hardening we did and the bill we cut.","services, runners, sync",0.918
+"One monorepo, eight services, zero regrets?. Eight services, one repo, one CI. The dependency graph, the code owners fight, and the day we almost split it up.","services, runners, sync",0.917
+"Offline first mobile sync, the hard parts. Conflict resolution, tombstones, and the queue that survives a kill switch. What offline sync really costs after the demo works.","services, runners, sync",0.913
+"Introducing SynergyFlow, the AI powered enterprise readiness platform for synergy. SynergyFlow unifies your workflows with AI driven insights at enterprise scale. Book a demo at our booth.","synergyflow, ai, blockchain",0.949
+"Vendor pitch again: SynergyFlow will change your workflow. See SynergyFlow live: AI insights, dashboards, and a free pilot for attendees.","synergyflow, ai, blockchain",0.935
+NextGen Blockchain Solutions: revolutionizing your digital transformation journey. NextGen brings blockchain to your supply chain with zero friction. Visit us at table four.,"synergyflow, ai, blockchain",0.902
+Is a workshop proposal allowed to have two presenters?. logistics question about the workshop format and presenter count.,"workshop, allowed, propose",0.926
+Can I submit a workshop instead of a talk? This abstract is for a half day session,"workshop, allowed, propose",0.918
+"I would like to propose a panel but have no co panelists yet, is that allowed?","workshop, allowed, propose",0.913
+"Technical writing for engineers who hate writing. Templates, a 20 minute slot in the sprint, and review etiquette that made docs a habit instead of a punishment.","writing, docs, week",0.932
+"Nobody reads your docs: writing for humans anyway. Docs written for skimmers: task-first pages, decision records, and the analytics that showed what people actually read.","writing, docs, week",0.931
+"The onboarding doc that cut ramp up time in half. Our new hires shipped in week one instead of week four. The doc structure, the owner rota, and the metrics that proved it.","writing, docs, week",0.924
+"Resubmitting with tweaks: Reducing app size by 40 percent. Assets, native libraries, and the frame work we finally dropped.",said again (6 people asked for this),0.989
+"Updated abstract: Reducing app size by 40 percent. Assets, native libraries, and the frame work we finally dropped.",said again (6 people asked for this),0.992
+"Resubmitting: Reducing app size by 40 percent. Assets, native libraries, and the frame work we finall dropped.",said again (6 people asked for this),0.981
+"Reducing app size by 40 percent. Assets, native libraries, and the frame work we finally dropped.",said again (6 people asked for this),0.994
+"Revised: Reducing app size by 40 percent. Assets, native libraries, and the frame work we finally dropped.",said again (6 people asked for this),0.986
+"(second submission) Reducing app size by 40 percent. Assets, native libraries, and the frame work we finally dropped.",said again (6 people asked for this),0.993
+Feature flags at scale without the spaghetti. Keeping flags tidy across 30 services and three years of shortcuts.,said again (6 people asked for this),0.989
+Resubmitted by request of a reviewer: Feature flags at scale without the spaghetti. Keeping flags tidy across 30 services and three years of shortcuts.,said again (6 people asked for this),0.982
+Revised: Feature flags at scale without the spaghetti. Keeping flags tidy across 30 services and three years of shortcuts.,said again (6 people asked for this),0.990
+"Revised abstract, same talk: Feature flags at scale without the spaghetti. Keeping flags tidy across 30 services and three years of shortcuts.",said again (6 people asked for this),0.982
+Updated for this year: Feature flags at scale without the spaghetti. Keeping flags tidy across 30 services and three years of shortcuts.,said again (6 people asked for this),0.982
+Resubmitting with tweaks: Feature flags at scale without the spaghetti. Keeping flags tidy across 30 services and three years of shortcuts.,said again (6 people asked for this),0.982
+"Revised: Practical SSO for small SaaS products. Adding SAML and OIDC without a security team, from a two person infra crew.",said again (6 people asked for this),0.993
+"Resubmitting with tweaks: Practical SSO for small SaaS products. Adding SAML and OIDC without a security team, from a two person infra crew.",said again (6 people asked for this),0.987
+"Updated abstract: Practical SSO for small SaaS products. Adding SAML and OIDC without a security team, from two person infra crew.",said again (6 people asked for this),0.992
+"Revised abstract, same talk: Practical SSO for small SaaS products. Adding SAML and OIDC without a security team, from a two person infra crew.",said again (6 people asked for this),0.991
+"Practical SSO for small SaaS products. Adding SAML and OIDC without a security team, from a two person infra crew.",said again (6 people asked for this),0.991
+"Resubmitting: Practical SSO for small SaaS products. Adding SAML and OIDC without a security team, from a two person infra crew.",said again (6 people asked for this),0.988
+The future of DevOps is here: introduce DevOpsOne. See how DevOpsOne unifies your toolchain in one AI driven dashboard.,said again (6 people asked for this),0.994
+Revised: The future of DevOps is here: introduce DevOpsOne. See how DevOpsOne unifies your toolchain in one AI driven dashboard.,said again (6 people asked for this),0.993
+Resubmitted by request of a reviewer: The future of DevOps is here: introduce DevOpsOne. See how DevOpsOne unifies your toolchain in one AI driven dashboard.,said again (6 people asked for this),0.988
+Resubmitting: The future of DevOps is here: introduce DevOpsOne. SSee how DevOpsOne unifies your toolchain in one AI driven dashboard.,said again (6 people asked for this),0.978
+(second submission) The future of DevOps is here: introduce DevOpsOne. See how DevOpsOne unifies your toolchain in one AI driven dashboard.,said again (6 people asked for this),0.992
+Updated for this year: The future of DevOps is here: introduce DevOpsOne. See how DevOpsOne unifies your toolchain in one AI driven dashboard.,said again (6 people asked for this),0.984
+"Updated abstract: The modall that ate our accessibility budget. A retrofit story about focus management, screen readers, and the escape key.",said again (6 people asked for this),0.986
+"(second submission) The modal that ate our accessibility budget. A retrofit story about focus management, screen readers, and the escape key.",said again (6 people asked for this),0.991
+"Resubmitting with tweaks: The modal that ate our accessibility budget. A retrofit story about focus management, screen readers, and the escape key.",said again (6 people asked for this),0.986
+"Resubmitted by request of a reviewer: The modal that ate our accessibility budget. A retrofit story about focus management, screen readers, and the escape key.",said again (6 people asked for this),0.988
+"The modal that ate our accessibility budget. A retrofit story about focus management, screen readers, and the escape key.",said again (6 people asked for this),0.994
+"Updated for this year: The modal that ate our accessibility budget. A retrofit story about focus management, screen readers, and the escape key.",said again (6 people asked for this),0.982
+"App store reviews as a bug tracker. A workflow that turns store reviews into filed, triaged issues.",said again (6 people asked for this),0.989
+"Revised: App store reviews as a bug tracker. A workflow that turns store reviews into filed, triaged issues.",said again (6 people asked for this),0.992
+"Revised abstract, same talk: App store reviews as a bug tracker. A workflow that turns store reviews into filed, triaged issues.",said again (6 people asked for this),0.987
+"Resubmitting: App store reviews as a bug tracker. A workflow that turns store reviews into filed, triaged issues.",said again (6 people asked for this),0.974
+"Updated for this year: App store reviews as a bug tracker. A workflow that turns store reviews into filed, triaged issues.",said again (6 people asked for this),0.984
+"Updated abstract: App store reviews as a bug tracker. A workflow that turns store reviews into filed, triaged issues.",said again (6 people asked for this),0.994
+"Revised abstract, same talk: Battery drain hunting on Android. Case study of a 20 percent battery complaint and the wake lock that caused it.",said again (6 people asked for this),0.990
+Battery drain hunting on Android. Case study of a 20 percent battery complaint and the wake lock that caused it.,said again (6 people asked for this),0.993
+Revised: Battery drain hunting on Android. Case study of a 20 percent battery complaint and the wake lock that caused it.,said again (6 people asked for this),0.995
+Updated abstract: Battery drain hunting on Android. Case study of a 20 percent battery complaint and the wake lock that caused it.,said again (6 people asked for this),0.996
+Resubmitting with tweaks: Battery drain hunting on Android. Case study of a 20 percent battery complaint and the wake lock that caused it.,said again (6 people asked for this),0.985
+Updated for this year: Battery drain hunting on Android. Case study of a 20 percent battery complaint and the wake lock that caused it.,said again (6 people asked for this),0.988
+Updated for this year: Career ladders without levels theatre. How we describe growth plainly and skip the title inflation.,said again (6 people asked for this),0.989
+"Revised abstract, same talk: Career ladders without levels theatre. How we describe growth plainly and skip the title inflation.",said again (6 people asked for this),0.986
+Resubmitting with tweaks: Career ladders without levels theatre. How we describe growth plainly and skip the title inflation.,said again (6 people asked for this),0.982
+Resubmitted by request of a reviewer: Career ladders without levels theatre. How we describe growth plainly and skip the title inflation.,said again (6 people asked for this),0.988
+Career ladders without levels theatre. How we describe growth plainly and skip the title inflation.,said again (6 people asked for this),0.986
+Updated abstract: Career ladders without levels theatre. How we describe growth plainly and skip the title inflation.,said again (6 people asked for this),0.995
+Metrics that disagree: reconciling two sources of truth. Why finance and product saw different revenue and how we made them match.,said again (6 people asked for this),0.992
+Updated abstract: Metrics that disagree: reconciling two sources of truth. Why finance and product saw different revenue and how we made them match.,said again (6 people asked for this),0.995
+Updated for this year: Metrics that disagree: reconciling two sources of truth. Why finance and product saw different revenue and how we made them mathc.,said again (6 people asked for this),0.977
+Resubmitting with tweaks: Metrics that disagree: reconciling two sources of truth. Why finance and product saw different revenue and how we made them match.,said again (6 people asked for this),0.973
+Revised: Metrics that disagree: reconciling two sources of truth. Why finance and product saw different revenue and how we made them match.,said again (6 people asked for this),0.995
+"Revised abstract, same talk: Metrics that disagree: reconciling two sources of truth. Why finance and product saw different revenue and how we made them match.",said again (6 people asked for this),0.991
+Resubmitting: Migrating 200 services to a new deploy pipeline. How we moved a decade of CI config without freezing feature work.,said again (6 people asked for this),0.984
+"Revised abstract, same talk: Migrating 200 services to a new deploy pipeline. How we moved a decade of CI config without freezing feature work.",said again (6 people asked for this),0.988
+Updated abstract: Migrating 200 services to a new deploy pipeline. How we moved a decade of CI config without freezing feature work.,said again (6 people asked for this),0.996
+(second submission) Migrating 200 services to a new deploy pipeline. How we moved a decade of CI config without freezing feature work.,said again (6 people asked for this),0.994
+Migrating 200 services to a new deploy pipeline. How we moved a decade of CI config without freezing feature work.,said again (6 people asked for this),0.994
+Resubmitted by request of a reviewer: Migrating 200 services to a new deploy pipeline. How we moved a decade of CI config without freezing feature work.,said again (6 people asked for this),0.992
+"Revised: Secrets management for teams of five. You do not need an enterprise vault on day one, but you do need these three habits.",said again (6 people asked for this),0.995
+"Updated abstract: Secrets management for teams of five. You do not need an enterprise vault on day one, but you do need these three habits.",said again (6 people asked for this),0.995
+"Resubmitting with tweaks: Secrets management for teams of five. You do not need an enterprise vault on day one, but you do need these three habits.",said again (6 people asked for this),0.981
+"Revised abstract, same talk: Secrets management for teams of five. You do not need an enterprise vault on day one, but you do need these three habits.",said again (6 people asked for this),0.991
+"Updated for this year: Secrets management for teams of five. You do not need an enterprise vault on day one, but you do need these three habits.",said again (6 people asked for this),0.989
+"Secrets management for teams of five. You do not need an enterprise vault on day one, but you do need these three habits.",said again (6 people asked for this),0.974
+"revised: State management without a library. A story of deleting 4,000 lines of state code and what replaced it.",said again (6 people asked for this),0.985
+"State management without a library. A story of deleting 4,000 lines of state code and what replaced it.",said again (6 people asked for this),0.992
+"Updated abstract: State management without a library. A story of deleting 4,000 lines of state code and what replaced it.",said again (6 people asked for this),0.995
+"Resubmitting with tweaks: State management without a library. A story of deleting 4,000 lines of state code and what replacde it.",said again (6 people asked for this),0.964
+"Updated for this year: State management without a library. A story of deleting 4,000 lines of state code and what replaced it.",said again (6 people asked for this),0.986
+"Revised abstract, same talk: State management without a library. A story of deleting 4,000 lines of state code and what replaced it.",said again (6 people asked for this),0.983
+Updated abstract: Testing mobile apps on real devices without a lab. A practical device matrix for a team of four.,said again (6 people asked for this),0.996
+Testing mobile apps on real devices without a lab. A practical device matrix for a team of four.,said again (6 people asked for this),0.992
+(second submission) Testing mobile apps on real devices without a lab. A practical device matrix for a team of four.,said again (6 people asked for this),0.993
+"Revised abstract, same talk: Testing mobile apps on real devices without a lab. A practical device matrix for a team of four.",said again (6 people asked for this),0.990
+Revised: Testing mobile apps on real devices without a lab. A practical device matrix for a team of four.,said again (6 people asked for this),0.993
+Resubmitted by request of a reviewer: Testing mobile apps on real devices without a lab. A practical device matrix for a team of four.,said again (6 people asked for this),0.991
+"Revised abstract, same talk: Web components after five years: what finally clicked. Five years and three rewrites later, here is what web components are actually good for, with code from a real product.",said again (6 people asked for this),0.990
+"Resubmitting: Web components after five years: what finally clicked. Five years and three rewrites later, here is what web components are actually good for, with code from a real product.",said again (6 people asked for this),0.984
+"Updated for this year: Web components after five years: what finally clicked. Five years and three rewrites later, here is what web components are actually good for, with code from a real product.",said again (6 people asked for this),0.990
+"Web components after five years: what finally clicked. Five years and three rewrites later, here is what web components are actually good for, with code from a real product.",said again (6 people asked for this),0.996
+"(second submission) Web components after five years: what finally clicked. Five years and three rewrites later, here si what web components are actually good for, with code from a real product.",said again (6 people asked for this),0.991
+"Updated abstract: Web components after five years: what finally clicked. Five years and three rewrites later, here is what web components are actually good for, with code from a real product.",said again (6 people asked for this),0.996
+(second submission) From jQuery to modern tooling without a rewrite. How a decade old codebase got onto modern tooling one page at a time.,said again (5 people asked for this),0.991
+Updated for this year: From jQuery to modern tooling without a rewrite. How a decade old codebase got onto modern tooling one page at a time.,said again (5 people asked for this),0.987
+Resubmitting: From jQuery to modern tooling without a rewrite. How a decade old codebase got onto modern toooling one page at a time.,said again (5 people asked for this),0.976
+Revised: From jQuery to modern tooling without a rewrite. How a decade old codebase got onto modern tooling one page at a time.,said again (5 people asked for this),0.989
+Resubmitted by request of a reviewer: From jQuery to modern tooling without a rewrite. How a decade old codebase got onto mmodern tooling one page at a time.,said again (5 people asked for this),0.981
+"Resubmitting: Supply chain security without stopping the world. Pinning, scanning, and a policy your developers will follow.",said again (5 people asked for this),0.973
+"(second submission) Supply chain security without stopping the world. Pinning, scanning, and a policy your developers will follow.",said again (5 people asked for this),0.991
+"Supply chain security without stopping the world. Pinning, scanning, and a policy your developers will follow.",said again (5 people asked for this),0.980
+"Updated abstract: Supply chain security without stopping the world. Pinning, scanning, and a policy your developers will follow.",said again (5 people asked for this),0.984
+"Revised: Supply chain security without stopping the world. Pinning, scanning, and a policy your developers will follow.",said again (5 people asked for this),0.987
+Resubmitting with tweaks: Backfills without breaking dashboards. Strategies for refilling history while the business keeps looking at charts.,said again (5 people asked for this),0.987
+"Revised abstract, same talk: Backfills without breaking dashboards. Strategies for refilling history while the business keeps looking at charts.",said again (5 people asked for this),0.985
+Resubmitting: Backfills without breaking dashboards. Strategies for refilling history while the business keeps looking at charts.,said again (5 people asked for this),0.984
+Updated for this year: Backfills without breaking dashboards. Strategies for refilling history while the business keeps looking at charts.,said again (5 people asked for this),0.984
+Revised: Backfills without breaking dashboards. Strategies for refilling history while the business keeps looking at charts.,said again (5 people asked for this),0.992
+Revised: Backups you have actually restored: a drill for your data. How we run quarterly restore drills and what the first one taught us.,said again (5 people asked for this),0.991
+Updated for this year: Backups you have actually restored: a drill for your data. How we run quarterly restore drills and what the first one taught us.,said again (5 people asked for this),0.989
+"Revised abstract, same talk: Backups you have actually restored: a drill for your data. How we run quarterly restore drills and what the first one taught us.",said again (5 people asked for this),0.988
+(second submission) Backups you have actually restorred: a drill for your data. How we run quarterly restore drills and what the first one taught us.,said again (5 people asked for this),0.988
+Resubmitting with tweaks: Backups you have actually restored: a drill for your data. How we run quarterly restore drills and what the first one taught us.,said again (5 people asked for this),0.975
+Resubmitted by request of a reviewer: Documentation debt is technical debt. A quarterly cleanup ritual that keeps docs alive.,said again (5 people asked for this),0.985
+Revised: Documentation debt is technical debt. A quarterly cleanup ritual that keeps docs alive.,said again (5 people asked for this),0.993
+"Revised abstract, same talk: Documentation debt is technical debt. A quarterly cleanup ritual that keeps docs alive.",said again (5 people asked for this),0.985
+Documentation debt is technical debt. A quarterly cleanup ritaul that keeps docs alive.,said again (5 people asked for this),0.973
+Updated for this year: Documentation debt is technical debt. A quarterly cleanup ritual that keeps docs alive.,said again (5 people asked for this),0.988
+"Resubmitting with tweaks: Embeddings in production: storage, updates, and the boring parts. Everything after the demo: reindexing, versioning vectors, and handling model swaps.",said again (5 people asked for this),0.990
+"Resubmitting: Embeddings in production: storage, updates, and the boring parts. Everything after the demo: reindexing, versioning vectors, and handling model swaps.",said again (5 people asked for this),0.987
+"Revised: Embeddings in production: storage, updates, and the boring parts. Everything after the demo: reindexing, versioning vectors, and handling model swaps.",said again (5 people asked for this),0.991
+"Updated for this year: Embeddings in production: storage, updates, and the boring parts. Everything after the demo: reindexing, versioning vectors, and handling model swaps.",said again (5 people asked for this),0.981
+"Resubmitted by request of a reviewer: Embeddings in production: storage, updates, and the boring parts. Everything after the demo: reindexing, versioning vectors, and handling model swaps.",said again (5 people asked for this),0.987
+"revised: Incident reviews that change behaviour. Moving from blame to changes, with examples from real postmortems.",said again (5 people asked for this),0.986
+"Resubmitting with tweaks: Incident reviews that change behaviour. Moving from blame to changes, with examples from real postmortems.",said again (5 people asked for this),0.984
+"(second submission) Incident reviews that change behaviour. Moving from blame to changes, with examples from real postomrtems.",said again (5 people asked for this),0.984
+"Updated for this year: Incident reviews that change behaviour. Moving from blame to changes, with examples from real postmortems.",said again (5 people asked for this),0.982
+"Incident reviews that change behaviour. Moving from blame to changes, with examples from real postmortems.",said again (5 people asked for this),0.980
+Updated abstract: Remote pairing that actually works. Tools and habits for pairing across time zones without exhaustion.,said again (5 people asked for this),0.988
+Resubmitting with tweaks: Remote pairing that actually works. Tools and habits for pairing across time zones without exhaustion.,said again (5 people asked for this),0.988
+remote pairing that actually works. Toolls and habits for pairing across time zones without exhaustion.,said again (5 people asked for this),0.977
+Resubmitting: Remote pairing that actually works. Tools and habits for pairing across time zones without exhaustion.,said again (5 people asked for this),0.985
+Revised: Remote pairing that actually works. Tools and habits for pairing across time zones without exhaustion.,said again (5 people asked for this),0.989
+Updated fr this year: Transform your pipeline with CloudMetrics Pro. Our platform delivers actioable insights at enterprise scale. Book a demo at our booth.,said again (5 people asked for this),0.981
+Transform your pipeline with CloudMetrics Pro. Our platform delivers actionable insights at enterprise scale. Book a demo at our booth.,said again (5 people asked for this),0.987
+Resubmitting with tweaks: Transform your pipeline with CloudMetrics Pro. Our platform delvers actionable insights at enterprise scale. Book a demo at our booth.,said again (5 people asked for this),0.986
+Resubmitting: Transform your pipeline with CloudMetrics Pro. Our platform delivers actionable insights at enterprise scale. Book a demo at our booth.,said again (5 people asked for this),0.972
+"Revised abstract, same talk: Transform your pipeline with CloudMetrics Pro. Our platform delivers actionable insights at enterprise scale. Book a demo at our booth.",said again (5 people asked for this),0.980
+"Resubmitting with tweaks: Building a component library your designers do not fight you over. How we ersion, test, and document components so design and engineering stop passing tickets back and forth.",said again (5 people asked for this),0.978
+"Updated abstract: Building a component library your designers do not fight you over. How we version, test, and document components so design and engineering stop passing tickets back and forth.",said again (5 people asked for this),0.994
+"Resubmitted by request of a reviewer: Building a component library your designers do not fight you over. How we version, test, and document components so design and engineering stop passing tickets back and forth.",said again (5 people asked for this),0.990
+"Revised: Building a component library your designers do not fight you over. How we version, test, and document components so design and engineering stop passing tickets back and forth.",said again (5 people asked for this),0.993
+"Revised abstract, same talk: Building a component library your designers do not fight you over. How we version, test, and document components so design and engineering stop passing tickets back and forth.",said again (5 people asked for this),0.986
+Resubmitted by request of a reviewer: Cost of the cloud: the invoice nobody reads. A linne by line tour of our bill and the six changes that cut it by a third.,said again (5 people asked for this),0.986
+Cost of the cloud: the invoice nobody reads. A line by line tour of our bill and the six changes that cut it by a third.,said again (5 people asked for this),0.990
+Resubmitting: Cost of the cloud: the invoice nobody reads. A line by line tour of our bill and the six changes that cut it by a third.,said again (5 people asked for this),0.988
+Updated abstract: Cost of the cloud: the invoice nobody reads. A line by line tour of our bill and the six changes that cut it by a third.,said again (5 people asked for this),0.991
+Resubmitting with tweaks: Cost of the cloud: the invoice nobody reads. A line by line tour of our bill and the six changes that cut it by a third.,said again (5 people asked for this),0.985
+dbt in a team of three. How a tiny team keeps models tested and documented without a data platform crew.,said again (5 people asked for this),0.975
+Resubmitted by request of a reviewer: dbt in a team of three. How a tiny team keeps models tested and documented without a data platform crew.,said again (5 people asked for this),0.986
+Updated abstract: dbt in a team of three. How a tiny team keeps models tested and documented without a data platform crew.,said again (5 people asked for this),0.995
+Updated for this year: dbt in a team of three. How a tiny team keeps models tested and documented without a data platform crew.,said again (5 people asked for this),0.982
+"revised abstract, same talk: dbt in a team of three. How a tiny team keeps models ested and documented without a data platform crew.",said again (5 people asked for this),0.970
+Event tracking that survives schema drift. Versioning analytics events so dashboards do not silently rot.,said again (5 people asked for this),0.992
+Resubmitted by request of a reviewer: Event tracking that survives schema drift. Versioning analytics events so dashboards do not silently rot.,said again (5 people asked for this),0.990
+Updated for this year: Event trackinng that survives schema drift. Versioning analytics events so dashboards do not silently rot.,said again (5 people asked for this),0.983
+Resubmitting: Event tracking that survives schema drift. Versioning analytics events so dashboards do not silently rot.,said again (5 people asked for this),0.982
+Updated abstract: Event tracking that survives schema drift. Versioning analytics events so dashboards do not silently rot.,said again (5 people asked for this),0.995
+(second submission) The phishing email that got past everyone. A case study of one successful phish and every control that failed and worked.,said again (5 people asked for this),0.988
+Updated for this year: The phishing email that got past everyone. A case study of one successful phish and every control that failed and worked.,said again (5 people asked for this),0.981
+Updated abstract: The phishing email that got past everyone. A case study of one successful phish and every control that failed and worked.,said again (5 people asked for this),0.995
+"Revised abstract, same talk: The phishing email that got past everyone. A case study of one successful phish and every control that failed and worked.",said again (5 people asked for this),0.985
+Resubmitted by request of a reviewer: The phishing email that got past everyone. A case study of one successful phish and every control that failed and worked.,said again (5 people asked for this),0.988
+Updated for this year: A support bot that knows when to shut up. Designing an assistant that hands off to humans instead of guessing.,said again (4 people asked for this),0.980
+Updted abstract: A support bot that knows when to shut up. Designing an assistant that hnads off to humans instead of guessing.,said again (4 people asked for this),0.977
+Resubmitted by request of a reviewer: A support bot that knows when to shut up. Designing an assistant that hands off to humans instead of guessing.,said again (4 people asked for this),0.987
+A support bot that knows when to shut up. Designing an assistant that hands off to humans instead of guessing.,said again (4 people asked for this),0.990
+Resubmitting with tweaks: Hiring for depth without LeetCode. An interview loop that predicts on the job work and respects candidates.,said again (4 people asked for this),0.985
+"Revised abstract, same talk: Hiring for depth without LeetCode. An interview loop that predicts on the job work and respects candidates.",said again (4 people asked for this),0.984
+Hiring for depth without LeetCode. An interview loop that predicts on the job work and respects candidates.,said again (4 people asked for this),0.989
+Resubmittde by request of a reviewer: Hiring for depth without LeetCode. Ann interview loop that predicts on the job work and respects candidates.,said again (4 people asked for this),0.977
+"(second submission) From cron to airflow: one pipeline at a time. Migrating scheduled jobs gradually, with the mistakes that cuased double charges.",said again (4 people asked for this),0.993
+"Revised abstract, same talk: From cron to airflow: one pipeline at a time. Migrating scheduled jobs gradually, with the mistakes that caused double charges.",said again (4 people asked for this),0.990
+"Resubmitted by request of a reviewer: From cron to airflow: one pipeline at a time. Migrating scheduled jobs gradually, with the mistakes that caused double charges.",said again (4 people asked for this),0.993
+"Resubmitting with tweaks: From cron to airflow: one pipeline at aa time. Migrating scheduled jobs gradually, with the mistakes that caused double charges.",said again (4 people asked for this),0.984
+Updated for this year: Search that understands typos: from kyewords to hybrid retrieval. Mixing lexical and embedding search to survive real user spelling.,said again (4 people asked for this),0.968
+"Revised abstract, same talk: Search that understands typos: from keywords to hybrid retrieval. Mixing lexical and embedding search to survive real user spelling.",said again (4 people asked for this),0.985
+(second submission) Search that understands typos: from keywords to hybrid retrieval. Mixing lexical and embedding search to survive real user spelling.,said again (4 people asked for this),0.988
+Search that understands typos: from keywords to hybrid retrieval. Mixing lexical and embedding search to survive real user spelling.,said again (4 people asked for this),0.990
+"guardrails we actually ship: testing LLM features like software. A practical suite of checks for a feature where output is text, not a number.",said again (4 people asked for this),0.986
+"Updated for this year: Guardrails we actually ship: testing LLM features like software. A practical suite of checks for a feature where output is text, not a number.",said again (4 people asked for this),0.992
+"Revised abstract, same talk: Guardrails we actually ship: testing LLM features like software. A practical suite of checks for a feature where output is text, not a number.",said again (4 people asked for this),0.992
+"Updated abstract: Guardrails we actually ship: testing LLM features like software. A practical suite of checks for a feature where output is text, not a number.",said again (4 people asked for this),0.996
+"Updated abstract: Meeting audits: we cancelled a third of our meetings. The exercise, the pushback, and what replaced the cancelled ones.",said again (4 people asked for this),0.994
+"Meeting audits: we cancelled a third of our meetings. The exercise, the pushback, and what replaced the cancelled ones.",said again (4 people asked for this),0.993
+"Updated for this year: Meeting audits: we cancelled a third of our meetings. The exercise, the pushback, and what replaced the cancelled ones.",said again (4 people asked for this),0.989
+"Resubmitting: Meeting audits: we cancelled a third of our meetings. The exercise, the pushback, and what replaced the cancelled ones.",said again (4 people asked for this),0.986
+"On call that does not burn people out. Schedules, runbooks, and the rotation rules we changed after two rough quarters.",said again (4 people asked for this),0.988
+"Revised abstract, same talk: On call tat does not burn people out. Schedules, runbooks, and the rotation rules we changed after two rough quarters.",said again (4 people asked for this),0.976
+"Updated abstract: On call that does not burn people out. Schedules, runbooks, and the rotation rules we changed after two rough quarters.",said again (4 people asked for this),0.993
+"Updated for this year: On call that does not burn people out. Schedules, runbooks, and the rotation rules we changed after two rough quarters.",said again (4 people asked for this),0.980
+(second submission) Fonts that cost you users: performance and fallbacks. Real numbers on web font loading from a site with two million monthly visitors.,said again (3 people asked for this),0.994
+Fonts that cost you users: performance and fallbacks. Real numbers on web font loading from a site with two million monthly visitors.,said again (3 people asked for this),0.994
+Resubmitting: Fonts that cost you users: performance and fallbacks. Real numbers on web font loading from a site with two million monthly visitors.,said again (3 people asked for this),0.989
+"Revised abstract, same talk: Deep links that do not break. Surviving routes, redirects, and app updates without dead ends.",said again (3 people asked for this),0.973
+"Deep links that do not break. Surviving routes, redirects, and app updates without dead ends.",said again (3 people asked for this),0.989
+"(second submission) Deep links that do not break. Surviving routes, redirects, and app updates without dead ends.",said again (3 people asked for this),0.988
+Nobody reads your docs: writing for humans anyway. A practical talk with lessons from real work.,said again (3 people asked for this),0.988
+Nobody reads your documentation: writing for humans anyway. A practical talk with lessons from real work.,said again (3 people asked for this),0.994
+Nobody reads your documentation: writing for humans anyway. A practical talk with lessons from real wrok.,said again (3 people asked for this),0.984
+"Resubmitting: Fine tuning versus prompt engineering: we tested both for six months. Csots, quality, and maintenance of each approach on one real product.",said again (3 people asked for this),0.985
+"Resubmitting with tweaks: Fine tuning versus prompt engineering: we tested both for six months. Costs, quality, and maintenance of each approach on one real product.",said again (3 people asked for this),0.992
+"Fine tuning versus prompt engineering: we tested both for six months. Costs, quality, and maintenance of each approach on one real product.",said again (3 people asked for this),0.983
+Updated for this year: Logging what matters when it matters. Designing audit logs you can actually use during an incident.,said again (3 people asked for this),0.988
+Logging what matters when it matters. Designing audit logs you can actually use during an incident.,said again (3 people asked for this),0.988
+Revised: Logging what matters when it matters. Designing audit logs you can actually use during an incident.,said again (3 people asked for this),0.994
+"Revised: Push notifications people keep enabled. Permission timing, content, and the settings screen that halved opt outs.",said again (3 people asked for this),0.991
+"Resubmitting with tweaks: Push notifications people keep enabled. Permission timing, content, and the settings screen that halved opt outs.",said again (3 people asked for this),0.987
+"Push notifications people keep enabled. Permission timing, content, and the settings screen that halved opt outs.",said again (3 people asked for this),0.991
+"Revised: Running open models on premises for a hospital client. Latency, hardware, and the paperwork of keeping data inside the building.",said again (3 people asked for this),0.993
+"Resubmitted by request of a reviewer: Running open models on premises for a hospital lcient. Latency, hardware, and the paperwork of keeping data inside the building.",said again (3 people asked for this),0.988
+"Running open models on premises for a hospital client. Latency, hardware, and the paperwork of keeping data inside the building.",said again (3 people asked for this),0.992
+Updated for this year: Security reviews your engineers do not dread. Making threat modeling a whiteboard habit instead of a gate.,said again (3 people asked for this),0.989
+Revised: Security reviews your engineers do not dread. Making threat modeling a whiteboard habit instead of a gate.,said again (3 people asked for this),0.995
+Resubmitted by request of a reviewer: Security reviews your engineers do not dread. Making threat modeling a whiteboard habit instead of a gate.,said again (3 people asked for this),0.989
+"Updated for this year: Postgres at 4TB: the queries, the bloat, the fixes. A tour of the maintenance that keeps a big relational database healthy.",said again (3 people asked for this),0.994
+"Updated abstract: Postgres at 4TB: the queries, the bloat, the fixes. A tour of the maintenance that keeps a big relational database healthy.",said again (3 people asked for this),0.997
+"Revised abstract, same talk: Postgres at 4TB: the queries, the bloat, the fixes. A tour of the maintenance that keeps a big relational database healthy.",said again (3 people asked for this),0.992
+Cost of the cloud: the invoice nobody reads. A practical talk with lessons from real work.,said again (2 people asked for this),0.991
+The cloud invoice nobody reads: a cost tour. A practical talk with lessons from real work.,said again (2 people asked for this),0.991
+"Embeddings in production: storage, updates, and the boring parts. A practical talk with lessons from real work.",said again (2 people asked for this),1.000
+"Embeddings in production: storage, updates and the boring parts. A practical talk with lessons from real work.",said again (2 people asked for this),1.000
+"Offline first mobile sync, the tricky parts. A practical talk with lessons from real work.",said again (2 people asked for this),0.998
+"Offline first mobile sync, the hard parts. A practical talk with lessons from real work.",said again (2 people asked for this),0.998
+"Resubmitting with tweaks: On call that does not burn people out. Schedules, runbooks, and the rotation rules we changed after two rough quarters.",said again (2 people asked for this),0.989
+"resubmitting: On call that does not burn people out. Schedules, runbooks, and the rotation rules we changed after two rough quarters.",said again (2 people asked for this),0.989
+"Resubmitting with tweaks: Running open models on premises for a hospital client. Latency, hardware, and the paperwork of keeping data inside the building.",said again (2 people asked for this),0.988
+"Resubmitting: Running open modells on premises for a hospital client. Latency, hardware, and the paperwork of keeping data inside the building.",said again (2 people asked for this),0.988
+Resubmitting with tweaks: Search that understands typos: from keywords to hybrid retrieval. Mixing lexical and embedding search to survive real user spelling.,said again (2 people asked for this),0.990
+Resubmitting: Search that understands typos: from keywords to hybrid retrieval. iMxing lexical and embedding search to survive real user spelling.,said again (2 people asked for this),0.990
+"Revised: The warehouse is full: pruning data you will never query. Retention policies that saved us 60 percent of storage, and what we regret deleting.",said again (2 people asked for this),0.994
+"Updated for this year: The warehouse is full: pruning data you will never query. Retention policies that saved us 60 percent of storage, and what we regret deleting.",said again (2 people asked for this),0.994
+Threat modelling for people who hate spreadsheets. A practical talk with lessons from real work.,said again (2 people asked for this),0.997
+Threat modeling for people who hate spreadsheets. A practical talk with lessons from real work.,said again (2 people asked for this),0.997
+"Accessibility is not a phase: retrofitting a legacy SPA. A two year retrofit of a decade old SPA: audits, focus management, and the 15 fixes that covered 80 percent of the issues.",Doesn't fit any group,0.000
+"Resubmitted by request of a reviewer: Dee links that do not break. Surviving routes, redirects, and app updates without dead ends.",Doesn't fit any group,0.000
+"Burnout, bicycles, and build pipelines",Doesn't fit any group,0.000
+"Retrieval augmented generation without a vector database. We built retrieval with Postgres full text search and a reranker before reaching for a vector store. When that stopped being enough, and what we did.",Doesn't fit any group,0.000
+"Prompting is not engineering: building reliable pipelines on shaky models. Treat the model as an unreliable function: validation layers, fallbacks, and contracts for a pipeline that must not hallucinate invoice numbers.",Doesn't fit any group,0.000
+"Terraform at 3am: making infrastructure boring. Our infra used to need a hero. Locking down state, module reviews, and a plan preview bot that made changes boring.",Doesn't fit any group,0.000
+Resubmitting: Logging what matters when it matters. Designing audit logs you can actually use during an incident.,Doesn't fit any group,0.000
+"My co speaker is still confirming, submitting early to hold a slot",Doesn't fit any group,0.000
+"Diagrams as code, four years in",Doesn't fit any group,0.000
+"Second submission from me, my first one is more technical, this one is more story based",Doesn't fit any group,0.000
+"Resubmitted by request of a reviewer: Suply chain security without stopping the world. Pinning, scanning, and a policy your developers will follow.",Doesn't fit any group,0.000
+Could I run a 5 minute lightning talk about the conference venue accessibility? I have notes,Doesn't fit any group,0.000
+"Threat modeling for people who hate spreadsheets. A whiteboard-first threat modeling routine for small teams: four questions per feature, no spreadsheet required.",Doesn't fit any group,0.000
+"Teaching programming to my mother, lessons for docs writers",Doesn't fit any group,0.000
+"Your CI pipeline is an attack surface. Pinning actions, guarding secrets, and the pull request from a fork that nearly exfiltrated credentials. A tour of CI supply chain risks.",Doesn't fit any group,0.000
+"Handling a real incident: a walk through of our worst Tuesday. A replay of a real incident: the failing query, the noisy channel, and the timeline gap that cost us 40 minutes.",Doesn't fit any group,0.000
+"SwiftUI after two years: what we would do differently. Two years and 12 screens of SwiftUI in a shipped app: navigation decisions, testing gaps, and the UIKit bits we kept.",Doesn't fit any group,0.000
+"Shipping React Native to 40 markets without losing your mind. Localisation, store reviews, and over the air updates across 40 markets. The release train that keeps it sane.",Doesn't fit any group,0.000
+"Saying no: how we protect focus time across four time zones. Meeting budgets, a written decision log, and the calendar rules that gave engineers back two afternoons a week.",Doesn't fit any group,0.000
+"Moving from IC to lead without becoming a calendar goblin. A first year as a tech lead: the delegation mistakes, the feedback habits, and the calendar rules that kept code in my week.",Doesn't fit any group,0.000
+"Updated for this year: Running poen models on premises for a hospital client. Latency, hardware, and the paperwork of keeping data inside the building.",Doesn't fit any group,0.000
+What chess ratings taught me about tracking engineering progress,Doesn't fit any group,0.000
+(second submission) Hiring for epth without LeetCode. An interview loop that predicts on the job work and respects candidates.,Doesn't fit any group,0.000
+"Rotating API keys without breaking the world. Key rotation with overlapping validity, staged rollout, and the one integration that taught us to keep a break glass key.",Doesn't fit any group,0.000
+"Building a metrics layer your CFO trusts. Finance and engineering finally agreed on one revenue number: the semantic layer, the tests, and the argument that settled it.",Doesn't fit any group,0.000
+"Migrating a React Native app to the new architecture. The new architecture migration of a five year old app: interop, native modules, and the two weeks of crashes in the wild.",Doesn't fit any group,0.000
+Is travel covered for speakers? Asking before I submit properly,Doesn't fit any group,0.000
+Rust for people who already know too many languages,Doesn't fit any group,0.000
+"Postmortems people actually read. Blameless is not the same as boring: timelines, contributing factors, and the action items that got done.",Doesn't fit any group,0.000
+Resubmitting: A support bot that knows when to shut up. Designing an assistant that hands off to humans instead of guessing.,Doesn't fit any group,0.000
+"Making the case for boring technology. We replaced a stream processor with a cron job and a table. A cost and reliability argument for boring, with receipts.",Doesn't fit any group,0.000
+"Service workers after the framework honeymoon. Service workers in a large app two years in: cache invalidation strategy, update prompts, and the stale bundle incident.",Doesn't fit any group,0.000
+"Event sourcing without the religion. We adopted event sourcing for one bounded context, not the whole system. What it bought us and the complexity we refused.",Doesn't fit any group,0.000
+How a chicken coop taught me about distributed systems,Doesn't fit any group,0.000
+"Cross platform design tokens between web and mobile. One token source, two platforms: build steps, naming fights, and the drift detector that ended the arguments.",Doesn't fit any group,0.000
+The terminal is my IDE and I am not sorry,Doesn't fit any group,0.000

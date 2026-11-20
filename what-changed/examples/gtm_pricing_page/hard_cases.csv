@@ -1,0 +1,10 @@
+old,new,expected
+"Setup is guaranteed in under 15 minutes.","Setup usually takes under 15 minutes.",changed
+"SSO is not included in Growth.","SSO is included in Growth.",changed
+"All plans include unlimited seats.","Seat limits apply on every plan.",changed
+"Free migration is included on every plan.","Free migration is included on annual plans.",changed
+"SOC 2 Type II certified.","SOC 2 Type II certification in progress.",changed
+"Free trial available.","No free trial available.",changed
+"Live chat support is available in English.","",removed
+"Prices exclude local taxes.","",removed
+"We never sell customer data.","",removed

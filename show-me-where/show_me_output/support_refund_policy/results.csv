@@ -1,0 +1,21 @@
+question,label,verdict,top_section,score
+Can I get a refund if my flowers arrive wilted?,answerable,Check this,refunds-and-freshness.md > Refunds and freshness > What we cannot refund,0.741
+How long does a refund take to reach my card?,answerable,Found,refunds-and-freshness.md > Refunds and freshness > How long a refund takes,0.817
+What happens if nobody is home when the bouquet is delivered?,answerable,Check this,delivery-and-shipping.md > Delivery and shipping > When nobody answers,0.680
+Can I change the delivery address after I have ordered?,answerable,Found,delivery-and-shipping.md > Delivery and shipping > Changing an address,0.846
+Do you deliver on Sundays?,answerable,Found,delivery-and-shipping.md > Delivery and shipping > Sundays and bank holidays,0.804
+What do you need to refund a sympathy order that was delivered late?,answerable,Found,sympathy-and-bereavement-orders.md > Sympathy and bereavement orders > Documentation for refunds,0.815
+Can I cancel my subscription before the next delivery?,answerable,Check this,accounts-and-subscriptions.md > Accounts and subscriptions > Subscription plans,0.768
+Do I get the delivery fee back if a next-day order arrives late?,answerable,Found,refunds-and-freshness.md > Refunds and freshness > Late deliveries,0.866
+Can I swap the vase before the arrangement is made?,answerable,Check this,returns-and-substitutions.md > Returns and substitutions > Vases and packaging,0.765
+How long can a standing remembrance plan run for?,answerable,Found,sympathy-and-bereavement-orders.md > Sympathy and bereavement orders > Standing remembrance orders,0.785
+Do you sell preserved roses that last a year?,unanswerable,Not in these documents,returns-and-substitutions.md > Returns and substitutions > Substitutions,0.664
+Can I get a refund on a bouquet I picked up myself and did not like the colour of?,unanswerable,Check this,returns-and-substitutions.md > Returns and substitutions > Made to order,0.774
+Do you deliver to hospitals outside your delivery zone?,unanswerable,Check this,delivery-and-shipping.md > Delivery and shipping > Areas we cover,0.712
+Do you offer a first-order discount for new accounts?,unanswerable,Not in these documents,payment-and-invoicing.md > Payment and invoicing > One discount per order,0.660
+Do you offer gift cards that never expire?,unanswerable,Not in these documents,returns-and-substitutions.md > Returns and substitutions > Made to order,0.653
+Can I return a vase I bought in your shop?,unanswerable,Check this,returns-and-substitutions.md > Returns and substitutions > Made to order,0.708
+Do you have a price match against other florists?,unanswerable,Not in these documents,returns-and-substitutions.md > Returns and substitutions > Substitutions,0.596
+Can I get a refund if I miss the delivery window myself?,unanswerable,Check this,refunds-and-freshness.md > Refunds and freshness > Late deliveries,0.771
+Do you deliver flowers in August?,unanswerable,Check this,returns-and-substitutions.md > Returns and substitutions > Substitutions,0.680
+Can I pay with a cheque at the door?,unanswerable,Check this,payment-and-invoicing.md > Payment and invoicing > Payment methods,0.690

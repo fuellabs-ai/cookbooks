@@ -1,0 +1,23 @@
+[Sample data: fictional proposal from Bramble Analytics to Cedar Grove Retail]
+
+# Proposal: demand forecasting for Cedar Grove Retail
+
+## Scope of work
+Phase 1: audit of the current forecasting process, 3 weeks.
+Phase 2: pilot forecast model for 2 product categories, 6 weeks.
+Phase 3: rollout support and training for the merchandising team, 4 weeks.
+Deliverables: audit report, pilot model, rollout playbook, 2 training sessions.
+
+## Pricing
+Total project fee: $58,000, invoiced monthly.
+Payment terms: 50% upfront, 50% on final delivery.
+Travel costs billed at cost, capped at $2,000.
+
+## Timeline
+Project start: February 2, 2026.
+Pilot results presented: March 30, 2026.
+Final delivery: May 29, 2026.
+
+## Assumptions
+Cedar Grove provides historical sales data within 5 business days of kickoff.
+One review cycle per deliverable, additional cycles billed hourly.

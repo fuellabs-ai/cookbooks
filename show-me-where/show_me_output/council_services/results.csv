@@ -1,0 +1,21 @@
+question,label,verdict,top_section,score
+What time should my bins be out by?,answerable,Found,bin-collection.md > Bin collection > Collection days,0.783
+What happens if my bin collection is missed?,answerable,Found,bin-collection.md > Bin collection > Missed collections,0.808
+How many free bulky collections do I get a year?,answerable,Found,bin-collection.md > Bin collection > Bulky item collection,0.787
+Can I pay council tax over 12 months?,answerable,Check this,council-tax.md > Council tax > Bands and how to pay,0.646
+What do I need to bring to the recycling centre?,answerable,Found,recycling-centre.html > Household waste recycling centre > What you can bring,0.799
+How do visitor parking permits work?,answerable,Check this,parking-permits.md > Parking permits > Visitor permits,0.743
+What help is there if I cannot pay my council tax?,answerable,Check this,council-tax.md > Council tax > Help if you fall behind,0.655
+Who do I contact if I might be homeless in two months?,answerable,Check this,housing-help.md > Housing help > Homelessness support,0.704
+What can go in the brown bin?,answerable,Found,bin-collection.md > Bin collection > What goes in each bin,0.781
+Can I take a trailer to the recycling centre at the weekend?,answerable,Check this,recycling-centre.html > Household waste recycling centre > What you can bring,0.657
+Does the council collect paint tins from my front door?,unanswerable,Check this,recycling-centre.html > Household waste recycling centre > What you can bring,0.650
+Can I park a campervan overnight in the leisure centre car park?,unanswerable,Not in these documents,parking-permits.md > Parking permits > Where permits apply,0.611
+Can the student discount combine with the single adult discount?,unanswerable,Check this,council-tax.md > Council tax > Discounts,0.704
+Can I keep a skip on the road for a month?,unanswerable,Check this,recycling-centre.html > Household waste recycling centre > Trailers and vans,0.649
+Does the council repair private drains?,unanswerable,Not in these documents,housing-help.md > Housing help > Private renting problems,0.617
+Can I get a refund on a parking permit I no longer use?,unanswerable,Check this,parking-permits.md > Parking permits > Damaged and lost permits,0.719
+Do you collect fridge freezers with the bulky service?,unanswerable,Check this,bin-collection.md > Bin collection > Bulky item collection,0.724
+Can I leave my bins out overnight after collection?,unanswerable,Check this,bin-collection.md > Bin collection > Collection days,0.711
+Can I bring a van as well as a car to the recycling centre?,unanswerable,Check this,recycling-centre.html > Household waste recycling centre > What you can bring,0.740
+Can I pay council tax at the post office?,unanswerable,Not in these documents,recycling-centre.html > Household waste recycling centre > What we do not accept,0.595

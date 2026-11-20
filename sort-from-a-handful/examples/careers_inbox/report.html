@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Sort from a handful: report</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Helvetica,sans-serif;margin:2rem;max-width:60rem;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;}
+th,td{border:1px solid #ccc;padding:.35rem .6rem;text-align:left;vertical-align:top;}
+th{background:#f2f2f2;} td.num{text-align:right;}
+h2{margin-top:2rem;}
+</style></head><body>
+<h1>Sort from a handful: report</h1>
+<p>30 items. Margin 0.020. Nearest-centroid. Model harims95/hobbylm-embed-140m.</p>
+<p>10 items went to a person instead of guessing. 2 items were labelled differently from their expected label.</p>
+<h2>Per label</h2>
+<table>
+<tr><th>label</th><th>sorted</th><th>sent to a person</th><th>wrongly sorted</th></tr>
+<tr><td>agency cv</td><td>2</td><td>2</td><td>0</td></tr>
+<tr><td>direct application</td><td>7</td><td>4</td><td>2</td></tr>
+<tr><td>interview scheduling</td><td>6</td><td>0</td><td>0</td></tr>
+<tr><td>referral</td><td>0</td><td>3</td><td>0</td></tr>
+<tr><td>spam</td><td>5</td><td>1</td><td>0</td></tr>
+</table>
+<h2>Needs a human</h2>
+<table>
+<tr><th>top label</th><th>score</th><th>second label</th><th>second score</th><th>margin</th><th>text</th></tr>
+<tr><td>referral</td><td>0.866</td><td>direct application</td><td>0.802</td><td>0.063</td><td>Hi, this is Marco from the perception team. My former colleague Ilse reviewed our SLAM stack last year and is now lookin...</td></tr>
+<tr><td>direct application</td><td>0.842</td><td>referral</td><td>0.833</td><td>0.009</td><td>Forwarding on behalf of my brother in law, who has ten years in warehouse automation. He is too modest to write this him...</td></tr>
+<tr><td>referral</td><td>0.870</td><td>direct application</td><td>0.818</td><td>0.052</td><td>Rhea here, I was pointed to this address by Dana who used to share an office with me at Mechatron. I would like to be co...</td></tr>
+<tr><td>agency cv</td><td>0.845</td><td>referral</td><td>0.826</td><td>0.020</td><td>We have a pre-screened senior controls engineer on our bench, available within two weeks. Shall I send the profile? Agen...</td></tr>
+<tr><td>direct application</td><td>0.845</td><td>referral</td><td>0.829</td><td>0.016</td><td>Following up on my message from last week. I have a perception engineer shortlisted for you, already reference checked. ...</td></tr>
+<tr><td>agency cv</td><td>0.831</td><td>direct application</td><td>0.821</td><td>0.010</td><td>We represent embedded engineers across the Benelux region. Several have warehouse automation backgrounds that match your...</td></tr>
+<tr><td>direct application</td><td>0.875</td><td>referral</td><td>0.869</td><td>0.006</td><td>Hi, I am a former colleague of your engineer Sam from our days at Vektra. He mentioned the planning role is open. I woul...</td></tr>
+<tr><td>direct application</td><td>0.858</td><td>referral</td><td>0.856</td><td>0.002</td><td>My consultant at ReachTalent urged me to apply directly for your autonomy role rather than wait for the agency process. ...</td></tr>
+<tr><td>spam</td><td>0.838</td><td>agency cv</td><td>0.834</td><td>0.004</td><td>We would love to introduce you to our newest client success story: 12 senior engineers placed in robotics last quarter. ...</td></tr>
+<tr><td>referral</td><td>0.854</td><td>direct application</td><td>0.837</td><td>0.017</td><td>Your engineer Priya spoke at my university last month and said I should email you directly about the perception internsh...</td></tr>
+</table>
+<h2>Wrongly sorted</h2>
+<table>
+<tr><th>expected</th><th>got</th><th>score</th><th>margin</th><th>text</th></tr>
+<tr><td>referral</td><td>direct application</td><td>0.850</td><td>0.031</td><td>My old flatmate Tomasz built the flight controller at AeroWorks and I think he would be great for your firmware opening....</td></tr>
+<tr><td>interview scheduling</td><td>direct application</td><td>0.834</td><td>0.020</td><td>I applied for the firmware role two weeks ago and have not heard back. Could you confirm my application arrived and tell...</td></tr>
+</table>
+</body></html>
