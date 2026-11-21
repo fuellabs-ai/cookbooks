@@ -43,8 +43,8 @@ not. Real lines from the five examples:
 Rows read were 585, 248, 273, 403 and 301; the difference is empty rows and
 exact duplicates, which are dropped before grouping.
 
-Inside each card, near-duplicate wording shows up as a "how people put it
-again" breakdown: up to 5 lines, each with a count and one wording. The 3
+Inside each card, near-duplicate wording shows up as a "how the wording
+repeats" breakdown: up to 5 lines, each with a count and one wording. The 3
 example quotes per card are the 3 most different requests in that card (each
 one picked as the request least similar to the quotes already picked), so you
 see the same ask in different words rather than three near-copies. A top-10

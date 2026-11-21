@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Group a pile of requests and show what people keep asking for.
+"""Group a pile of requests and show what repeats.
 
 Embeddings only. No LLM. The model is HobbyLM-Embed 140M loaded through
 Sentence Transformers with trust_remote_code=True. Requests are embedded as
@@ -616,11 +616,12 @@ def build_report_html(
             breakdown = group.get("breakdown") or []
             if breakdown:
                 lines = "".join(
-                    f"<li>{line['count']} as &quot;{_esc(texts[line['example']])}&quot;</li>"
+                    f"<li>{line['count']} said it this way: "
+                    f"&quot;{_esc(texts[line['example']])}&quot;</li>"
                     for line in breakdown
                 )
                 parts.append(
-                    "<p class='stats'>How people put it again:</p>"
+                    "<p class='stats'>How the wording repeats:</p>"
                     f"<ul class='compact'>{lines}</ul>"
                 )
             if kind == "doesn't fit":
@@ -743,7 +744,7 @@ def run(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Group requests and show what people keep asking for."
+        description="Group requests and show what repeats."
     )
     parser.add_argument("csv_file", help="CSV file with one request per row")
     parser.add_argument("--column", default=None, help="Text column to read")
@@ -774,9 +775,19 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    csv_path = Path(args.csv_file)
     piles_path = Path(args.piles) if args.piles else None
-    report_path = Path(args.report) if args.report else None
-    csv_out_path = Path(args.groups_csv) if args.groups_csv else None
+    # Defaults land next to the input CSV, which is where you look for them.
+    report_path = (
+        csv_path.parent / "report.html" if args.report == "report.html"
+        else Path(args.report) if args.report
+        else None
+    )
+    csv_out_path = (
+        csv_path.parent / "groups.csv" if args.groups_csv == "groups.csv"
+        else Path(args.groups_csv) if args.groups_csv
+        else None
+    )
     groups, texts, stats = run(
         Path(args.csv_file),
         args.column,
