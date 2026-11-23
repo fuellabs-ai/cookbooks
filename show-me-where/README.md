@@ -3,8 +3,8 @@
 A HobbyLM-Embed cookbook for checking answers against your own documents.
 
 Your help bot just promised a refund your policy doesn't offer. This checks
-every answer against your own documents first, and tells you when the answer
-isn't there.
+every answer against your own documents before it goes out, and tells you when
+the answer isn't there.
 
 Before a support bot or RAG app sends an answer, this recipe looks for the
 section in your own documents that backs it up. Two cut-offs give three
@@ -230,7 +230,7 @@ a hint for an article that does not exist yet.
 
 Questions in the Check this band get their own list, `check_this.md`, in the
 same grouped shape, with a reminder that a person should confirm each one.
-The first three groups of the real `check_this.md` from the same batch run
+Three groups from the top of the real `check_this.md` from the same batch run
 (the file continues with six more groups):
 
 ```markdown
@@ -406,6 +406,46 @@ because the two cut-offs are still score cut-offs.
 Two more limits: the recipe is English only, and it finds sections rather
 than writing answers. The section it returns is for a person to read, not a
 sentence to paste.
+
+## Expected output
+
+Numbers pasted from a re-run on CPU (model revision `ea708cee`,
+sentence-transformers 6.3.0, torch 2.15.0).
+
+`python calibrate.py examples`, recommendation lines:
+
+```
+council_services:               upper 0.745, lower 0.645  (wrong answers 0/10, wrong refusals 0/10, check this 12/20)
+developer_docs:                 upper 0.740, lower 0.670  (wrong answers 0/10, wrong refusals 0/10, check this 10/20)
+employee_handbook:              upper 0.705, lower 0.625  (wrong answers 0/10, wrong refusals 0/10, check this 6/20)
+security_questionnaire_library: upper 0.780, lower 0.720  (wrong answers 0/10, wrong refusals 0/10, check this 6/20)
+support_refund_policy:          upper 0.775, lower 0.680  (wrong answers 0/10, wrong refusals 0/10, check this 10/20)
+```
+
+Across the five folders: 0 wrong answers, 0 wrong refusals, 44 of the 100
+sample questions in Check this. The lead example, `support_refund_policy`,
+calibrates to upper 0.775, lower 0.680, and the rewritten `cutoff.json`
+files came out identical to the committed ones.
+
+`python show_me.py examples/support_refund_policy "..."`, one question at a
+time (run against a copy of the folder, since single-question mode appends
+to the lists in the docs folder):
+
+```
+can I get a refund after 30 days?              Check this, top section 0.735
+How long does a refund take to reach my card?  Found, top section 0.817
+Do you offer gift cards that never expire?     Not in these documents, top section 0.653
+```
+
+Batch over the lead example's 20 labelled questions: Found 6, Check this 10,
+Not in these documents 4. The three output files matched the committed files
+in `show_me_output/support_refund_policy/` line for line, except the
+absolute docs path in the two markdown headers.
+
+`walkthrough.ipynb`: 9 code cells, no errors, 8 minutes on CPU from a cold
+model cache. If your numbers differ, check the model revision and the
+sentence-transformers version before trusting your own counts; embeddings
+are not bit-exact across versions.
 
 ## Reproducing the numbers
 
