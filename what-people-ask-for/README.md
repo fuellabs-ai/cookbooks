@@ -43,6 +43,48 @@ not. Real lines from the five examples:
 Rows read were 585, 248, 273, 403 and 301; the difference is empty rows and
 exact duplicates, which are dropped before grouping.
 
+## Expected output
+
+Running the quickstart's first command prints this (real run, trimmed after
+the eight biggest groups):
+
+```text
+$ python piles.py examples/feature_requests/feature_requests.csv --piles examples/feature_requests/piles.yaml
+585 rows read, 0 empty dropped, 24 exact duplicates dropped
+561 requests: 144 in 3 named piles, 389 in 34 groups, 28 don't fit any group
+  pile 'CSV export': 64 requests
+  pile 'Dark mode': 70 requests
+  pile 'Offline and mobile': 10 requests
+  group 'tasks, pls, repeat': 53 requests
+  group 'reminders, day, date': 39 requests
+  group 'calendar, sync, google': 38 requests
+  group 'search, save, task': 27 requests
+  group 'offline, support, mode': 21 requests
+  ... 29 more groups between 20 and 3 requests
+  Doesn't fit any group: 28 requests
+wrote examples/feature_requests/report.html
+wrote examples/feature_requests/groups.csv
+```
+
+The two files land next to the input CSV. `report.html` opens with a
+"Top requests" block like this (copy it straight into a planning doc):
+
+```text
+Dark mode: 70 requests (12% of 561)
+CSV export: 64 requests (11% of 561)
+tasks, pls, repeat (keywords): 53 requests (9% of 561)
+reminders, day, date (keywords): 39 requests (7% of 561)
+calendar, sync, google (keywords): 38 requests (7% of 561)
+```
+
+Every card on the page shows its count, its "How the wording repeats"
+breakdown (up to 5 lines, e.g. "12 said it this way: dark mode pls"), and the
+3 most different requests in the card, expandable to all of them. `groups.csv`
+has one row per request: `request, group, score`, where the score is how
+close the request sits to the centre of its card. Two runs on the same file
+can differ by a request or two at card boundaries; the summary total and the
+add-up check do not move.
+
 Inside each card, near-duplicate wording shows up as a "how the wording
 repeats" breakdown: up to 5 lines, each with a count and one wording. The 3
 example quotes per card are the 3 most different requests in that card (each
@@ -84,6 +126,15 @@ against the hand labels. On the current data the peak mean ARI is 0.445 at
 is now a breakdown inside a card instead of its own card, the mean ARI table
 no longer moves with `dedup_sim`: that setting only shapes the breakdown now.
 Set the numbers on your own labelled sample the same way.
+
+Per example, from the same run: `feature_requests` 0.731, `support_tickets`
+0.557, `event_feedback` 0.513, `product_reviews` 0.399, and `talk_proposals`
+0.200. Plain words on that last number: `talk_proposals` is the weak example.
+Talk tracks barely come out of the vectors, because two proposals in the same
+track can be about completely different technologies. What the recipe does
+catch in a CFP pile is repeated submissions, the same talk sent twice or
+reworded. Read its groups as loose technology neighbourhoods, not tracks, and
+lean on the wording breakdown for the repeats.
 
 ## Limits
 
