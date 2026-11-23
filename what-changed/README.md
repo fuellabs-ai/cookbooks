@@ -190,6 +190,41 @@ nearest match really is the other. The floor stays at 0.74: raising it to 0.78 w
 push the lid pair into Added, which is a worse error than the one the rule
 fixes.
 
+## Expected output
+
+Numbers pasted from a real run on CPU (model revision `ea708cee`, sentence-transformers 6.3.0):
+
+Document pairs (`python what_changed.py examples/<role>/old.txt examples/<role>/new.txt`):
+
+```
+gtm_pricing_page          unchanged 15, reworded 5, changed 2, added 5, removed 0
+ecommerce_supplier_spec   unchanged  7, reworded 3, changed 5, added 0, removed 0
+sales_proposal_v7         unchanged 11, reworded 4, changed 2, added 1, removed 1
+npd_product_brief         unchanged 11, reworded 3, changed 1, added 1, removed 1
+```
+
+Hard cases (`python what_changed.py --hard-cases examples/<role>/hard_cases.csv`):
+
+```
+                          with claim check   without claim check
+gtm_pricing_page          8/9 (89%)          4/9 (44%)
+ecommerce_supplier_spec   7/8 (88%)          3/8 (38%)
+sales_proposal_v7         7/8 (88%)          3/8 (38%)
+npd_product_brief         8/8 (100%)         4/8 (50%)
+total                     30/33 (91%)        14/33 (42%)
+```
+
+Removed-clause floor test (each removed clause from the hard cases appended
+to its role's old.txt and pushed through the pipeline):
+
+```
+result: 10/10 shown as Removed, 0 wrongly matched
+```
+
+If your counts differ, check the model revision and the sentence-transformers
+version before trusting your own counts; embeddings are not bit-exact across
+versions.
+
 ## Limits
 
 - **The evidence checks only see what they list.** A condition that narrows

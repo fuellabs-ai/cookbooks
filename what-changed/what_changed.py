@@ -265,7 +265,8 @@ LABEL_ORDER = ["changed", "added", "removed", "reworded", "unchanged"]
 LABEL_COUNTS_ORDER = ["unchanged", "reworded", "changed", "added", "removed"]
 
 
-def eval_hard_cases(csv_path, model, threshold, floor, claim_check=True, claim_words=None, show_pairs=True):
+def eval_hard_cases(csv_path, model, threshold, floor, claim_check=True, claim_words=None,
+                    max_tokens=DEFAULT_MAX_TOKENS, show_pairs=True):
     """Label each old/new pair in a CSV and score against the expected label.
 
     The CSV needs columns old, new, expected. An empty new cell means the old
@@ -278,7 +279,8 @@ def eval_hard_cases(csv_path, model, threshold, floor, claim_check=True, claim_w
             rows.append((row["old"].strip(), row["new"].strip(), row["expected"].strip()))
     results = []
     for old, new, expected in rows:
-        pairs = compare(old, new, model, threshold, floor, claim_check, claim_words)
+        pairs = compare(old, new, model, threshold, floor, max_tokens,
+                        claim_check=claim_check, claim_words=claim_words)
         predicted = pairs[0].label if pairs else "unchanged"
         reason = pairs[0].reason if pairs else ""
         sim = pairs[0].sim if pairs else None
@@ -380,7 +382,7 @@ def main():
 
     if args.hard_cases:
         eval_hard_cases(args.hard_cases, model, args.threshold, args.floor,
-                        claim_check, claim_words)
+                        claim_check, claim_words, max_tokens)
         return
 
     with open(args.old, encoding="utf-8") as f:
