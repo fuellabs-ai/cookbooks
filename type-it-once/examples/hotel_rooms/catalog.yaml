@@ -1,0 +1,31 @@
+# Fictional hotel booking sample catalog. Clearly marked sample data: no real
+# hotel. enum filters hold the only values the recipe may output; number
+# filters are validated against min and max; the date filter must be ISO.
+filters:
+  room_type:
+    type: enum
+    values: [single, double, twin, family, suite]
+  view:
+    type: enum
+    values: [sea view, garden view, city view, mountain view]
+  board:
+    type: enum
+    values: [room only, bed and breakfast, half board, all inclusive]
+  amenities:
+    type: enum
+    multi: true
+    values: [parking, pool, spa, gym, pet friendly, air conditioning, wifi, balcony]
+  price_max:
+    type: number
+    min: 20
+    max: 1000
+  guests:
+    type: number
+    min: 1
+    max: 8
+  nights:
+    type: number
+    min: 1
+    max: 30
+  checkin:
+    type: date

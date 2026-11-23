@@ -1,0 +1,23 @@
+# Fictional shoe store sample catalog. Clearly marked sample data: no real
+# store. Two filter kinds: enum filters have a fixed list of allowed values
+# (the only values the recipe may ever output), number filters have a
+# min and max range. multi: true means the filter can hold several values.
+filters:
+  colour:
+    type: enum
+    values: [red, blue, green, black, white, brown, navy, beige]
+  activity:
+    type: enum
+    values: [trail, running, hiking, walking, court]
+  features:
+    type: enum
+    multi: true
+    values: [waterproof, leather, suede, vegan, slip resistant, wide fit, insulated, breathable]
+  size_uk:
+    type: number
+    min: 3
+    max: 14
+  price_max:
+    type: number
+    min: 10
+    max: 500

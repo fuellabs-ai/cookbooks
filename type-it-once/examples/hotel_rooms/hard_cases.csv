@@ -1,0 +1,11 @@
+id,text,expected
+hoh-01,"no wifi, pet friendly twin for 2 nights","{""amenities"": [""pet friendly""], ""nights"": [2], ""room_type"": [""twin""]}"
+hoh-02,"double room not sea view, garden view instead, under 120","{""price_max"": [120], ""room_type"": [""double""], ""view"": [""garden view""]}"
+hoh-03,"king suite with spa, 2 nights","{""amenities"": [""spa""], ""nights"": [2], ""room_type"": [""suite""]}"
+hoh-04,"room for 2 adults and 2 children, half board","{""board"": [""half board""], ""guests"": [2]}"
+hoh-05,seaside hotel with balcony for the weekend,"{""amenities"": [""balcony""], ""checkin"": [""2026-12-05""], ""nights"": [2], ""view"": [""sea view""]}"
+hoh-06,"not pet friendly, gym, double, 3 nights","{""amenities"": [""gym""], ""nights"": [3], ""room_type"": [""double""]}"
+hoh-07,two connecting rooms for a family of 5,"{""guests"": [5]}"
+hoh-08,"check in 24 dec, suite with spa, 2 nights","{""amenities"": [""spa""], ""checkin"": [""2026-12-24""], ""nights"": [2], ""room_type"": [""suite""]}"
+hoh-09,"bunk beds for the kids, twin room, 2 nights","{""nights"": [2], ""room_type"": [""twin""]}"
+hoh-10,"all inclusive, no Balcony though, sea view, for 2","{""board"": [""all inclusive""], ""guests"": [2], ""view"": [""sea view""]}"

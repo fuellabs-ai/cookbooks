@@ -1,0 +1,11 @@
+id,text,expected
+shh-01,"no leather, vegan only, trail shoes under 80","{""activity"": [""trail""], ""features"": [""vegan""], ""price_max"": [80]}"
+shh-02,"size 10 UK waterproof trail shoes, not suede","{""activity"": [""trail""], ""features"": [""waterproof""], ""size_uk"": [10]}"
+shh-03,"navy shoes for running, blue is too bright","{""activity"": [""running""], ""colour"": [""navy""]}"
+shh-04,eu size 44 walking shoes,"{""activity"": [""walking""]}"
+shh-05,lunar dust grey walking shoes under 60,"{""activity"": [""walking""], ""price_max"": [60]}"
+shh-06,"leather court shoes, without a wide fit","{""activity"": [""court""], ""features"": [""leather""]}"
+shh-07,vegan waterproof shoes size 6 UK no insulated lining,"{""features"": [""vegan"", ""waterproof""], ""size_uk"": [6]}"
+shh-08,red trail shoes under 80 and blue walking shoes size 6,"{""activity"": [""trail"", ""walking""], ""colour"": [""red"", ""blue""], ""price_max"": [80], ""size_uk"": [6]}"
+shh-09,slip resistant shoes in turquoise for the gym,"{""features"": [""slip resistant""]}"
+shh-10,"not black running shoes under 70, breathable","{""activity"": [""running""], ""features"": [""breathable""], ""price_max"": [70]}"
