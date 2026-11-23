@@ -2,6 +2,8 @@
 
 # What really changed in v2?
 
+![What really changed in v2?](card.png)
+
 For marketers, store owners and account managers: compare two versions of a document and see only what changed in meaning.
 
 <sub>Embedding task: semantic similarity</sub>

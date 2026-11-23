@@ -2,6 +2,8 @@
 
 # How to fine-tune HobbyLM-Embed on your own data
 
+![How to fine-tune HobbyLM-Embed on your own data](card.png)
+
 This guide fine-tunes `harims95/hobbylm-embed-140m` on your own (question,
 answer passage) pairs with MultipleNegativesRankingLoss, on a laptop CPU, and
 saves a model folder you can load and use like the base one. Embeddings only,

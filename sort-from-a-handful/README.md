@@ -1,5 +1,7 @@
 # Show a few, it sorts the rest
 
+![Show a few, it sorts the rest](card.png)
+
 For recruiters, admissions offices and open source maintainers.
 
 <sub>Embedding task: few-shot classification</sub>

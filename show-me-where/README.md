@@ -1,5 +1,7 @@
 # No more "trust me bro"
 
+![No more trust me bro](card.png)
+
 For support leads, RAG developers and security reviewers: every answer shows where your docs say it, or says it isn't there.
 
 <sub>Embedding task: retrieval, with a "not found" answer</sub>

@@ -2,6 +2,8 @@
 
 # What are users really asking for?
 
+![What are users really asking for?](card.png)
+
 For product managers, product owners and support leads.
 
 <sub>Embedding task: clustering and near-duplicate grouping</sub>

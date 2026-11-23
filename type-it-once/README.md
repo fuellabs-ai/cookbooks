@@ -2,6 +2,8 @@
 
 # Type it once, the filters fill in
 
+![Type it once, the filters fill in](card.png)
+
 For online stores, hotel booking and travel search.
 
 <sub>Embedding task: matching phrases to a fixed list of values</sub>
@@ -57,6 +59,7 @@ shape.
 pip install "sentence-transformers>=5" pyyaml
 python fill_filters.py "crimson trail shoes under 80, size 10, waterproof" --catalog examples/shoe_store/catalog.yaml
 python fill_filters.py "double room with sea view and breakfast under 120 for 2 adults 3 nights" --catalog examples/hotel_rooms/catalog.yaml
+python fill_filters.py "double room in San Diego with ocean view and breakfast, 2 adults, 3 nights, under $200, no pets" --catalog examples/hotel_rooms/catalog.yaml
 python calibrate.py examples/shoe_store
 ```
 
