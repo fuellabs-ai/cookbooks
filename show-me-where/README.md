@@ -137,9 +137,9 @@ Added to gaps.md: examples/support_refund_policy/gaps.md
 
 ## Try it in Colab
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/hobbylm-embed-cookbook/blob/main/show-me-where/walkthrough.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/show-me-where/walkthrough.ipynb)
 
-The notebook clones `fuellabs-ai/hobbylm-embed-cookbook`, folder
+The notebook clones `fuellabs-ai/cookbooks`, folder
 `show-me-where`, at branch `main`. The clone constants sit in one setup cell
 (`REPO`, `BRANCH`, `FOLDER`), and a local copy of `show_me.py` short-circuits
 the clone so the notebook also runs from a checkout.

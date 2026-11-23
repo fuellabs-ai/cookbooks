@@ -25,7 +25,7 @@ python sort_handful.py examples/careers_inbox/inbox.csv --labels examples/career
 python calibrate.py examples
 ```
 
-[Open the walkthrough in Colab](https://colab.research.google.com/github/fuellabs-ai/hobbylm-embed-cookbook/blob/main/sort-from-a-handful/walkthrough.ipynb) (notebook: [walkthrough.ipynb](walkthrough.ipynb)).
+[Open the walkthrough in Colab](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/sort-from-a-handful/walkthrough.ipynb) (notebook: [walkthrough.ipynb](walkthrough.ipynb)).
 
 The model is HobbyLM-Embed 140M through Sentence Transformers with `trust_remote_code=True`, pinned to revision `ea708cee`. Classification passes plain text with no `prompt_name`. Vectors are unit-norm, so dot products are cosine similarities. Embeddings only: no LLM, no fine-tuning.
 
