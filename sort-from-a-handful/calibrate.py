@@ -29,7 +29,7 @@ number is measured on items that were not used as examples. A count the
 dev CSV cannot cover is capped with a note.
 
 Usage:
-    python calibrate.py examples
+    python calibrate.py examples/careers_inbox examples/school_admissions
     python calibrate.py examples/github_issues --strip-templates \
         --examples-from examples/github_issues/dev.csv --per-label 10 \
         --test examples/github_issues/test.csv

@@ -198,7 +198,7 @@ fixes.
 
 ## Expected output
 
-Numbers pasted from a real run on CPU (model revision `ea708cee`, sentence-transformers 6.3.0):
+Numbers pasted from a real run on CPU (model revision `ea708cee107818fa0c1871eebd26d82a1e3fb1aa`, sentence-transformers 6.3.0):
 
 Document pairs (`python what_changed.py examples/<role>/old.txt examples/<role>/new.txt`):
 

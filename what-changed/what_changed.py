@@ -24,7 +24,7 @@ from collections import Counter, defaultdict
 import numpy as np
 
 MODEL_ID = "harims95/hobbylm-embed-140m"
-MODEL_REVISION = "ea708cee"
+MODEL_REVISION = "ea708cee107818fa0c1871eebd26d82a1e3fb1aa"
 DEFAULT_MAX_TOKENS = 512  # the model reads 512 tokens by default
 MAX_TOKEN_LIMIT = 2048    # up to 2,048 if you raise the limit
 

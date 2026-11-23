@@ -413,7 +413,7 @@ sentence to paste.
 
 ## Expected output
 
-Numbers pasted from a re-run on CPU (model revision `ea708cee`,
+Numbers pasted from a re-run on CPU (model revision `ea708cee107818fa0c1871eebd26d82a1e3fb1aa`,
 sentence-transformers 6.3.0, torch 2.15.0).
 
 `python calibrate.py examples`, recommendation lines:

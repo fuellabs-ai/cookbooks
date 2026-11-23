@@ -28,12 +28,12 @@ source .venv/bin/activate
 pip install sentence-transformers pyyaml
 
 python sort_handful.py examples/careers_inbox/inbox.csv --labels examples/careers_inbox/labels.yaml
-python calibrate.py examples
+python calibrate.py examples/careers_inbox examples/school_admissions
 ```
 
 [Open the walkthrough in Colab](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/sort-from-a-handful/walkthrough.ipynb) (notebook: [walkthrough.ipynb](walkthrough.ipynb)).
 
-The model is HobbyLM-Embed 140M through Sentence Transformers with `trust_remote_code=True`, pinned to revision `ea708cee`. Classification passes plain text with no `prompt_name`. Vectors are unit-norm, so dot products are cosine similarities. Embeddings only: no LLM, no fine-tuning.
+The model is HobbyLM-Embed 140M through Sentence Transformers with `trust_remote_code=True`, pinned to revision `ea708cee107818fa0c1871eebd26d82a1e3fb1aa`. Classification passes plain text with no `prompt_name`. Vectors are unit-norm, so dot products are cosine similarities. Embeddings only: no LLM, no fine-tuning.
 
 ## How it works
 
@@ -164,7 +164,7 @@ Corrections loop on the same test set, with the same margin: 3 dev items the sor
 
 ## Expected output
 
-Run in `sort-from-a-handful/` with the model cached, on CPU. These are the real numbers from a fresh virtualenv (Python 3.15, sentence-transformers 6.3.0, torch 2.15.0, model revision `ea708cee`).
+Run in `sort-from-a-handful/` with the model cached, on CPU. These are the real numbers from a fresh virtualenv (Python 3.15, sentence-transformers 6.3.0, torch 2.15.0, model revision `ea708cee107818fa0c1871eebd26d82a1e3fb1aa`).
 
 ```text
 $ python sort_handful.py examples/careers_inbox/inbox.csv --labels examples/careers_inbox/labels.yaml
@@ -292,7 +292,7 @@ The careers and admissions messages are fictional, written once and not adjusted
 ## Files
 
 - `sort_handful.py`: the CLI. `python sort_handful.py items.csv --labels labels.yaml`, with `--margin`, `--method`, `--k`, `--corrections`, `--strip-templates`, `--examples-from`, `--per-label`.
-- `calibrate.py`: the margin sweep on dev and the 5/10/25 table on test. `python calibrate.py examples`.
+- `calibrate.py`: the margin sweep on dev and the 5/10/25 table on test. `python calibrate.py examples/careers_inbox examples/school_admissions`. Name the folders: calibrating `examples` as a whole also rewrites `github_issues/margin.json`, and the GitHub-issues numbers below assume its shipped margin.
 - `labels.yaml`: the fictional handful, with optional `never_hide: true`.
 - `examples/github_issues/dev.csv`, `test.csv`: the fixed 50/150 split (seed 7), plus `corrections.csv` for the loop demo.
 - `walkthrough.ipynb`: the executed walkthrough, with an Open in Colab badge.

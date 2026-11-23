@@ -37,7 +37,7 @@ shape.
   "no Balcony" works.
 - **HobbyLM-Embed (the only model):** matches the remaining phrases to the
   catalog's allowed values ("crimson" to red, "seaside" to sea view).
-  `harims95/hobbylm-embed-140m`, revision `ea708cee`,
+  `harims95/hobbylm-embed-140m`, revision `ea708cee107818fa0c1871eebd26d82a1e3fb1aa`,
   `trust_remote_code=True`, unit-norm vectors, dot product, CPU. User phrases
   are embedded with `prompt_name="query"` and the value list with
   `prompt_name="passage"`; plain text was also tried on dev and lost on both

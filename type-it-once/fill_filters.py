@@ -15,7 +15,7 @@ Who does what, by design:
    as search text, flagged.
 3. HobbyLM-Embed matches the remaining phrases to the catalog's allowed
    values only ("crimson" to red, "seaside" to sea view). Model:
-   harims95/hobbylm-embed-140m, revision ea708cee, trust_remote_code=True.
+   harims95/hobbylm-embed-140m, revision ea708cee107818fa0c1871eebd26d82a1e3fb1aa, trust_remote_code=True.
    Unit-norm vectors, dot product. User phrases are embedded with
    prompt_name="query" and value descriptions with prompt_name="passage".
 4. Every value is validated against the catalog schema before output.
@@ -50,7 +50,7 @@ import numpy as np
 import yaml
 
 DEFAULT_MODEL = "harims95/hobbylm-embed-140m"
-MODEL_REVISION = "ea708cee"
+MODEL_REVISION = "ea708cee107818fa0c1871eebd26d82a1e3fb1aa"
 DEFAULT_HI = 0.42
 DEFAULT_LO = 0.32
 DEFAULT_MARGIN = 0.05

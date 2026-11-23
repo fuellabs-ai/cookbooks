@@ -38,7 +38,7 @@ from typing import Sequence
 import numpy as np
 
 DEFAULT_MODEL = "harims95/hobbylm-embed-140m"
-MODEL_REVISION = "ea708cee"
+MODEL_REVISION = "ea708cee107818fa0c1871eebd26d82a1e3fb1aa"
 DEFAULT_DEDUP_SIM = 0.92
 DEFAULT_CLUSTER_SIM = 0.75
 DEFAULT_MIN_GROUP = 3

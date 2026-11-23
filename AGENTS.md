@@ -4,7 +4,7 @@ Work at the repo root. Do not edit the cookbook folders unless the task is clear
 
 ## Model
 
-- Use `harims95/hobbylm-embed-140m` through Sentence Transformers, pinned to revision `ea708cee`.
+- Use `harims95/hobbylm-embed-140m` through Sentence Transformers, pinned to revision `ea708cee107818fa0c1871eebd26d82a1e3fb1aa`.
 - Load it with `trust_remote_code=True`. The repo code defines the model itself; remote code is required.
 - Prompts: for search and retrieval jobs, embed the question side with `prompt_name="query"` and the document side with `prompt_name="passage"`. The model adds the prefixes itself. Three of the four recipes here (what-changed, sort-from-a-handful, what-people-ask-for) are similarity or clustering jobs and embed plain text with no `prompt_name`; keep that behavior in those scripts.
 - Sequence length defaults to 512 tokens and can be raised to 2,048.
