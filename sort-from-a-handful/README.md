@@ -1,8 +1,12 @@
-# Sort from a handful
+# Show a few, it sorts the rest
+
+For recruiters, admissions offices and open source maintainers.
+
+<sub>Embedding task: few-shot classification</sub>
 
 Show it a few examples per label and it sorts the rest. When it isn't sure, it puts the item in "needs a human" instead of guessing. No training run, no API key, runs on CPU.
 
-Pairs with the [What people keep asking for](../what-people-ask-for/) cookbook: first see what people say, name the groups, then sort everything that comes next into them.
+Pairs with the [What are users really asking for?](../what-people-ask-for/) cookbook: first see what people say, name the groups, then sort everything that comes next into them.
 
 The sample companies, schools and messages in `examples/` are fictional, except `examples/github_issues`, which holds real issues with real maintainer labels (source below).
 

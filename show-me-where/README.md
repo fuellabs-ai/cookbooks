@@ -1,6 +1,8 @@
-# Show me where it says that
+# No more "trust me bro"
 
-A HobbyLM-Embed cookbook for checking answers against your own documents.
+For support leads, RAG developers and security reviewers: every answer shows where your docs say it, or says it isn't there.
+
+<sub>Embedding task: retrieval, with a "not found" answer</sub>
 
 Your help bot just promised a refund your policy doesn't offer. This checks
 every answer against your own documents before it goes out, and tells you when

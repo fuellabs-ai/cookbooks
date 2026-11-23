@@ -4,25 +4,12 @@ Four small cookbooks for the [HobbyLM-Embed](https://huggingface.co/harims95/hob
 
 ## The cookbooks
 
-- [what-changed](what-changed/)
-  Compares two versions of a document clause by clause and reports only the changes that altered meaning.
-
-  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/what-changed/walkthrough.ipynb)
-
-- [show-me-where](show-me-where/)
-  Checks an answer against your own documents and points to the section that backs it up, or says the answer is not there.
-
-  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/show-me-where/walkthrough.ipynb)
-
-- [sort-from-a-handful](sort-from-a-handful/)
-  Sorts new items into labels from about five examples per label and sends the ones it is unsure about to a person.
-
-  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/sort-from-a-handful/walkthrough.ipynb)
-
-- [what-people-ask-for](what-people-ask-for/)
-  Groups a feedback export into named piles and similar groups so you can see what people ask for.
-
-  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/what-people-ask-for/walkthrough.ipynb)
+| Cookbook | What it does | Who it's for | Embedding task | Try it |
+|---|---|---|---|---|
+| [What really changed in v2?](what-changed/) | Compares two versions of a document clause by clause and reports only the changes that altered meaning. | Marketers, store owners, account managers | Semantic similarity | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/what-changed/walkthrough.ipynb) |
+| [No more "trust me bro"](show-me-where/) | Checks an answer against your own documents and points to the section that backs it up, or says the answer is not there. | Support leads, RAG developers, security reviewers | Retrieval, with a "not found" answer | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/show-me-where/walkthrough.ipynb) |
+| [Show a few, it sorts the rest](sort-from-a-handful/) | Sorts new items into labels from about five examples per label and sends the ones it is unsure about to a person. | Recruiters, admissions offices, open source maintainers | Few-shot classification | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/sort-from-a-handful/walkthrough.ipynb) |
+| [What are users really asking for?](what-people-ask-for/) | Groups a feedback export into named piles and similar groups, and counts how often each ask repeats. | Product managers, product owners, support leads | Clustering and near-duplicate grouping | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/what-people-ask-for/walkthrough.ipynb) |
 
 ## The model
 

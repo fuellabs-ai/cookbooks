@@ -1,6 +1,10 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/what-changed/walkthrough.ipynb)
 
-# What really changed? Compare two versions of a document by meaning
+# What really changed in v2?
+
+For marketers, store owners and account managers: compare two versions of a document and see only what changed in meaning.
+
+<sub>Embedding task: semantic similarity</sub>
 
 ## Who this is for
 

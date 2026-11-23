@@ -1,6 +1,10 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fuellabs-ai/cookbooks/blob/main/what-people-ask-for/walkthrough.ipynb)
 
-# What people ask for
+# What are users really asking for?
+
+For product managers, product owners and support leads.
+
+<sub>Embedding task: clustering and near-duplicate grouping</sub>
 
 Your feedback board has hundreds of requests and many of them are the same ask
 in different words. This recipe groups an export, counts what repeats, and
