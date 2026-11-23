@@ -1,12 +1,17 @@
 {
-  "margin": 0.04,
+  "margin": 0.01,
   "met_one_in_ten": false,
-  "labelled": 18,
-  "wrongly_sorted": 4,
-  "sent_to_human": 182,
-  "items": 200,
-  "items_file": "items.csv",
+  "labelled": 26,
+  "wrongly_sorted": 8,
+  "sent_to_human": 24,
+  "items": 50,
+  "dev_file": "dev.csv",
+  "test_file": "test.csv",
   "model": "harims95/hobbylm-embed-140m",
   "method": "centroid",
-  "rule": "smallest margin with wrongly-sorted at or under one in ten labelled items, at least ten labelled items"
+  "k": 5,
+  "examples": "10 per label sampled from examples/github_issues/dev.csv (seed 7)",
+  "picked_on": "dev, leave-one-out: each dev item scored against a handful drawn from the other dev items",
+  "strip_templates": true,
+  "rule": "smallest margin with wrongly-sorted at or under one in ten labelled items, at least ten labelled items; picked on dev only"
 }

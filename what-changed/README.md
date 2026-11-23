@@ -209,7 +209,8 @@ fixes.
 - **Clause splitting is line and sentence based.** Bullet-style documents split
   cleanly. A wall of prose may split at odd places, and two clauses that share
   one idea can end up matched to each other's neighbors.
-- **1,024 tokens per clause.** Longer clauses are truncated by the model. The
+- **512 tokens per clause by default, up to 2,048 if you raise the limit.**
+  Longer clauses are truncated by the model. The
   script prints a warning to stderr when a clause exceeds the limit.
 - **English only.** The thresholds were checked on English sample data and
   nothing else.

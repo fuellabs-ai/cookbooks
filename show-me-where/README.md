@@ -397,6 +397,8 @@ transfer to another.
 
 The "not in these documents" decision is a score cut-off, not understanding. It will sometimes say no when the answer is there, and sometimes show a close-sounding section that does not answer the question, so set the cut-off on your own questions and keep a person in the loop for anything involving money, law or health.
 
+Product catalogs are hard: a question about a size or spec the page does not list, such as "Summit Boots in wide widths", can still score close to that product's page at 0.729.
+
 The Check this band narrows where that limit bites: borderline scores go to
 a person instead of becoming a yes or a no. It does not remove the limit,
 because the two cut-offs are still score cut-offs.

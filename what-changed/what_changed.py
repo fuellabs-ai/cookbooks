@@ -24,7 +24,9 @@ from collections import Counter, defaultdict
 import numpy as np
 
 MODEL_ID = "harims95/hobbylm-embed-140m"
-MAX_INPUT_TOKENS = 1024  # the model reads at most 1,024 tokens per clause
+MODEL_REVISION = "ea708cee"
+DEFAULT_MAX_TOKENS = 512  # the model reads 512 tokens by default
+MAX_TOKEN_LIMIT = 2048    # up to 2,048 if you raise the limit
 
 DEFAULT_THRESHOLD = 0.85  # reworded vs changed; midpoint of the gap observed on examples/
 DEFAULT_FLOOR = 0.74      # below this a clause has no close match at all
@@ -67,8 +69,9 @@ def normalize(text: str) -> str:
 def split_clauses(text: str) -> list[str]:
     """Split a document into clauses: bullet lines and sentences.
 
-    Keeps each clause short; the model reads at most 1,024 tokens, and
-    short clauses match far better than long paragraphs.
+    Keeps each clause short; the model reads 512 tokens by default, up to
+    2,048 if you raise the limit, and short clauses match far better than
+    long paragraphs.
     """
     clauses: list[str] = []
     for raw_line in text.splitlines():
@@ -167,6 +170,7 @@ class Pair:
 
 
 def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
+            max_tokens: int = DEFAULT_MAX_TOKENS,
             claim_check: bool = True, claim_words=None):
     """Match clauses across versions and label every pair."""
     old_clauses = split_clauses(old_text)
@@ -175,8 +179,8 @@ def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
     # Warn about clauses the model would have to truncate.
     for clause in old_clauses + new_clauses:
         n_tokens = len(model.tokenizer(clause, add_special_tokens=False)["input_ids"])
-        if n_tokens > MAX_INPUT_TOKENS:
-            print(f"warning: clause over {MAX_INPUT_TOKENS} tokens will be truncated: {clause[:80]}...",
+        if n_tokens > max_tokens:
+            print(f"warning: clause over {max_tokens} tokens will be truncated: {clause[:80]}...",
                   file=sys.stderr)
 
     pairs: list[Pair] = []
@@ -354,6 +358,10 @@ def main():
                     help="similarity below which a clause is Added/Removed (default %(default)s)")
     ap.add_argument("--claim-words", metavar="A,B,C", default=None,
                     help="comma-separated risky phrases to check (default: built-in list)")
+    ap.add_argument("--max-tokens", type=int, default=DEFAULT_MAX_TOKENS,
+                    help="token budget per clause; the model reads 512 tokens "
+                         "by default, up to 2,048 if you raise the limit "
+                         "(default %(default)s)")
     ap.add_argument("--no-claim-check", action="store_true",
                     help="disable the claim-words check")
     ap.add_argument("--show-all", action="store_true", help="also print Unchanged and Reworded clauses")
@@ -363,7 +371,9 @@ def main():
         ap.error("provide old and new file paths, or --hard-cases CSV")
 
     from sentence_transformers import SentenceTransformer
-    model = SentenceTransformer(args.model, trust_remote_code=True)
+    model = SentenceTransformer(args.model, revision=MODEL_REVISION,
+                                trust_remote_code=True)
+    max_tokens = min(args.max_tokens, MAX_TOKEN_LIMIT)
 
     claim_words = [w.strip() for w in args.claim_words.split(",")] if args.claim_words else None
     claim_check = not args.no_claim_check
@@ -379,7 +389,7 @@ def main():
         new_text = f.read()
 
     pairs = compare(old_text, new_text, model, args.threshold, args.floor,
-                    claim_check, claim_words)
+                    max_tokens, claim_check, claim_words)
     if args.json:
         print(json.dumps([{
             "label": p.label, "old": p.old, "new": p.new,

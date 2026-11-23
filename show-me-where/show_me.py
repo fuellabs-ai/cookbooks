@@ -41,6 +41,7 @@ from typing import Iterable, Sequence
 import numpy as np
 
 DEFAULT_MODEL = "harims95/hobbylm-embed-140m"
+MODEL_REVISION = "ea708cee"
 DEFAULT_CUTOFF_UPPER = 0.75
 DEFAULT_CUTOFF_LOWER = 0.65
 DEFAULT_MAX_WORDS = 220
@@ -470,7 +471,8 @@ def load_chunks(
 def load_model(model_name: str = DEFAULT_MODEL):
     from sentence_transformers import SentenceTransformer
 
-    return SentenceTransformer(model_name, trust_remote_code=True)
+    return SentenceTransformer(model_name, revision=MODEL_REVISION,
+                               trust_remote_code=True)
 
 
 def _corpus_key(model_name: str, chunks: Sequence[Chunk]) -> str:

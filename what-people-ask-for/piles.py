@@ -38,6 +38,7 @@ from typing import Sequence
 import numpy as np
 
 DEFAULT_MODEL = "harims95/hobbylm-embed-140m"
+MODEL_REVISION = "ea708cee"
 DEFAULT_DEDUP_SIM = 0.92
 DEFAULT_CLUSTER_SIM = 0.75
 DEFAULT_MIN_GROUP = 3
@@ -119,7 +120,8 @@ def clean_requests(rows: Sequence[dict], column: str) -> tuple[list[str], dict]:
 def load_model(model_name: str = DEFAULT_MODEL):
     from sentence_transformers import SentenceTransformer
 
-    return SentenceTransformer(model_name, trust_remote_code=True)
+    return SentenceTransformer(model_name, revision=MODEL_REVISION,
+                               trust_remote_code=True)
 
 
 def embed(texts: Sequence[str], model, batch_size: int = 64) -> np.ndarray:
