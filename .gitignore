@@ -1,11 +1,15 @@
 __pycache__/
-.ipynb_checkpoints/
 *.pyc
+.ipynb_checkpoints/
 .DS_Store
 
-# model / embedding caches (regenerable)
-.hobbylm_cache/
+# generated run outputs
+output/
+show_me_output/
 
 # local virtualenvs
 .venv/
 venv/
+
+# model / embedding caches (regenerable)
+.hobbylm_cache/
