@@ -3,7 +3,11 @@
 
 A HobbyLM-Embed cookbook recipe. Embeddings only, no LLM.
 
-    python what_changed.py old.txt new.txt [--show-all] [--threshold 0.90]
+    python what_changed.py old.txt new.txt [--code] [--show-all] [--threshold 0.90]
+
+With --code the two versions are read as code or config: one clause per line,
+no sentence splitting, and any text change on a non-comment line is Changed.
+In code there is no harmless rewording outside comments.
 
 Model: harims95/hobbylm-embed-140m via Sentence Transformers
 (trust_remote_code=True). The model turns each clause into a normalized
@@ -16,6 +20,7 @@ text with no query/passage prompt prefixes.
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import re
 import sys
@@ -91,6 +96,45 @@ def split_clauses(text: str) -> list[str]:
             if piece:
                 clauses.append(piece)
     return clauses
+
+
+def split_lines(text: str) -> list[str]:
+    """Code mode: one clause per line, no sentence splitting, blanks skipped."""
+    return [line.strip() for line in text.splitlines() if line.strip()]
+
+
+COMMENT_PREFIXES = ("//", "#", "--", "/*", "*", "*/")
+
+
+def is_comment(line: str) -> bool:
+    """True for a comment line in code mode: starts with a comment marker."""
+    return line.strip().startswith(COMMENT_PREFIXES)
+
+
+def _diff_chunk(tokens: list[str]) -> str:
+    """Join tokens for display, dropping a trailing clause punctuation mark."""
+    text = " ".join(tokens)
+    stripped = text.rstrip(",;:")
+    return stripped if stripped else text
+
+
+def token_diff(old_text: str, new_text: str) -> str | None:
+    """Compact word-level summary of what differs between two lines.
+
+    "...'debug' => false," vs "...'debug' => true," becomes "false -> true".
+    """
+    old_tokens = old_text.split()
+    new_tokens = new_text.split()
+    parts: list[str] = []
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(
+            a=old_tokens, b=new_tokens, autojunk=False).get_opcodes():
+        if tag == "replace":
+            parts.append(f"{_diff_chunk(old_tokens[i1:i2])} -> {_diff_chunk(new_tokens[j1:j2])}")
+        elif tag == "delete":
+            parts.append(f"{_diff_chunk(old_tokens[i1:i2])} -> (removed)")
+        elif tag == "insert":
+            parts.append(f"(added) -> {_diff_chunk(new_tokens[j1:j2])}")
+    return "; ".join(parts) if parts else None
 
 
 def extract_claims(text: str, claim_words=None) -> Counter:
@@ -171,10 +215,19 @@ class Pair:
 
 def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
             max_tokens: int = DEFAULT_MAX_TOKENS,
-            claim_check: bool = True, claim_words=None):
+            claim_check: bool = True, claim_words=None, code_mode: bool = False):
     """Match clauses across versions and label every pair."""
-    old_clauses = split_clauses(old_text)
-    new_clauses = split_clauses(new_text)
+    if code_mode:
+        old_clauses = split_lines(old_text)
+        new_clauses = split_lines(new_text)
+    else:
+        old_clauses = split_clauses(old_text)
+        new_clauses = split_clauses(new_text)
+
+    def exact_key(clause: str) -> str:
+        # Code compares case sensitively: TRUE and true are not the same line.
+        text = normalize(clause)
+        return text if code_mode else text.lower()
 
     # Warn about clauses the model would have to truncate.
     for clause in old_clauses + new_clauses:
@@ -188,10 +241,10 @@ def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
     # 1. Exact matches are Unchanged, no embedding needed.
     old_by_text: dict[str, list[int]] = defaultdict(list)
     for i, c in enumerate(old_clauses):
-        old_by_text[normalize(c).lower()].append(i)
+        old_by_text[exact_key(c)].append(i)
     old_exact, new_exact = set(), set()
     for j, c in enumerate(new_clauses):
-        key = normalize(c).lower()
+        key = exact_key(c)
         if old_by_text[key]:
             i = old_by_text[key].pop()
             old_exact.add(i)
@@ -239,6 +292,13 @@ def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
             elif claim_diff:
                 pairs.append(Pair("changed", old_clauses[i], new_clauses[j], score,
                                   f"claim words differ ({claim_diff})"))
+            elif code_mode and not (is_comment(old_clauses[i]) and is_comment(new_clauses[j])):
+                # In code there is no harmless rewording outside comments: any
+                # text change on a live line is a real change, whatever the
+                # score says. Comments keep the prose Reworded/Changed logic.
+                token_change = token_diff(old_clauses[i], new_clauses[j]) or "text differs"
+                pairs.append(Pair("changed", old_clauses[i], new_clauses[j], score,
+                                  f"text differs ({token_change})"))
             elif score >= threshold:
                 pairs.append(Pair("reworded", old_clauses[i], new_clauses[j], score,
                                   "same meaning, different words"))
@@ -367,6 +427,9 @@ def main():
     ap.add_argument("--no-claim-check", action="store_true",
                     help="disable the claim-words check")
     ap.add_argument("--show-all", action="store_true", help="also print Unchanged and Reworded clauses")
+    ap.add_argument("--code", action="store_true",
+                    help="code or config files: split by line only, and any text "
+                         "change on a non-comment line counts as Changed")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     args = ap.parse_args()
     if not args.hard_cases and (not args.old or not args.new):
@@ -391,7 +454,7 @@ def main():
         new_text = f.read()
 
     pairs = compare(old_text, new_text, model, args.threshold, args.floor,
-                    max_tokens, claim_check, claim_words)
+                    max_tokens, claim_check, claim_words, code_mode=args.code)
     if args.json:
         print(json.dumps([{
             "label": p.label, "old": p.old, "new": p.new,

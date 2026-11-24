@@ -58,6 +58,8 @@ Flags:
 --threshold 0.85       similarity above which a pair counts as Reworded
 --floor     0.74       similarity below which a clause counts as Added/Removed
 --show-all             also print Unchanged and Reworded clauses
+--code                 code/config mode: split by line only, any text change
+                       on a non-comment line counts as Changed
 --claim-words A,B,C    replace the built-in risky-phrase list
 --no-claim-check       turn the claim-words check off
 --json                 machine-readable output
@@ -66,6 +68,150 @@ Flags:
 
 `walkthrough.ipynb` is the same story as an executed notebook, with outputs,
 hard-case accuracy and the floor test reproduced end to end.
+
+## Code and config files
+
+Prose mode hides a text change when the two lines score as near duplicates,
+because in marketing copy a rewording is usually harmless. In code and config
+files it never is: `'debug' => false,` becoming `'debug' => true,` barely moves
+the embedding, so prose mode files it under Reworded and hides it. Pass
+`--code` when you compare code, config or SQL. The script then splits by line
+only (no sentence splitting), matches lines with the same embedding matcher,
+and labels any text change on a non-comment line as Changed, showing the
+differing tokens. Comments keep the prose logic, because there a rewording
+really is harmless. Identical lines are matched case sensitively: `TRUE` and
+`true` are not the same line.
+
+The two example pairs under `examples/php_config/` and `examples/sql_migration/`
+show it on a PHP config file and a SQL migration. Like everything under
+`examples/` they are fictional sample data written for this recipe; they do not
+describe a real service or database.
+
+What prose mode does with the four dangerous lines, against what code mode does
+(similarity is the real score from a run on these examples):
+
+| old | new | similarity | prose mode | code mode |
+|---|---|---|---|---|
+| `'debug' => false,` -> `'debug' => true,` | 0.98 | Reworded, hidden | Changed: false -> true |
+| `... ON DELETE CASCADE,` -> `... ON DELETE SET NULL,` | 0.93 | Reworded, hidden | Changed: CASCADE -> SET NULL |
+| `status VARCHAR(20) DEFAULT 'active',` -> `... DEFAULT 'pending',` | 0.91 | Reworded, hidden | Changed: 'active' -> 'pending' |
+| `'ssl_mode' => 'require',` -> `'ssl_mode' => 'prefer',` | 0.88 | Reworded, hidden | Changed: 'require' -> 'prefer' |
+
+Code mode keeps every check prose mode already had: numbers still force Changed
+(timeout 30 -> 60, credit_limit 1000.00 -> 500.00), a removed `NOT NULL` is a
+claim-word change, and unmatched lines are Added or Removed as before.
+
+Real output, pasted from a run
+(`python what_changed.py examples/php_config/old.php examples/php_config/new.php --code --show-all`):
+
+```
+WHAT REALLY CHANGED
+old: examples/php_config/old.php
+new: examples/php_config/new.php
+model: harims95/hobbylm-embed-140m | reword threshold 0.85 | related floor 0.74
+
+COUNTS
+unchanged   11
+reworded     1
+changed      4
+added        1
+removed      0
+
+CHANGED
+1. [text differs (false -> true), sim 0.98]
+   old: 'debug' => false,
+   new: 'debug' => true,
+2. [numbers/dates differ (old: 30, | new: 60,), sim 0.94]
+   old: 'timeout' => 30,
+   new: 'timeout' => 60,
+3. [text differs ('require' -> 'prefer'), sim 0.88]
+   old: 'ssl_mode' => 'require',
+   new: 'ssl_mode' => 'prefer',
+4. [text differs ('retry_attempts' -> 'max_retries'), sim 0.79]
+   old: 'retry_attempts' => 3,
+   new: 'max_retries' => 3,
+
+ADDED
++ 'read_replica' => env('DB_REPLICA_HOST'),
+
+REMOVED
+(none)
+
+REWORDED
+1. [sim 0.97]
+   old: // Database settings for the orders service
+   new: // Database configuration for the orders service
+
+UNCHANGED
+1. <?php
+2. return [
+3. 'default' => 'mysql',
+4. 'host' => env('DB_HOST', '127.0.0.1'),
+5. 'port' => 3306,
+6. 'database' => 'orders',
+7. 'charset' => 'utf8mb4',
+8. 'pool_size' => 10,
+9. 'strict' => true,
+10. 'log_queries' => false,
+11. ];
+```
+
+Real output, pasted from a run
+(`python what_changed.py examples/sql_migration/old.sql examples/sql_migration/new.sql --code --show-all`):
+
+```
+WHAT REALLY CHANGED
+old: examples/sql_migration/old.sql
+new: examples/sql_migration/new.sql
+model: harims95/hobbylm-embed-140m | reword threshold 0.85 | related floor 0.74
+
+COUNTS
+unchanged   10
+reworded     1
+changed      5
+added        1
+removed      0
+
+CHANGED
+1. [numbers/dates differ (old: 1000.00 | new: 500.00), sim 0.99]
+   old: credit_limit DECIMAL(10,2) DEFAULT 1000.00,
+   new: credit_limit DECIMAL(10,2) DEFAULT 500.00,
+2. [numbers/dates differ (old: 255 | new: 320), sim 0.97]
+   old: email VARCHAR(255) NOT NULL UNIQUE,
+   new: email VARCHAR(320) NOT NULL UNIQUE,
+3. [text differs (CASCADE -> SET NULL), sim 0.93]
+   old: customer_id BIGINT REFERENCES customers(id) ON DELETE CASCADE,
+   new: customer_id BIGINT REFERENCES customers(id) ON DELETE SET NULL,
+4. [text differs ('active' -> 'pending'), sim 0.91]
+   old: status VARCHAR(20) DEFAULT 'active',
+   new: status VARCHAR(20) DEFAULT 'pending',
+5. [claim words differ (old: negation | new: none), sim 0.91]
+   old: name VARCHAR(255) NOT NULL,
+   new: name VARCHAR(255),
+
+ADDED
++ CREATE INDEX idx_orders_customer ON orders(customer_id);
+
+REMOVED
+(none)
+
+REWORDED
+1. [sim 0.95]
+   old: -- Create the customers table
+   new: -- Creates the customers table
+
+UNCHANGED
+1. CREATE TABLE customers (
+2. id BIGINT PRIMARY KEY,
+3. phone VARCHAR(20),
+4. created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+5. );
+6. CREATE TABLE orders (
+7. id BIGINT PRIMARY KEY,
+8. total DECIMAL(10,2) NOT NULL
+9. );
+10. CREATE INDEX idx_customers_email ON customers(email);
+```
 
 ## How it works, in plain words
 
@@ -250,6 +396,11 @@ versions.
 - **Clause splitting is line and sentence based.** Bullet-style documents split
   cleanly. A wall of prose may split at odd places, and two clauses that share
   one idea can end up matched to each other's neighbors.
+- **Code mode comment detection is prefix based.** With --code a line counts as
+  a comment when it starts with //, #, --, /*, * or */. A block comment body
+  that does not start with one of those markers counts as code, so a text
+  change inside it shows as Changed. That is the safe direction: code mode
+  prefers a false alarm over a hidden change.
 - **512 tokens per clause by default, up to 2,048 if you raise the limit.**
   Longer clauses are truncated by the model. The
   script prints a warning to stderr when a clause exceeds the limit.
