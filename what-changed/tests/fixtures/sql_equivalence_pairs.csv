@@ -1,0 +1,5 @@
+old,new,expected
+"SELECT * FROM orders WHERE total BETWEEN 10 AND 100;","SELECT * FROM orders WHERE total >= 10 AND total <= 100;",same rows
+"SELECT * FROM users WHERE status IN ('active', 'pending');","SELECT * FROM users WHERE status = 'active' OR status = 'pending';",same rows
+"SELECT u.name, o.total FROM users u JOIN orders o ON o.user_id = u.id;","SELECT u.name, o.total FROM users u, orders o WHERE o.user_id = u.id;",same rows
+"SELECT * FROM users WHERE NOT (email IS NULL);","SELECT * FROM users WHERE email IS NOT NULL;",same rows
