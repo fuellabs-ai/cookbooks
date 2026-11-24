@@ -60,8 +60,11 @@ Flags:
 --show-all             also print Unchanged and Reworded clauses
 --code                 code/config mode: split by line only, any text change
                        on a non-comment line counts as Changed
---ignore-format        with --code: normalise quote style and whitespace, so
-                       lines that differ only by formatting count as Unchanged
+--ignore-format        with --code: normalise quote style and whitespace and
+                       join lines into balanced statements, so pure
+                       reformatting is not reported
+--sql-check DB_FILE    run matched SQL SELECT pairs against a SQLite database
+                       and report same rows or different rows
 --claim-words A,B,C    replace the built-in risky-phrase list
 --no-claim-check       turn the claim-words check off
 --json                 machine-readable output
@@ -89,9 +92,24 @@ sensitively: `TRUE` and `true` are not the same line.
 A formatting sweep can flood a code-mode report, because a quote or a line
 wrap is a text change. Pass `--ignore-format` when a reformat landed together
 with real changes: quote style and whitespace are normalised before
-comparing, so lines that differ only by formatting count as Unchanged. Lines
-that were rewrapped across several lines still show, because comparison is
-line by line.
+comparing, and lines are joined into one logical statement until brackets and
+parentheses balance, so a call that was rewrapped across several lines
+compares as a single clause. Pure reformatting then drops out of the report;
+what is left is real changes plus formatting that changed punctuation, such
+as implicit string concatenation or a trailing comma that moved.
+
+Lines that only moved position are never reported: matching is by content,
+not order. Shuffle a config and `--code` shows nothing; rename a key and it
+pairs with its own old line as one Changed pair. `tests/test_reorder.py`
+checks this on a real Laravel config file.
+
+For SQL there is `--sql-check DB_FILE`: for every matched pair whose old and
+new sides both look like SELECT queries, the script runs both against the
+given SQLite database and reports `same rows` or `different rows` under the
+pair. A Changed label with `same rows` is a rewrite that returns the same
+result, such as `IN (...)` becoming an OR chain. The database needs the
+schema locally; rows are compared as a set, so row order does not count.
+`tests/test_sql_check.py` runs four equivalence pairs against it.
 
 The two example pairs under `examples/php_config/` and `examples/sql_migration/`
 show it on a PHP config file and a SQL migration. Like everything under
@@ -414,6 +432,16 @@ versions.
   prefers a false alarm over a hidden change. --ignore-format trades some of
   that safety for quiet: quote style is normalised, so a change that is only
   quote marks hides too.
+- **Statement joining is bracket counting.** --ignore-format joins lines
+  until brackets balance, and brackets inside string literals count, so a
+  string that contains an unmatched bracket skews the grouping. A file that
+  is one balanced expression from top to bottom (a PHP config's return
+  array) joins into a single statement; for PHP-style configs use plain
+  --code instead.
+- **--sql-check runs your queries.** Both sides of a matched pair are
+  executed against the database you point at. Point it at a copy, never at
+  a production database, and expect a SELECT-only script: pairs that are
+  not SELECT queries get no verdict.
 - **512 tokens per clause by default, up to 2,048 if you raise the limit.**
   Longer clauses are truncated by the model. The
   script prints a warning to stderr when a clause exceeds the limit.

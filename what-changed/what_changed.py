@@ -3,13 +3,16 @@
 
 A HobbyLM-Embed cookbook recipe. Embeddings only, no LLM.
 
-    python what_changed.py old.txt new.txt [--code] [--ignore-format] [--show-all] [--threshold 0.90]
+    python what_changed.py old.txt new.txt [--code] [--ignore-format] [--sql-check DB_FILE]
+    [--show-all] [--threshold 0.90]
 
 With --code the two versions are read as code or config: one clause per line,
 no sentence splitting, and any text change on a non-comment line is Changed.
 In code there is no harmless rewording outside comments. --ignore-format
 normalises quote style and whitespace before comparing, so lines that differ
-only by formatting count as Unchanged.
+only by formatting count as Unchanged. --sql-check DB_FILE runs matched SQL
+SELECT pairs against a SQLite database and reports same rows or different
+rows.
 
 Model: harims95/hobbylm-embed-140m via Sentence Transformers
 (trust_remote_code=True). The model turns each clause into a normalized
@@ -25,6 +28,7 @@ import argparse
 import difflib
 import json
 import re
+import sqlite3
 import sys
 from collections import Counter, defaultdict
 
@@ -216,8 +220,79 @@ def fact_sort_key(item):
         return (1, 0.0, text)
 
 
+BRACKET_OPEN = "([{"
+BRACKET_CLOSE = ")]}"
+
+
+def join_statements(lines: list[str]) -> list[str]:
+    """Join lines into one clause per balanced statement (--ignore-format).
+
+    Lines accumulate until the bracket depth returns to zero, so a call
+    that was rewrapped across several lines compares as one clause. A
+    statement also ends when it closes back to one open bracket (the
+    enclosing list) with a trailing comma, which keeps top-level list
+    items as separate clauses instead of one file-long blob. Comment
+    lines outside a statement stay their own clause. Brackets inside
+    string literals are counted too, and a file that is one balanced
+    expression from top to bottom (a PHP config's return array) joins
+    into a single statement.
+    """
+    statements: list[str] = []
+    buf: list[str] = []
+    depth = 0
+    for raw in lines:
+        line = raw.strip()
+        if depth == 0 and is_comment(line):
+            statements.append(line)
+            continue
+        buf.append(line)
+        net = sum(line.count(b) for b in BRACKET_OPEN)
+        net -= sum(line.count(b) for b in BRACKET_CLOSE)
+        depth += net
+        if depth <= 0:
+            statements.append(" ".join(buf))
+            buf, depth = [], 0
+        elif depth == 1 and net <= 0 and line.endswith(","):
+            # Back at the enclosing list: the item just closed. The
+            # enclosing bracket is still open, so depth stays at 1.
+            statements.append(" ".join(buf))
+            buf = []
+    if buf:
+        statements.append(" ".join(buf))
+    return statements
+
+
+SQL_QUERY_RE = re.compile(r"^\s*(?:select|with|values)\b", re.IGNORECASE)
+
+
+def check_sql_pair(conn, old_sql, new_sql):
+    """Run two matched SQL queries and compare the rows they return.
+
+    Returns "same rows (N)" or "different rows (old N, new M)" when both
+    sides are SELECT queries, or None when either side is not. Row order
+    does not count: rows are compared as a sorted multiset.
+    """
+    if not (SQL_QUERY_RE.match(old_sql) and SQL_QUERY_RE.match(new_sql)):
+        return None
+    try:
+        old_rows = conn.execute(old_sql.strip().rstrip(";")).fetchall()
+        new_rows = conn.execute(new_sql.strip().rstrip(";")).fetchall()
+    except sqlite3.Error:
+        return None
+
+    def as_rows(rows):
+        try:
+            return sorted(rows)
+        except TypeError:
+            return sorted(map(repr, rows))
+
+    if as_rows(old_rows) == as_rows(new_rows):
+        return f"same rows ({len(old_rows)})"
+    return f"different rows (old {len(old_rows)}, new {len(new_rows)})"
+
+
 class Pair:
-    __slots__ = ("label", "old", "new", "sim", "reason")
+    __slots__ = ("label", "old", "new", "sim", "reason", "sql")
 
     def __init__(self, label, old, new, sim, reason):
         self.label = label  # unchanged | reworded | changed | added | removed
@@ -225,6 +300,7 @@ class Pair:
         self.new = new
         self.sim = sim
         self.reason = reason
+        self.sql = None     # same rows / different rows, from --sql-check
 
 
 def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
@@ -233,8 +309,12 @@ def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
             ignore_format: bool = False):
     """Match clauses across versions and label every pair."""
     if code_mode:
-        old_clauses = split_lines(old_text)
-        new_clauses = split_lines(new_text)
+        lines_old, lines_new = split_lines(old_text), split_lines(new_text)
+        if ignore_format:
+            old_clauses = join_statements(lines_old)
+            new_clauses = join_statements(lines_new)
+        else:
+            old_clauses, new_clauses = lines_old, lines_new
     else:
         old_clauses = split_clauses(old_text)
         new_clauses = split_clauses(new_text)
@@ -415,10 +495,14 @@ def render_report(pairs: list[Pair], old_path, new_path, model_id, threshold, fl
                 lines.append(f"{k}. [{p.reason}, sim {p.sim:.2f}]")
                 lines.append(f"   old: {clause_text(p, 'old')}")
                 lines.append(f"   new: {clause_text(p, 'new')}")
+                if p.sql:
+                    lines.append(f"   sql: {p.sql}")
             elif label == "reworded":
                 lines.append(f"{k}. [sim {p.sim:.2f}]")
                 lines.append(f"   old: {clause_text(p, 'old')}")
                 lines.append(f"   new: {clause_text(p, 'new')}")
+                if p.sql:
+                    lines.append(f"   sql: {p.sql}")
             elif label == "unchanged":
                 lines.append(f"{k}. {clause_text(p, 'old')}")
             else:  # added / removed
@@ -452,9 +536,12 @@ def main():
                     help="code or config files: split by line only, and any text "
                          "change on a non-comment line counts as Changed")
     ap.add_argument("--ignore-format", action="store_true",
-                    help="with --code: normalise quote style and whitespace before "
-                         "comparing, so lines that differ only by formatting count "
-                         "as Unchanged")
+                    help="with --code: normalise quote style and whitespace, and "
+                         "join lines into balanced statements, so pure reformatting "
+                         "is not reported")
+    ap.add_argument("--sql-check", metavar="DB_FILE",
+                    help="run matched SQL SELECT pairs against this SQLite database "
+                         "and report whether they return the same rows")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     args = ap.parse_args()
     if not args.hard_cases and (not args.old or not args.new):
@@ -481,14 +568,22 @@ def main():
     pairs = compare(old_text, new_text, model, args.threshold, args.floor,
                     max_tokens, claim_check, claim_words, code_mode=args.code,
                     ignore_format=args.ignore_format)
+    conn = None
+    if args.sql_check:
+        conn = sqlite3.connect(f"file:{args.sql_check}?mode=ro", uri=True)
+        for p in pairs:
+            if p.label in ("changed", "reworded") and p.old and p.new:
+                p.sql = check_sql_pair(conn, p.old, p.new)
     if args.json:
         print(json.dumps([{
             "label": p.label, "old": p.old, "new": p.new,
-            "sim": p.sim, "reason": p.reason,
+            "sim": p.sim, "reason": p.reason, "sql": p.sql,
         } for p in pairs], indent=2))
     else:
         print(render_report(pairs, args.old, args.new, args.model,
                             args.threshold, args.floor, args.show_all))
+    if conn:
+        conn.close()
 
 
 if __name__ == "__main__":
