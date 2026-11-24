@@ -3,3 +3,6 @@ old,new,expected
 "SELECT * FROM users WHERE status IN ('active', 'pending');","SELECT * FROM users WHERE status = 'active' OR status = 'pending';",same rows
 "SELECT u.name, o.total FROM users u JOIN orders o ON o.user_id = u.id;","SELECT u.name, o.total FROM users u, orders o WHERE o.user_id = u.id;",same rows
 "SELECT * FROM users WHERE NOT (email IS NULL);","SELECT * FROM users WHERE email IS NOT NULL;",same rows
+"UPDATE users SET email = 'ada@example.org' WHERE name = 'Ada Lovelace';","UPDATE users SET email = 'ada@example.org' WHERE id = 1;",same effect
+"DELETE FROM orders WHERE total > 200;","DELETE FROM orders WHERE total > 50;",different effect
+"UPDATE users SET email = 'grace@example.org' WHERE name = 'Grace Hopper';","UPDATE users SET status = 'inactive' WHERE name = 'Grace Hopper';",different effect
