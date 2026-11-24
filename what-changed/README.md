@@ -108,7 +108,7 @@ new sides both look like SELECT queries, the script runs both against the
 given SQLite database and reports `same rows` or `different rows` under the
 pair. A Changed label with `same rows` is a rewrite that returns the same
 result, such as `IN (...)` becoming an OR chain. The database needs the
-schema locally; rows are compared as a set, so row order does not count.
+schema locally; rows are compared with duplicates counted; row order does not count.
 `tests/test_sql_check.py` runs four equivalence pairs against it.
 
 The two example pairs under `examples/php_config/` and `examples/sql_migration/`
