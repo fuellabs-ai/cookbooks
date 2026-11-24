@@ -17,13 +17,18 @@ python tests/test_ignore_format_join.py
   an OR chain, explicit JOIN vs a comma join, double negation) against the
   SQLite database built from `fixtures/sql_check_schema.sql`, so --sql-check
   should report "same rows" for all 4; a control pair in the script reports
-  "different rows". The same CSV carries 3 write pairs - two equivalent
+  "different rows". The same CSV carries 5 write pairs - two equivalent
   UPDATEs written differently, a DELETE whose new WHERE clause is wider
-  (deletes more rows), and an UPDATE that changes a different column.
-  UPDATE/DELETE pairs run against a temporary copy of the database, each in
-  its own rolled-back transaction, and report "same effect" or "different
-  effect" with the row counts. The test also checks the original database
-  file is byte-identical after every check.
+  (deletes more rows), an UPDATE that changes a different column, a
+  NOT-rewritten DELETE, and a doubling UPDATE. UPDATE/DELETE pairs run
+  against a temporary copy of the database, each in its own rolled-back
+  transaction, and report "same effect" or "different effect" with the row
+  counts. The test also checks the original database file is byte-identical
+  after every check.
+- `test_sql_check_servers.py` runs the same pairs against real PostgreSQL
+  and MySQL test databases. It SKIPS an engine with a clear message when
+  its server is not reachable (HOBBYLM_PG_URL / HOBBYLM_MYSQL_URL); seed
+  the servers first with `seed_postgres.py` / `seed_mysql.py`.
 - `test_ignore_format_join.py` runs the Django auth 0001_initial.py
   reformatting sweep (3.2 -> 5.0) through `--code --ignore-format` and
   checks the report gets down to the one real change, with no Added or

@@ -3,18 +3,18 @@
 
 A HobbyLM-Embed cookbook recipe. Embeddings only, no LLM.
 
-    python what_changed.py old.txt new.txt [--code] [--ignore-format] [--sql-check DB_FILE]
-    [--show-all] [--threshold 0.90]
+    python what_changed.py old.txt new.txt [--code] [--ignore-format]
+    [--sql-check DB_FILE_OR_URL] [--show-all] [--threshold 0.90]
 
 With --code the two versions are read as code or config: one clause per line,
 no sentence splitting, and any text change on a non-comment line is Changed.
 In code there is no harmless rewording outside comments. --ignore-format
 normalises quote style and whitespace before comparing, so lines that differ
-only by formatting count as Unchanged. --sql-check DB_FILE runs matched
-SQL pairs against a copy of a SQLite database: SELECTs are compared by
-the rows they return, UPDATE and DELETE by the rows they change on a
-temporary copy (each in its own transaction, rolled back afterwards;
-the original file is never modified).
+only by formatting count as Unchanged. --sql-check accepts a SQLite file
+path or a PostgreSQL/MySQL URL, and runs matched SQL pairs against it:
+SELECTs are compared by the rows they return, UPDATE and DELETE by the
+rows they change (on SQLite via a temporary copy, on a server inside a
+rolled-back transaction). Non-local server hosts need --allow-remote-db.
 
 Model: harims95/hobbylm-embed-140m via Sentence Transformers
 (trust_remote_code=True). The model turns each clause into a normalized
@@ -34,6 +34,7 @@ import re
 import sqlite3
 import sys
 import tempfile
+from urllib.parse import urlsplit
 from collections import Counter, defaultdict
 
 import numpy as np
@@ -268,6 +269,8 @@ def join_statements(lines: list[str]) -> list[str]:
 
 SQL_QUERY_RE = re.compile(r"^\s*(?:select|with|values)\b", re.IGNORECASE)
 SQL_WRITE_RE = re.compile(r"^\s*(?:update|delete)\b", re.IGNORECASE)
+LOCAL_DB_HOSTS = {"localhost", "127.0.0.1", "::1"}
+SNAPSHOT_ROW_LIMIT = 100000
 
 JOURNAL_TABLE = "__what_changed_journal"
 
@@ -375,25 +378,182 @@ def _effect_verdict(old_journal, new_journal) -> str:
     return "different effect (" + "; ".join(parts) + ")"
 
 
-def check_sql_pair(conn, old_sql, new_sql):
+def _is_local_host(hostname) -> bool:
+    """True for localhost, the loopback addresses, or a unix socket."""
+    return hostname is None or hostname == "" or hostname in LOCAL_DB_HOSTS \
+        or hostname.startswith("/")
+
+
+def _quote_identifier(dialect: str, name: str) -> str:
+    if dialect == "mysql":
+        return "`" + name.replace("`", "``") + "`"
+    return '"' + name.replace('"', '""') + '"'
+
+
+def _sql_literal(text: str) -> str:
+    """Quote a string literal for SQL."""
+    return "'" + text.replace("'", "''") + "'"
+
+
+def connect_sql_check(spec: str, allow_remote: bool = False):
+    """Open a connection for --sql-check.
+
+    Accepts a SQLite file path (unchanged behaviour) or a server URL:
+    postgresql://user:pass@host:port/dbname or mysql://... . Returns
+    (connection, dialect). When the connection cannot be opened it prints
+    the reason to stderr and returns (None, None). Non-local hosts are
+    refused unless allow_remote is set.
+    """
+    if re.match(r"^postgres(?:ql)?://", spec):
+        try:
+            import psycopg
+        except ImportError:
+            print("hint: PostgreSQL support needs the psycopg package: "
+                  'pip install "psycopg[binary]"', file=sys.stderr)
+            return None, None
+        parts = urlsplit(spec)
+        if not _is_local_host(parts.hostname) and not allow_remote:
+            print(f"refusing non-local host {parts.hostname!r} without "
+                  "--allow-remote-db", file=sys.stderr)
+            return None, None
+        print("--sql-check warning: this must be a TEST database; every "
+              "statement runs inside a rolled-back transaction", file=sys.stderr)
+        return psycopg.connect(spec, autocommit=True), "postgres"
+    if re.match(r"^mysql://", spec):
+        try:
+            import pymysql
+        except ImportError:
+            print("hint: MySQL support needs the PyMySQL package: "
+                  "pip install PyMySQL", file=sys.stderr)
+            return None, None
+        parts = urlsplit(spec)
+        if not _is_local_host(parts.hostname) and not allow_remote:
+            print(f"refusing non-local host {parts.hostname!r} without "
+                  "--allow-remote-db", file=sys.stderr)
+            return None, None
+        print("--sql-check warning: this must be a TEST database; every "
+              "statement runs inside a rolled-back transaction", file=sys.stderr)
+        conn = pymysql.connect(host=parts.hostname or "localhost",
+                               port=parts.port or 3306,
+                               user=parts.username or "root",
+                               password=parts.password or "",
+                               database=parts.path.lstrip("/") or None,
+                               autocommit=True)
+        return conn, "mysql"
+    conn = sqlite3.connect(f"file:{spec}?mode=ro", uri=True)
+    print("--sql-check warning: make sure this is a TEST database", file=sys.stderr)
+    return conn, "sqlite"
+
+
+def _target_table(sql):
+    """The single table an UPDATE or DELETE targets, or None."""
+    if re.search(r"\bjoin\b", sql, re.IGNORECASE):
+        return None  # multi-table write: the simple parse declines
+    m = re.match(r"\s*(?:update|delete\s+from)\s+(?:only\s+)?"
+                 r"[\"'`\[]?([A-Za-z_][\w$]*)[\"'`\]]?", sql, re.IGNORECASE)
+    return m.group(1) if m else None
+
+
+def _is_local_host(hostname) -> bool:
+    """True for localhost, the loopback addresses, or a unix socket."""
+    return (hostname is None or hostname == "" or hostname in LOCAL_DB_HOSTS
+            or hostname.startswith("/"))
+
+
+def _quote_identifier(dialect: str, name: str) -> str:
+    if dialect == "mysql":
+        return "`" + name.replace("`", "``") + "`"
+    return '"' + name.replace('"', '""') + '"'
+
+
+def connect_sql_check(spec: str, allow_remote: bool = False):
+    """Open a connection for --sql-check.
+
+    Accepts a SQLite file path (unchanged behaviour) or a server URL:
+    postgresql://user:pass@host:port/dbname or mysql://... . Returns
+    (connection, dialect). When the connection cannot be opened it prints
+    the reason to stderr and returns (None, None). Non-local hosts are
+    refused unless allow_remote is set.
+    """
+    if re.match(r"^postgres(?:ql)?://", spec):
+        try:
+            import psycopg
+        except ImportError:
+            print("hint: PostgreSQL support needs the psycopg package: "
+                  'pip install "psycopg[binary]"', file=sys.stderr)
+            return None, None
+        parts = urlsplit(spec)
+        if not _is_local_host(parts.hostname) and not allow_remote:
+            print(f"refusing non-local host {parts.hostname!r} without "
+                  "--allow-remote-db", file=sys.stderr)
+            return None, None
+        print("--sql-check warning: this must be a TEST database; every "
+              "statement runs inside a rolled-back transaction", file=sys.stderr)
+        return psycopg.connect(spec, autocommit=True), "postgres"
+    if re.match(r"^mysql://", spec):
+        try:
+            import pymysql
+        except ImportError:
+            print("hint: MySQL support needs the PyMySQL package: "
+                  "pip install PyMySQL", file=sys.stderr)
+            return None, None
+        parts = urlsplit(spec)
+        if not _is_local_host(parts.hostname) and not allow_remote:
+            print(f"refusing non-local host {parts.hostname!r} without "
+                  "--allow-remote-db", file=sys.stderr)
+            return None, None
+        print("--sql-check warning: this must be a TEST database; every "
+              "statement runs inside a rolled-back transaction", file=sys.stderr)
+        conn = pymysql.connect(host=parts.hostname or "localhost",
+                               port=parts.port or 3306,
+                               user=parts.username or "root",
+                               password=parts.password or "",
+                               database=parts.path.lstrip("/") or None,
+                               autocommit=True)
+        return conn, "mysql"
+    conn = sqlite3.connect(f"file:{spec}?mode=ro", uri=True)
+    print("--sql-check warning: make sure this is a TEST database", file=sys.stderr)
+    return conn, "sqlite"
+
+
+def _target_table(sql):
+    """The single table an UPDATE or DELETE targets, or None."""
+    if re.search(r"\bjoin\b", sql, re.IGNORECASE):
+        return None  # multi-table write: the simple parse declines
+    m = re.match(r"\s*(?:update|delete\s+from)\s+(?:only\s+)?"
+                 r"[\"'`\[]?([A-Za-z_][\w$]*)[\"'`\]]?", sql, re.IGNORECASE)
+    return m.group(1) if m else None
+
+
+def check_sql_pair(conn, old_sql, new_sql, dialect="sqlite"):
     """Compare two matched SQL statements by running them.
 
-    SELECT statements run on the read-only connection and are compared by
-    the rows they return. UPDATE and DELETE statements run on a temporary
-    copy of the database, each in its own transaction that is rolled
-    back, and are compared by the rows they change: table, primary key
-    and before/after values. The original database file is only opened
-    read-only and is never modified. Returns a one-line verdict, or None
-    when either side is not a runnable single statement of a supported
-    kind.
+    SELECT statements run in a read-only transaction and are compared by
+    the rows they return. UPDATE and DELETE statements are compared by
+    the rows they change. On SQLite that runs on a temporary copy of the
+    database with journal triggers, each statement in its own rolled
+    back transaction. On PostgreSQL and MySQL it runs directly in a
+    transaction that is always rolled back, and the affected rows are
+    found by snapshotting the target table before and after. The verdicts
+    are the same for every engine: same rows / different rows for
+    SELECTs, same effect / different effect for writes. Returns a
+    one-line verdict, a "no verdict: ..." reason for a refused check, or
+    None when either side is not a runnable single statement of a
+    supported kind.
     """
-    old_is_query = bool(SQL_QUERY_RE.match(old_sql))
-    new_is_query = bool(SQL_QUERY_RE.match(new_sql))
-    old_is_write = bool(SQL_WRITE_RE.match(old_sql))
-    new_is_write = bool(SQL_WRITE_RE.match(new_sql))
-    if not ((old_is_query and new_is_query) or (old_is_write and new_is_write)):
+    old_kind = ("select" if SQL_QUERY_RE.match(old_sql) else
+                "write" if SQL_WRITE_RE.match(old_sql) else None)
+    new_kind = ("select" if SQL_QUERY_RE.match(new_sql) else
+                "write" if SQL_WRITE_RE.match(new_sql) else None)
+    if old_kind is None or old_kind != new_kind:
         return None
-    if old_is_query:
+    if dialect == "sqlite":
+        return _check_sql_pair_sqlite(conn, old_sql, new_sql, old_kind)
+    return _check_sql_pair_server(conn, dialect, old_sql, new_sql, old_kind)
+
+
+def _check_sql_pair_sqlite(conn, old_sql, new_sql, kind):
+    if kind == "select":
         try:
             old_rows = conn.execute(old_sql.strip().rstrip(";")).fetchall()
             new_rows = conn.execute(new_sql.strip().rstrip(";")).fetchall()
@@ -418,6 +578,134 @@ def check_sql_pair(conn, old_sql, new_sql):
     if old_journal is None or new_journal is None:
         return None
     return _effect_verdict(old_journal, new_journal)
+
+
+def _check_sql_pair_server(conn, dialect, old_sql, new_sql, kind):
+    if kind == "select":
+        old_rows, new_rows = _server_select_rows(conn, dialect, old_sql, new_sql)
+        if old_rows is None or new_rows is None:
+            return None
+        if sorted(map(repr, old_rows)) == sorted(map(repr, new_rows)):
+            return f"same rows ({len(old_rows)})"
+        return f"different rows (old {len(old_rows)}, new {len(new_rows)})"
+    old_table = _target_table(old_sql)
+    new_table = _target_table(new_sql)
+    if old_table is None or new_table is None:
+        return ("no verdict: could not find exactly one target table in "
+                "the statement")
+    old_journal = _server_capture_write(conn, dialect, old_sql, old_table)
+    if isinstance(old_journal, str) or old_journal is None:
+        return old_journal
+    new_journal = _server_capture_write(conn, dialect, new_sql, new_table)
+    if isinstance(new_journal, str) or new_journal is None:
+        return new_journal
+    return _effect_verdict(old_journal, new_journal)
+
+
+def _server_select_rows(conn, dialect, sql1, sql2):
+    """Run both SELECTs in one read-only transaction. Never commits."""
+    cursor = conn.cursor()
+    rows = None, None
+    try:
+        cursor.execute("BEGIN READ ONLY" if dialect == "postgres"
+                       else "START TRANSACTION READ ONLY")
+        if dialect == "postgres":
+            cursor.execute("SET LOCAL statement_timeout = '10s'")
+        else:
+            cursor.execute("SET SESSION max_execution_time = 10000")
+        fetched = []
+        for sql in (sql1, sql2):
+            cursor.execute(sql.strip().rstrip(";"))
+            fetched.append(cursor.fetchall())
+        rows = fetched
+    except Exception:
+        rows = None, None
+    finally:
+        try:
+            cursor.execute("ROLLBACK")
+        except Exception:
+            pass
+    return rows
+
+
+def _server_capture_write(conn, dialect, sql, table):
+    """Effect of one write statement: snapshot, run, snapshot, roll back.
+
+    Returns the journal as a list of (change, table, pk, before, after)
+    tuples in the same shape the SQLite triggers produce, a
+    "no verdict: ..." reason when the check is refused, or None when the
+    statement errors. Never commits.
+    """
+    cursor = conn.cursor()
+    if dialect == "mysql":
+        cursor.execute("SELECT engine FROM information_schema.tables "
+                       "WHERE table_schema = DATABASE() AND table_name = %s",
+                       (table,))
+        row = cursor.fetchone()
+        engine = row[0] if row else "unknown"
+        if (engine or "").lower() != "innodb":
+            return (f"no verdict: table {table} uses the {engine} engine "
+                    "(only InnoDB can roll back)")
+    schema_filter = "current_schema()" if dialect == "postgres" else "DATABASE()"
+    cursor.execute("SELECT column_name FROM information_schema.columns "
+                   f"WHERE table_schema = {schema_filter} AND table_name = %s "
+                   "ORDER BY ordinal_position", (table,))
+    columns = [r[0] for r in cursor.fetchall()]
+    if not columns:
+        return f"no verdict: table {table} not found in this database"
+    cursor.execute("SELECT kcu.column_name FROM information_schema.table_constraints tc "
+                   "JOIN information_schema.key_column_usage kcu "
+                   "ON tc.constraint_name = kcu.constraint_name "
+                   "AND tc.table_schema = kcu.table_schema "
+                   "AND tc.table_name = kcu.table_name "
+                   f"WHERE tc.constraint_type = 'PRIMARY KEY' "
+                   f"AND tc.table_schema = {schema_filter} AND tc.table_name = %s "
+                   "ORDER BY kcu.ordinal_position", (table,))
+    pk_cols = [r[0] for r in cursor.fetchall()]
+    if not pk_cols:
+        return f"no verdict: table {table} has no primary key"
+    pk_idx = [columns.index(c) for c in pk_cols]
+    qt = _quote_identifier(dialect, table)
+    cursor.execute(f"SELECT count(*) FROM {qt}")
+    count = cursor.fetchone()[0]
+    if count > SNAPSHOT_ROW_LIMIT:
+        return (f"no verdict: table {table} has {count} rows "
+                f"(snapshot limit {SNAPSHOT_ROW_LIMIT})")
+    journal = []
+    try:
+        cursor.execute("BEGIN" if dialect == "postgres" else "START TRANSACTION")
+        if dialect == "postgres":
+            cursor.execute("SET LOCAL statement_timeout = '10s'")
+        else:
+            cursor.execute("SET SESSION max_execution_time = 10000")
+            cursor.execute("SET SESSION innodb_lock_wait_timeout = 5")
+
+        def snapshot():
+            cursor.execute(f"SELECT * FROM {qt}")
+            return {tuple(row[i] for i in pk_idx): row for row in cursor.fetchall()}
+
+        before = snapshot()
+        cursor.execute(sql)
+        after = snapshot()
+    except Exception:
+        return None
+    finally:
+        try:
+            cursor.execute("ROLLBACK")
+        except Exception:
+            pass
+    for pk in sorted(before.keys() - after.keys(), key=repr):
+        journal.append(("delete", table, json.dumps(pk, default=str),
+                        json.dumps(before[pk], default=str), None))
+    for pk in sorted(before.keys() & after.keys(), key=repr):
+        if before[pk] != after[pk]:
+            journal.append(("update", table, json.dumps(pk, default=str),
+                            json.dumps(before[pk], default=str),
+                            json.dumps(after[pk], default=str)))
+    for pk in sorted(after.keys() - before.keys(), key=repr):
+        journal.append(("insert", table, json.dumps(pk, default=str),
+                        None, json.dumps(after[pk], default=str)))
+    return journal
 
 
 class Pair:
@@ -668,9 +956,13 @@ def main():
                     help="with --code: normalise quote style and whitespace, and "
                          "join lines into balanced statements, so pure reformatting "
                          "is not reported")
-    ap.add_argument("--sql-check", metavar="DB_FILE",
-                    help="run matched SQL SELECT pairs against this SQLite database "
-                         "and report whether they return the same rows")
+    ap.add_argument("--sql-check", metavar="DB_FILE_OR_URL",
+                    help="run matched SQL pairs against a copy of a SQLite "
+                         "database file, or against a PostgreSQL or MySQL test "
+                         "database given as a URL (postgresql://... or mysql://...)")
+    ap.add_argument("--allow-remote-db", action="store_true",
+                    help="let --sql-check run against a non-local PostgreSQL or "
+                         "MySQL host (default: localhost only)")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     args = ap.parse_args()
     if not args.hard_cases and (not args.old or not args.new):
@@ -698,11 +990,14 @@ def main():
                     max_tokens, claim_check, claim_words, code_mode=args.code,
                     ignore_format=args.ignore_format)
     conn = None
+    dialect = "sqlite"
     if args.sql_check:
-        conn = sqlite3.connect(f"file:{args.sql_check}?mode=ro", uri=True)
+        conn, dialect = connect_sql_check(args.sql_check,
+                                          allow_remote=args.allow_remote_db)
+    if conn is not None:
         for p in pairs:
             if p.label in ("changed", "reworded") and p.old and p.new:
-                p.sql = check_sql_pair(conn, p.old, p.new)
+                p.sql = check_sql_pair(conn, p.old, p.new, dialect)
     if args.json:
         print(json.dumps([{
             "label": p.label, "old": p.old, "new": p.new,

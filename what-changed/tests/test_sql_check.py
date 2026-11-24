@@ -48,9 +48,10 @@ def main():
 
     csv_path = pathlib.Path(__file__).parent / "fixtures" / "sql_equivalence_pairs.csv"
     rows = list(csv.DictReader(open(csv_path, encoding="utf-8")))
-    # 4 SELECT equivalence pairs and 3 write pairs (equivalent UPDATEs,
-    # a wider DELETE, an UPDATE that changes a different column).
-    assert len(rows) == 7, f"expected 7 pairs, found {len(rows)}"
+    # 4 SELECT equivalence pairs, the SELECT control, and 5 write pairs
+    # (equivalent UPDATEs, a wider DELETE, an UPDATE that changes a
+    # different column, a NOT-rewritten DELETE, a doubling UPDATE).
+    assert len(rows) == 9, f"expected 9 pairs, found {len(rows)}"
 
     failures = []
     for k, row in enumerate(rows, 1):

@@ -63,9 +63,13 @@ Flags:
 --ignore-format        with --code: normalise quote style and whitespace and
                        join lines into balanced statements, so pure
                        reformatting is not reported
---sql-check DB_FILE    run matched SQL pairs against a copy of a SQLite
-                       database: same rows or different rows for SELECTs,
-                       same effect or different effect for UPDATE/DELETE
+--sql-check TARGET     run matched SQL pairs against a copy of a SQLite
+                       database file, or a PostgreSQL/MySQL test database
+                       given as a URL: same rows or different rows for
+                       SELECTs, same effect or different effect for
+                       UPDATE/DELETE
+--allow-remote-db      let --sql-check run against a non-local PostgreSQL
+                       or MySQL host (default: localhost only)
 --claim-words A,B,C    replace the built-in risky-phrase list
 --no-claim-check       turn the claim-words check off
 --json                 machine-readable output
@@ -124,6 +128,75 @@ A verdict means the two statements had the same effect on this database,
 not that they are equivalent on every database. Seed your test database
 with edge cases (boundary values like exactly 10, NULLs, unexpected
 statuses) to make the check meaningful.
+
+### PostgreSQL and MySQL
+
+`--sql-check` also accepts a server URL:
+`postgresql://user:pass@localhost:5432/dbname` or
+`mysql://user:pass@127.0.0.1:3306/dbname`. The drivers are optional
+extras: `pip install "psycopg[binary]" PyMySQL`. When the driver is
+missing the script prints the install hint and gives no verdict.
+
+The verdicts and their wording are the same as for SQLite. SELECT pairs
+run in a read-only transaction and are compared by the rows they return.
+UPDATE and DELETE pairs are measured on the server without creating any
+object there: for each side the script opens a transaction, snapshots the
+target table (all columns, keyed by primary key), runs the statement,
+snapshots again and rolls the transaction back. It never commits, on any
+code path. The statement timeouts are 10 seconds (Postgres
+`statement_timeout`, MySQL `max_execution_time` and a low
+`innodb_lock_wait_timeout`).
+
+Safety rules, in the code and in the docs:
+
+- Non-local hosts are refused unless you also pass `--allow-remote-db`.
+  Either way the script prints a warning that this must be a TEST
+  database.
+- The target table must have a primary key. Without one, a write pair
+  reports `no verdict: ... has no primary key`, because the rows cannot
+  be told apart.
+- The target table is snapshotted only up to 100,000 rows; larger tables
+  report `no verdict: ... has N rows (snapshot limit 100000)`.
+- MySQL write pairs refuse MyISAM tables (`only InnoDB can roll back`).
+- Statements that error give no verdict, as in SQLite.
+
+The same caveat as above applies, and it matters more on a server: the
+verdict says what happened on THIS test database with THIS seed data.
+`tests/seed_postgres.py` and `tests/seed_mysql.py` load the fixture
+data, and `tests/test_sql_check_servers.py` runs every pair against both
+engines and verifies the seed data is unchanged afterwards (row counts,
+checksum, full users table). The tests skip an engine with a clear
+message when its server is not reachable.
+
+Real output, pasted from a run against PostgreSQL 16.16
+(`python what_changed.py sql-old.txt sql-new.txt --code --sql-check
+"postgresql://localhost:5432/what_changed_test"`):
+
+```
+WHAT REALLY CHANGED
+old: sql-old.txt
+new: sql-new.txt
+model: harims95/hobbylm-embed-140m | reword threshold 0.85 | related floor 0.74
+
+COUNTS
+unchanged    0
+reworded     0
+changed      1
+added        0
+removed      0
+
+CHANGED
+1. [numbers/dates differ (old: none | new: 1), sim 0.94]
+   old: UPDATE users SET email = 'ada@example.org' WHERE name = 'Ada Lovelace';
+   new: UPDATE users SET email = 'ada@example.org' WHERE id = 1;
+   sql: same effect (1 row)
+
+ADDED
+(none)
+
+REMOVED
+(none)
+```
 
 The two example pairs under `examples/php_config/` and `examples/sql_migration/`
 show it on a PHP config file and a SQL migration. Like everything under
@@ -453,13 +526,15 @@ versions.
   array) joins into a single statement; for PHP-style configs use plain
   --code instead.
 - **--sql-check runs your statements.** SELECT pairs run on the database
-  you point at; UPDATE and DELETE pairs run on a temporary copy, each in
-  its own transaction that is rolled back. The original file is opened
-  read-only and is never written. Expect SELECT, UPDATE and DELETE only:
-  INSERT, DDL and multi-statement clauses get no verdict. The row journal
-  needs SQLite with the JSON1 functions, which every CPython build has
-  shipped for years. Tables without a declared primary key fall back to
-  rowid.
+  you point at; UPDATE and DELETE pairs run on a temporary copy (SQLite)
+  or inside rolled-back transactions on the server (PostgreSQL and
+  MySQL). The original database file is opened read-only and is never
+  written; server statements never commit. Expect SELECT, UPDATE and
+  DELETE only: INSERT, DDL and multi-statement clauses get no verdict.
+  The SQLite row journal needs SQLite with the JSON1 functions, which
+  every CPython build has shipped for years. Tables without a declared
+  primary key fall back to rowid on SQLite; on a server they get no
+  verdict for write pairs.
 - **512 tokens per clause by default, up to 2,048 if you raise the limit.**
   Longer clauses are truncated by the model. The
   script prints a warning to stderr when a clause exceeds the limit.
