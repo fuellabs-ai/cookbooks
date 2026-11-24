@@ -24,6 +24,7 @@ from what_changed import (DEFAULT_FLOOR, DEFAULT_THRESHOLD, MODEL_ID,
 
 
 def build_db():
+    """Build the fixture database and reopen it read-only, like the CLI."""
     schema = (pathlib.Path(__file__).parent / "fixtures"
               / "sql_check_schema.sql").read_text(encoding="utf-8")
     path = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
@@ -31,11 +32,15 @@ def build_db():
     conn = sqlite3.connect(path.name)
     conn.executescript(schema)
     conn.commit()
-    return conn
+    conn.close()
+    ro = sqlite3.connect(f"file:{path.name}?mode=ro", uri=True)
+    return ro, path.name
 
 
 def main():
-    conn = build_db()
+    import hashlib
+    conn, db_path = build_db()
+    db_before = hashlib.sha256(open(db_path, "rb").read()).hexdigest()
 
     from sentence_transformers import SentenceTransformer
     model = SentenceTransformer(MODEL_ID, revision=MODEL_REVISION,
@@ -43,7 +48,9 @@ def main():
 
     csv_path = pathlib.Path(__file__).parent / "fixtures" / "sql_equivalence_pairs.csv"
     rows = list(csv.DictReader(open(csv_path, encoding="utf-8")))
-    assert len(rows) == 4, f"expected 4 equivalence pairs, found {len(rows)}"
+    # 4 SELECT equivalence pairs and 3 write pairs (equivalent UPDATEs,
+    # a wider DELETE, an UPDATE that changes a different column).
+    assert len(rows) == 7, f"expected 7 pairs, found {len(rows)}"
 
     failures = []
     for k, row in enumerate(rows, 1):
@@ -81,12 +88,19 @@ def main():
         failures.append(f"control: expected different rows, got {verdict!r}")
 
     conn.close()
+    db_after = hashlib.sha256(open(db_path, "rb").read()).hexdigest()
+    if db_before != db_after:
+        failures.append("the original database file was modified")
+    else:
+        print("original database file: byte-identical after all checks")
+
     if failures:
         print("FAIL")
         for f in failures:
             print(f"  - {f}")
         return 1
-    print("PASS: all 4 equivalence pairs report same rows; control reports different rows")
+    print("PASS: 4 SELECT pairs report same rows; write pairs report same/different effect; "
+          "control reports different rows; original file untouched")
     return 0
 
 

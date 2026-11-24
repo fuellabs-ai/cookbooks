@@ -10,9 +10,11 @@ With --code the two versions are read as code or config: one clause per line,
 no sentence splitting, and any text change on a non-comment line is Changed.
 In code there is no harmless rewording outside comments. --ignore-format
 normalises quote style and whitespace before comparing, so lines that differ
-only by formatting count as Unchanged. --sql-check DB_FILE runs matched SQL
-SELECT pairs against a SQLite database and reports same rows or different
-rows.
+only by formatting count as Unchanged. --sql-check DB_FILE runs matched
+SQL pairs against a copy of a SQLite database: SELECTs are compared by
+the rows they return, UPDATE and DELETE by the rows they change on a
+temporary copy (each in its own transaction, rolled back afterwards;
+the original file is never modified).
 
 Model: harims95/hobbylm-embed-140m via Sentence Transformers
 (trust_remote_code=True). The model turns each clause into a normalized
@@ -27,9 +29,11 @@ from __future__ import annotations
 import argparse
 import difflib
 import json
+import os
 import re
 import sqlite3
 import sys
+import tempfile
 from collections import Counter, defaultdict
 
 import numpy as np
@@ -263,32 +267,157 @@ def join_statements(lines: list[str]) -> list[str]:
 
 
 SQL_QUERY_RE = re.compile(r"^\s*(?:select|with|values)\b", re.IGNORECASE)
+SQL_WRITE_RE = re.compile(r"^\s*(?:update|delete)\b", re.IGNORECASE)
+
+JOURNAL_TABLE = "__what_changed_journal"
+
+
+def _ident(name: str) -> str:
+    """Quote an identifier for SQL."""
+    return '"' + name.replace('"', '""') + '"'
+
+
+def _sql_literal(text: str) -> str:
+    """Quote a string literal for SQL."""
+    return "'" + text.replace("'", "''") + "'"
+
+
+def _backup_to_temp(conn) -> str:
+    """Copy the database behind conn into a fresh temporary file."""
+    fd, path = tempfile.mkstemp(suffix=".db")
+    os.close(fd)
+    dest = sqlite3.connect(path)
+    try:
+        conn.backup(dest)
+    finally:
+        dest.close()
+    return path
+
+
+def _install_write_triggers(conn) -> None:
+    """Journal every UPDATE/DELETE row effect on the temporary copy.
+
+    Creates one journal table and two triggers per user table. After a
+    statement runs, the journal holds one row per changed row: table,
+    primary key (or rowid for tables without one), and the full before
+    and after values as JSON.
+    """
+    conn.execute(
+        f"CREATE TABLE {_ident(JOURNAL_TABLE)} ("
+        "seq INTEGER PRIMARY KEY AUTOINCREMENT, change TEXT, table_name TEXT,"
+        " pk TEXT, before_json TEXT, after_json TEXT)"
+    )
+    tables = [r[0] for r in conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'"
+    )]
+    for table in tables:
+        info = conn.execute(f"PRAGMA table_info({_ident(table)})").fetchall()
+        cols = [r[1] for r in info]
+        pk_cols = [r[1] for r in sorted((r for r in info if r[5] > 0),
+                                        key=lambda r: r[5])]
+        pk_expr = (", ".join(f"OLD.{_ident(c)}" for c in pk_cols)
+                   if pk_cols else "OLD.rowid")
+        before = ", ".join(f"{_sql_literal(c)}, OLD.{_ident(c)}" for c in cols)
+        after = ", ".join(f"{_sql_literal(c)}, NEW.{_ident(c)}" for c in cols)
+        insert = (f"INSERT INTO {_ident(JOURNAL_TABLE)} "
+                  "(change, table_name, pk, before_json, after_json) VALUES (")
+        for tag, value_expr in (("update", f"json_array({pk_expr}), "
+                                          f"json_object({before}), "
+                                          f"json_object({after})"),
+                                ("delete", f"json_array({pk_expr}), "
+                                           f"json_object({before}), NULL")):
+            conn.execute(
+                f"CREATE TRIGGER {_ident(f'__wc_{tag}_{table}')} "
+                f"AFTER {tag.upper()} ON {_ident(table)} FOR EACH ROW BEGIN "
+                f"{insert}{_sql_literal(tag)}, {_sql_literal(table)}, {value_expr}); END"
+            )
+
+
+def _capture_write(conn, sql):
+    """Run one write statement on the copy, journal it, roll back."""
+    conn.execute("BEGIN")
+    try:
+        conn.execute(sql)
+        rows = conn.execute(
+            f"SELECT change, table_name, pk, before_json, after_json "
+            f"FROM {_ident(JOURNAL_TABLE)} ORDER BY seq"
+        ).fetchall()
+    except (sqlite3.Error, sqlite3.Warning):
+        rows = None
+    finally:
+        conn.execute("ROLLBACK")
+    return rows
+
+
+def _row_count(n: int) -> str:
+    return f"{n} row{'s' if n != 1 else ''}"
+
+
+def _effect_verdict(old_journal, new_journal) -> str:
+    """Compare the old and new statement journals into one verdict line."""
+    if sorted(map(repr, old_journal)) == sorted(map(repr, new_journal)):
+        return f"same effect ({_row_count(len(old_journal))})"
+    o, n = len(old_journal), len(new_journal)
+    if o != n:
+        return f"different effect (old {_row_count(o)}, new {_row_count(n)})"
+    old_map = {(t, pk): (b, a) for _, t, pk, b, a in old_journal}
+    new_map = {(t, pk): (b, a) for _, t, pk, b, a in new_journal}
+    gone = sorted(set(old_map) - set(new_map))
+    fresh = sorted(set(new_map) - set(old_map))
+    differ = sorted(k for k in set(old_map) & set(new_map) if old_map[k] != new_map[k])
+    parts = []
+    for rows, name in ((gone, "only in old"), (fresh, "only in new"),
+                       (differ, "changed differently")):
+        if rows:
+            shown = ", ".join(f"{t} {pk}" for t, pk in rows[:3])
+            more = f", +{len(rows) - 3} more" if len(rows) > 3 else ""
+            parts.append(f"{_row_count(len(rows))} {name}: {shown}{more}")
+    return "different effect (" + "; ".join(parts) + ")"
 
 
 def check_sql_pair(conn, old_sql, new_sql):
-    """Run two matched SQL queries and compare the rows they return.
+    """Compare two matched SQL statements by running them.
 
-    Returns "same rows (N)" or "different rows (old N, new M)" when both
-    sides are SELECT queries, or None when either side is not. Row order
-    does not count: rows are compared as a sorted multiset.
+    SELECT statements run on the read-only connection and are compared by
+    the rows they return. UPDATE and DELETE statements run on a temporary
+    copy of the database, each in its own transaction that is rolled
+    back, and are compared by the rows they change: table, primary key
+    and before/after values. The original database file is only opened
+    read-only and is never modified. Returns a one-line verdict, or None
+    when either side is not a runnable single statement of a supported
+    kind.
     """
-    if not (SQL_QUERY_RE.match(old_sql) and SQL_QUERY_RE.match(new_sql)):
+    old_is_query = bool(SQL_QUERY_RE.match(old_sql))
+    new_is_query = bool(SQL_QUERY_RE.match(new_sql))
+    old_is_write = bool(SQL_WRITE_RE.match(old_sql))
+    new_is_write = bool(SQL_WRITE_RE.match(new_sql))
+    if not ((old_is_query and new_is_query) or (old_is_write and new_is_write)):
         return None
-    try:
-        old_rows = conn.execute(old_sql.strip().rstrip(";")).fetchall()
-        new_rows = conn.execute(new_sql.strip().rstrip(";")).fetchall()
-    except sqlite3.Error:
-        return None
-
-    def as_rows(rows):
+    if old_is_query:
         try:
-            return sorted(rows)
-        except TypeError:
-            return sorted(map(repr, rows))
-
-    if as_rows(old_rows) == as_rows(new_rows):
-        return f"same rows ({len(old_rows)})"
-    return f"different rows (old {len(old_rows)}, new {len(new_rows)})"
+            old_rows = conn.execute(old_sql.strip().rstrip(";")).fetchall()
+            new_rows = conn.execute(new_sql.strip().rstrip(";")).fetchall()
+        except (sqlite3.Error, sqlite3.Warning):
+            return None
+        as_rows = lambda rows: sorted(map(repr, rows))
+        if as_rows(old_rows) == as_rows(new_rows):
+            return f"same rows ({len(old_rows)})"
+        return f"different rows (old {len(old_rows)}, new {len(new_rows)})"
+    path = _backup_to_temp(conn)
+    try:
+        copy_conn = sqlite3.connect(path)
+        copy_conn.isolation_level = None
+        try:
+            _install_write_triggers(copy_conn)
+            old_journal = _capture_write(copy_conn, old_sql.strip().rstrip(";"))
+            new_journal = _capture_write(copy_conn, new_sql.strip().rstrip(";"))
+        finally:
+            copy_conn.close()
+    finally:
+        os.unlink(path)
+    if old_journal is None or new_journal is None:
+        return None
+    return _effect_verdict(old_journal, new_journal)
 
 
 class Pair:

@@ -63,8 +63,9 @@ Flags:
 --ignore-format        with --code: normalise quote style and whitespace and
                        join lines into balanced statements, so pure
                        reformatting is not reported
---sql-check DB_FILE    run matched SQL SELECT pairs against a SQLite database
-                       and report same rows or different rows
+--sql-check DB_FILE    run matched SQL pairs against a copy of a SQLite
+                       database: same rows or different rows for SELECTs,
+                       same effect or different effect for UPDATE/DELETE
 --claim-words A,B,C    replace the built-in risky-phrase list
 --no-claim-check       turn the claim-words check off
 --json                 machine-readable output
@@ -107,9 +108,17 @@ For SQL there is `--sql-check DB_FILE`: for every matched pair whose old and
 new sides both look like SELECT queries, the script runs both against the
 given SQLite database and reports `same rows` or `different rows` under the
 pair. A Changed label with `same rows` is a rewrite that returns the same
-result, such as `IN (...)` becoming an OR chain. The database needs the
-schema locally; rows are compared with duplicates counted; row order does not count.
-`tests/test_sql_check.py` runs four equivalence pairs against it.
+result, such as `IN (...)` becoming an OR chain.
+
+UPDATE and DELETE pairs are compared by what they do, not just by their
+text: the script copies the database to a temporary file, runs each side in
+its own transaction on the copy, records which rows were changed or deleted
+(table, primary key, before and after values) and how many, and rolls the
+transaction back. The pair then reports `same effect` or `different effect`
+with the row counts. The original database file is only ever opened
+read-only and is never modified. Rows are compared with duplicates counted;
+row order does not count. `tests/test_sql_check.py` runs four SELECT
+equivalence pairs and three write pairs against it.
 
 The two example pairs under `examples/php_config/` and `examples/sql_migration/`
 show it on a PHP config file and a SQL migration. Like everything under
@@ -438,10 +447,14 @@ versions.
   is one balanced expression from top to bottom (a PHP config's return
   array) joins into a single statement; for PHP-style configs use plain
   --code instead.
-- **--sql-check runs your queries.** Both sides of a matched pair are
-  executed against the database you point at. Point it at a copy, never at
-  a production database, and expect a SELECT-only script: pairs that are
-  not SELECT queries get no verdict.
+- **--sql-check runs your statements.** SELECT pairs run on the database
+  you point at; UPDATE and DELETE pairs run on a temporary copy, each in
+  its own transaction that is rolled back. The original file is opened
+  read-only and is never written. Expect SELECT, UPDATE and DELETE only:
+  INSERT, DDL and multi-statement clauses get no verdict. The row journal
+  needs SQLite with the JSON1 functions, which every CPython build has
+  shipped for years. Tables without a declared primary key fall back to
+  rowid.
 - **512 tokens per clause by default, up to 2,048 if you raise the limit.**
   Longer clauses are truncated by the model. The
   script prints a warning to stderr when a clause exceeds the limit.
