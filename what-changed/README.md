@@ -120,6 +120,11 @@ read-only and is never modified. Rows are compared with duplicates counted;
 row order does not count. `tests/test_sql_check.py` runs four SELECT
 equivalence pairs and three write pairs against it.
 
+A verdict means the two statements had the same effect on this database,
+not that they are equivalent on every database. Seed your test database
+with edge cases (boundary values like exactly 10, NULLs, unexpected
+statuses) to make the check meaningful.
+
 The two example pairs under `examples/php_config/` and `examples/sql_migration/`
 show it on a PHP config file and a SQL migration. Like everything under
 `examples/` they are fictional sample data written for this recipe; they do not
