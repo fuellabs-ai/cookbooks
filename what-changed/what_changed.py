@@ -3,11 +3,13 @@
 
 A HobbyLM-Embed cookbook recipe. Embeddings only, no LLM.
 
-    python what_changed.py old.txt new.txt [--code] [--show-all] [--threshold 0.90]
+    python what_changed.py old.txt new.txt [--code] [--ignore-format] [--show-all] [--threshold 0.90]
 
 With --code the two versions are read as code or config: one clause per line,
 no sentence splitting, and any text change on a non-comment line is Changed.
-In code there is no harmless rewording outside comments.
+In code there is no harmless rewording outside comments. --ignore-format
+normalises quote style and whitespace before comparing, so lines that differ
+only by formatting count as Unchanged.
 
 Model: harims95/hobbylm-embed-140m via Sentence Transformers
 (trust_remote_code=True). The model turns each clause into a normalized
@@ -103,12 +105,24 @@ def split_lines(text: str) -> list[str]:
     return [line.strip() for line in text.splitlines() if line.strip()]
 
 
-COMMENT_PREFIXES = ("//", "#", "--", "/*", "*", "*/")
+COMMENT_PREFIXES = ("//", "#", "--", "/*", "*", "*/", "|")
 
 
 def is_comment(line: str) -> bool:
-    """True for a comment line in code mode: starts with a comment marker."""
+    """True for a comment line in code mode: starts with a comment marker.
+
+    | covers the docblock-style comment boxes Laravel and similar PHP
+    config files draw with vertical bars.
+    """
     return line.strip().startswith(COMMENT_PREFIXES)
+
+
+def format_normalize(text: str) -> str:
+    """Whitespace collapsed and quote characters unified.
+
+    Used by --ignore-format so 'x' and "x" compare equal.
+    """
+    return normalize(text).replace('"', "'")
 
 
 def _diff_chunk(tokens: list[str]) -> str:
@@ -215,7 +229,8 @@ class Pair:
 
 def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
             max_tokens: int = DEFAULT_MAX_TOKENS,
-            claim_check: bool = True, claim_words=None, code_mode: bool = False):
+            claim_check: bool = True, claim_words=None, code_mode: bool = False,
+            ignore_format: bool = False):
     """Match clauses across versions and label every pair."""
     if code_mode:
         old_clauses = split_lines(old_text)
@@ -226,7 +241,9 @@ def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
 
     def exact_key(clause: str) -> str:
         # Code compares case sensitively: TRUE and true are not the same line.
-        text = normalize(clause)
+        # With --ignore-format, quote style is normalised too, so 'x' and "x"
+        # are the same line.
+        text = format_normalize(clause) if ignore_format else normalize(clause)
         return text if code_mode else text.lower()
 
     # Warn about clauses the model would have to truncate.
@@ -296,7 +313,11 @@ def compare(old_text: str, new_text: str, model, threshold: float, floor: float,
                 # In code there is no harmless rewording outside comments: any
                 # text change on a live line is a real change, whatever the
                 # score says. Comments keep the prose Reworded/Changed logic.
-                token_change = token_diff(old_clauses[i], new_clauses[j]) or "text differs"
+                if ignore_format:
+                    old_side, new_side = format_normalize(old_clauses[i]), format_normalize(new_clauses[j])
+                else:
+                    old_side, new_side = old_clauses[i], new_clauses[j]
+                token_change = token_diff(old_side, new_side) or "text differs"
                 pairs.append(Pair("changed", old_clauses[i], new_clauses[j], score,
                                   f"text differs ({token_change})"))
             elif score >= threshold:
@@ -430,6 +451,10 @@ def main():
     ap.add_argument("--code", action="store_true",
                     help="code or config files: split by line only, and any text "
                          "change on a non-comment line counts as Changed")
+    ap.add_argument("--ignore-format", action="store_true",
+                    help="with --code: normalise quote style and whitespace before "
+                         "comparing, so lines that differ only by formatting count "
+                         "as Unchanged")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     args = ap.parse_args()
     if not args.hard_cases and (not args.old or not args.new):
@@ -454,7 +479,8 @@ def main():
         new_text = f.read()
 
     pairs = compare(old_text, new_text, model, args.threshold, args.floor,
-                    max_tokens, claim_check, claim_words, code_mode=args.code)
+                    max_tokens, claim_check, claim_words, code_mode=args.code,
+                    ignore_format=args.ignore_format)
     if args.json:
         print(json.dumps([{
             "label": p.label, "old": p.old, "new": p.new,

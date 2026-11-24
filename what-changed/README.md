@@ -60,6 +60,8 @@ Flags:
 --show-all             also print Unchanged and Reworded clauses
 --code                 code/config mode: split by line only, any text change
                        on a non-comment line counts as Changed
+--ignore-format        with --code: normalise quote style and whitespace, so
+                       lines that differ only by formatting count as Unchanged
 --claim-words A,B,C    replace the built-in risky-phrase list
 --no-claim-check       turn the claim-words check off
 --json                 machine-readable output
@@ -79,8 +81,17 @@ the embedding, so prose mode files it under Reworded and hides it. Pass
 only (no sentence splitting), matches lines with the same embedding matcher,
 and labels any text change on a non-comment line as Changed, showing the
 differing tokens. Comments keep the prose logic, because there a rewording
-really is harmless. Identical lines are matched case sensitively: `TRUE` and
-`true` are not the same line.
+really is harmless: a line counts as a comment when it starts with //, #, --,
+/*, *, */ or |, the last one covering the docblock-style comment boxes that
+Laravel and similar PHP config files draw. Identical lines are matched case
+sensitively: `TRUE` and `true` are not the same line.
+
+A formatting sweep can flood a code-mode report, because a quote or a line
+wrap is a text change. Pass `--ignore-format` when a reformat landed together
+with real changes: quote style and whitespace are normalised before
+comparing, so lines that differ only by formatting count as Unchanged. Lines
+that were rewrapped across several lines still show, because comparison is
+line by line.
 
 The two example pairs under `examples/php_config/` and `examples/sql_migration/`
 show it on a PHP config file and a SQL migration. Like everything under
@@ -397,10 +408,12 @@ versions.
   cleanly. A wall of prose may split at odd places, and two clauses that share
   one idea can end up matched to each other's neighbors.
 - **Code mode comment detection is prefix based.** With --code a line counts as
-  a comment when it starts with //, #, --, /*, * or */. A block comment body
+  a comment when it starts with //, #, --, /*, *, */ or |. A block comment body
   that does not start with one of those markers counts as code, so a text
   change inside it shows as Changed. That is the safe direction: code mode
-  prefers a false alarm over a hidden change.
+  prefers a false alarm over a hidden change. --ignore-format trades some of
+  that safety for quiet: quote style is normalised, so a change that is only
+  quote marks hides too.
 - **512 tokens per clause by default, up to 2,048 if you raise the limit.**
   Longer clauses are truncated by the model. The
   script prints a warning to stderr when a clause exceeds the limit.
